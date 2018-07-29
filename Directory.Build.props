@@ -1,0 +1,25 @@
+<Project>
+
+    <PropertyGroup>
+        <RepoRoot>$(MSBuildThisFileDirectory)</RepoRoot>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <LangVersion>Latest</LangVersion>
+        <NoWarn>CA1303;CA1812;CA1822;$(NoWarn)</NoWarn>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <PackageVersion>0.1.0</PackageVersion>
+        <PackageVersionSuffix Condition="'$(APPVEYOR)' == 'True'">-build$(APPVEYOR_BUILD_NUMBER)+$(APPVEYOR_REPO_COMMIT)</PackageVersionSuffix>
+        <PackageVersionSuffix Condition="'$(PackageVersionSuffix)' == ''">-localbuild$([System.DateTime]::Now.ToString("yyyyMMddhhmmss"))</PackageVersionSuffix>
+        <PackageVersionSuffix Condition="'$(APPVEYOR_REPO_TAG)' == 'True'"></PackageVersionSuffix>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Folder Include="Properties" />
+    </ItemGroup>
+
+    <Import Project="build\Targets\Import.props" />
+
+</Project>

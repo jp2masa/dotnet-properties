@@ -1,0 +1,48 @@
+<UserControl xmlns="https://github.com/avaloniaui">
+
+    <StackPanel> 
+
+        <TextBlock Classes="h1"
+                   Text="Build Events" />
+
+        <StackPanel Margin="0, 16, 0, 0"
+                    Spacing="12">
+
+            <StackPanel Grid.Row="0"
+                        Spacing="4">
+
+                <TextBlock Text="Pre-build event:" />
+
+                <TextBox AcceptsReturn="True"
+                         MinHeight="128"
+                         Text="{Binding PreBuildEvent}" />
+
+            </StackPanel>
+
+            <StackPanel Grid.Row="2"
+                        Spacing="4">
+
+                <TextBlock Text="Post-build event:" />
+
+                <TextBox AcceptsReturn="True"
+                         MinHeight="128"
+                         Text="{Binding PostBuildEvent}" />
+
+            </StackPanel>
+
+            <StackPanel Grid.Row="4"
+                        Orientation="Horizontal"
+                        Spacing="4">
+
+                <TextBlock Text="Run post-build event:" />
+
+                <DropDown Items="{Binding SupportedRunPostBuildEvent}"
+                          SelectedItem="{Binding RunPostBuildEvent}" />
+                
+            </StackPanel>
+
+        </StackPanel>
+
+    </StackPanel>
+
+</UserControl>

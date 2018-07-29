@@ -1,0 +1,138 @@
+<UserControl xmlns="https://github.com/avaloniaui">
+    
+    <StackPanel>
+
+        <TextBlock Classes="h1"
+                   Text="Package" />
+
+        <StackPanel Margin="0, 16, 0, 0"
+                    Spacing="12">
+
+            <CheckBox Grid.Column="0"
+                      Grid.Row="0"
+                      IsChecked="{Binding GeneratePackageOnBuild}"
+                      Content="Generate package on build" />
+
+            <Grid ColumnDefinitions="*,8,*">
+
+                <StackPanel Grid.Column="0"
+                            Spacing="4">
+                    <TextBlock Text="Package ID:" />
+                    <TextBox Text="{Binding PackageId}" />
+                </StackPanel>
+                
+                <StackPanel Grid.Column="2"
+                            Spacing="4">
+                    <TextBlock Text="Package version:" />
+                    <TextBox Text="{Binding PackageVersion}" />
+                </StackPanel>
+            
+            </Grid>
+
+            <StackPanel Spacing="4">
+                <TextBlock Text="Package title:" />
+                <TextBox Text="{Binding PackageTitle}" />
+            </StackPanel>
+            
+            <Grid ColumnDefinitions="3*,8,*">
+
+                <StackPanel Grid.Column="0"
+                            Spacing="4">
+                    <TextBlock Text="Authors:" />
+                    <TextBox Text="{Binding Authors}" />
+                </StackPanel>
+
+                <StackPanel Grid.Column="2"
+                            Spacing="4">
+                    <TextBlock Text="Company:" />
+                    <TextBox Text="{Binding Company}" />
+                </StackPanel>
+
+            </Grid>
+
+            <StackPanel Spacing="4">
+
+                <TextBlock Text="Description:" />
+                
+                <TextBox ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                         ScrollViewer.VerticalScrollBarVisibility="Auto"
+                         AcceptsReturn="True"
+                         MinHeight="128"
+                         Text="{Binding PackageDescription}" />
+                
+            </StackPanel>
+
+            <StackPanel Spacing="4">
+                <TextBlock Text="Copyright:" />
+                <TextBox Text="{Binding Copyright}" />
+            </StackPanel>
+            
+            <Grid ColumnDefinitions="*,8,Auto"
+                  RowDefinitions="Auto,4,Auto">
+
+                <TextBlock Grid.Column="0"
+                           Grid.Row="0"
+                           Text="License URL:" />
+                
+                <TextBox Grid.Column="0"
+                         Grid.Row="2"
+                         Text="{Binding LicenseURL}" />
+                
+                <CheckBox Grid.Column="2"
+                          Grid.Row="2"
+                          IsChecked="{Binding RequireLicenseAcceptance}"
+                          Content="Require license acceptance" />
+                
+            </Grid>
+
+            <StackPanel Spacing="4">
+                <TextBlock Text="Project URL:" />
+                <TextBox Text="{Binding ProjectURL}" />
+            </StackPanel>
+
+            <StackPanel Spacing="4">
+                <TextBlock Text="Icon URL:" />
+                <TextBox Text="{Binding IconURL}" />
+            </StackPanel>
+
+            <Grid Grid.Column="0"
+                  Grid.Row="18"
+                  Grid.ColumnSpan="3"
+                  ColumnDefinitions="3*,8,*">
+
+                <StackPanel Grid.Column="0"
+                            Spacing="4">
+                    <TextBlock Text="Repository URL:" />
+                    <TextBox Text="{Binding RepositoryURL}" />
+                </StackPanel>
+                
+                <StackPanel Grid.Column="2"
+                            Spacing="4">
+                    <TextBlock Text="Repository type:" />
+                    <TextBox Text="{Binding RepositoryType}" />
+                </StackPanel>
+            
+            </Grid>
+                
+            <StackPanel Spacing="4">
+                <TextBlock Text="Tags:" />
+                <TextBox Text="{Binding Tags}" />
+            </StackPanel>
+
+            <StackPanel Spacing="4">
+                
+                <TextBlock Text="Release notes:" />
+                
+                <TextBox ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                         ScrollViewer.VerticalScrollBarVisibility="Auto"
+                         AcceptsReturn="True"
+                         MinHeight="128"
+                         Text="{Binding ReleaseNotes}" />
+                
+            </StackPanel>
+
+        </StackPanel>
+
+    </StackPanel>
+
+</UserControl>

@@ -1,0 +1,42 @@
+<UserControl xmlns="https://github.com/avaloniaui">
+
+    <StackPanel>
+
+        <TextBlock Classes="h1"
+                   Text="Signing" />
+
+        <StackPanel Margin="0, 12, 0, 0"
+                    Spacing="12">
+
+            <CheckBox Name="SignAssembly"
+                      Grid.Column="0"
+                      Grid.Row="0"
+                      IsChecked="{Binding SignAssembly}"
+                      Content="Sign assembly"/>
+
+            <StackPanel IsEnabled="{Binding #SignAssembly.IsChecked}"
+                        Spacing="12">
+
+                <DockPanel>
+                    
+                    <Button DockPanel.Dock="Right"
+                            Margin="12,0,0,0"
+                            Padding="4,0"
+                            Command="{Binding OpenKeyFileCommand}"
+                            Content="..." />
+                    
+                    <TextBox HorizontalAlignment="Stretch"
+                             Text="{Binding AssemblyOriginatorKeyFile}" />
+                    
+                </DockPanel>
+
+                <CheckBox IsChecked="{Binding DelaySign}"
+                          Content="Delay sign" />
+                
+            </StackPanel>
+
+        </StackPanel>
+
+    </StackPanel>
+
+</UserControl>

@@ -1,0 +1,90 @@
+<UserControl xmlns="https://github.com/avaloniaui">
+
+    <StackPanel>
+
+        <TextBlock Classes="h1"
+                   Text="Build" />
+
+        <StackPanel Spacing="8">
+        
+            <StackPanel Margin="0, 12, 0, 0"
+                        Spacing="12">
+
+                <TextBlock Classes="h2"
+                           Text="General" />
+
+                <StackPanel Spacing="4">
+                    <TextBlock Text="Conditional compilation symbols:" />
+                    <TextBox Text="{Binding ConditionalCompilationSymbols}" />
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal"
+                            Spacing="12">
+
+                    <StackPanel Orientation="Horizontal"
+                                Spacing="8">
+                    
+                        <TextBlock Text="Target platform:" />
+
+                        <DropDown MinWidth="120"
+                                  IsEnabled="{Binding PlatformTargetEnabled}"
+                                  Items="{Binding AvailablePlatformTargets}"
+                                  SelectedItem="{Binding PlatformTarget}" />
+                    
+                    </StackPanel>
+
+                    <CheckBox IsChecked="{Binding Prefer32Bit}"
+                              Content="Prefer 32-bit" />
+
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal"
+                            Spacing="12">
+
+                    <CheckBox IsChecked="{Binding AllowUnsafeCode}"
+                              Content="Allow unsafe code" />
+                
+                    <CheckBox IsChecked="{Binding OptimizeCode}"
+                              Content="Optimize code" />
+
+                </StackPanel>
+            
+            </StackPanel>
+
+            <StackPanel Margin="0, 12, 0, 0"
+                                Spacing="12">
+
+                <TextBlock Classes="h2"
+                           Text="Output" />
+
+                <StackPanel Spacing="4">
+                    <TextBlock Text="Output path:" />
+                    <TextBox Text="{Binding OutputPath}" />
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal"
+                            Spacing="8">
+
+                    <CheckBox IsChecked="{Binding AppendTargetFrameworkToOutputPath}"
+                              Content="Append target framework to output path" />
+
+                    <CheckBox IsChecked="{Binding AppendRuntimeIdentifierToOutputPath}"
+                              Content="Append runtime identifier to output path" />
+                
+                </StackPanel>
+
+                <CheckBox IsChecked="{Binding GenerateDocumentationFile}"
+                          Content="Generate XML documentation file" />
+            
+                <StackPanel Spacing="4">
+                    <TextBlock Text="Documentation file path:" />
+                    <TextBox Text="{Binding DocumentationFile}" />
+                </StackPanel>
+            
+            </StackPanel>
+            
+        </StackPanel>
+    
+    </StackPanel>
+
+</UserControl>

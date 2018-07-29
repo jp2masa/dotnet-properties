@@ -1,0 +1,57 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" >
+    <Style Selector="TabControl.sidebar">
+                
+        <Setter Property="Template">
+            <ControlTemplate>
+                <DockPanel>
+                    <ScrollViewer DockPanel.Dock="Left"
+                                  MinWidth="190"
+                                  Background="{DynamicResource ThemeAccentBrush}">
+                        <TabStrip Name="PART_TabStrip"
+                                  MemberSelector="{x:Static TabControl.HeaderSelector}"
+                                  Items="{TemplateBinding Items}"
+                                  SelectedIndex="{TemplateBinding SelectedIndex, Mode=TwoWay}">
+                            <TabStrip.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel Orientation="Vertical" />
+                                </ItemsPanelTemplate>
+                            </TabStrip.ItemsPanel>
+                        </TabStrip>
+                    </ScrollViewer>
+                    <ScrollViewer>
+                        <Carousel Name="PART_Content"
+                                  Margin="16,4,16,20"
+                                  MemberSelector="{x:Static TabControl.ContentSelector}"
+                                  Items="{TemplateBinding Items}"
+                                  SelectedIndex="{TemplateBinding SelectedIndex}"
+                                  PageTransition="{TemplateBinding PageTransition}"
+                                  Grid.Row="1" />
+                    </ScrollViewer>
+                </DockPanel>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+
+    <Style Selector="TabControl.sidebar TabStripItem">
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="Margin" Value="0" />
+        <Setter Property="Padding" Value="12" />
+        <Setter Property="Opacity" Value="0.5" />
+        <Setter Property="Transitions">
+            <Transitions>
+                <DoubleTransition Property="Opacity" Duration="0:0:0.5" />
+            </Transitions>
+        </Setter>
+    </Style>
+
+    <Style Selector="TabControl.sidebar TabStripItem:pointerover">
+        <Setter Property="Opacity" Value="1"/>
+    </Style>
+
+    <Style Selector="TabControl.sidebar TabStripItem:selected">
+        <Setter Property="Background" Value="{DynamicResource ThemeAccentBrush2}" />
+        <Setter Property="Opacity" Value="1" />
+    </Style>
+</Styles>

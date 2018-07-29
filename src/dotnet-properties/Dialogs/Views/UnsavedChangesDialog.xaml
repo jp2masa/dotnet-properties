@@ -1,0 +1,42 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:vm="clr-namespace:DotNet.Properties.Dialogs.ViewModels;assembly=dotnet-properties"
+        Icon="resm:DotNet.Properties.Resources.Icon.ico?assembly=dotnet-properties"
+        Name="Dialog"
+        SizeToContent="WidthAndHeight"
+        Title="dotnet-properties"
+        WindowStartupLocation="CenterOwner">
+    <!--
+        ShowInTaskbar="False"
+    -->
+
+    <StackPanel Spacing="16"
+                Margin="16">
+
+        <TextBlock Text="There are unsaved changes, do you want to save them?" />
+
+        <StackPanel HorizontalAlignment="Right"
+                    Orientation="Horizontal"
+                    Spacing="8">
+            <StackPanel.Styles>
+                <Style Selector="Button">
+                    <Setter Property="Button.MinWidth" Value="48" />
+                </Style>
+            </StackPanel.Styles>
+
+            <Button Command="{Binding YesCommand}"
+                    CommandParameter="{Binding #Dialog}"
+                    Content="Yes" />
+            
+            <Button Command="{Binding NoCommand}"
+                    CommandParameter="{Binding #Dialog}"
+                    Content="No" />
+            
+            <Button Command="{Binding CancelCommand}"
+                    CommandParameter="{Binding #Dialog}"
+                    Content="Cancel" />
+
+        </StackPanel>
+
+    </StackPanel>
+    
+</Window>

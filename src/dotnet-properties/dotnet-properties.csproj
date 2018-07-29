@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp2.1</TargetFramework>
+        <OutputType>Exe</OutputType>
+        <RootNamespace>DotNet.Properties</RootNamespace>
+        <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <PackAsTool>True</PackAsTool>
+        <ToolCommandName>dotnet-properties</ToolCommandName>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Compile Update="**\*.xaml.cs" DependentUpon="%(Filename)" />
+        <EmbeddedResource Include="**\*.xaml" SubType="Designer" />
+        <EmbeddedResource Include="Resources\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Avalonia" />
+        <PackageReference Include="Avalonia.Desktop" />
+        <PackageReference Include="Microsoft.Build" />
+        <PackageReference Include="Microsoft.Build.Utilities.Core" />
+        <PackageReference Include="NuGet.Frameworks" />
+        <PackageReference Include="System.IO.Pipes" />
+    </ItemGroup>
+
+</Project>

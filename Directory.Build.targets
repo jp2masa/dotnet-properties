@@ -1,0 +1,18 @@
+<Project>
+
+    <ItemGroup>
+        <MicrosoftAnalyzer Include="Microsoft.CodeAnalysis.Analyzers" />
+        <MicrosoftAnalyzer Include="Microsoft.CodeAnalysis.FxCopAnalyzers" />
+        <MicrosoftAnalyzer Include="Microsoft.CodeQuality.Analyzers" />
+        <MicrosoftAnalyzer Include="Microsoft.CodeQuality.Analyzers.Exp" />
+        <MicrosoftAnalyzer Include="Microsoft.NetCore.Analyzers" />
+        <MicrosoftAnalyzer Include="Microsoft.NetFramework.Analyzers" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="@(MicrosoftAnalyzer)" PrivateAssets="All" />
+    </ItemGroup>
+
+    <Import Project="build\Targets\Import.targets" />
+
+</Project>
