@@ -1,4 +1,5 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/ibaest9dvdww8dtg/branch/master?svg=true)](https://ci.appveyor.com/project/jp2masa/dotnet-properties/branch/master)
+[![NuGet](https://img.shields.io/nuget/dt/dotnet-properties.svg)](https://www.nuget.org/packages/dotnet-properties/)
 
 # dotnet-properties
 
