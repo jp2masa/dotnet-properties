@@ -2,10 +2,9 @@
 
     <PropertyGroup>
         <AvaloniaVersion>0.6.2-build5814-beta</AvaloniaVersion>
-        <MicrosoftAnalyzersVersion>2.6.2-beta1-63012-01</MicrosoftAnalyzersVersion>
-        <MicrosoftBuildVersion>15.7.179</MicrosoftBuildVersion>
-        <NuGetVersion>4.7.0</NuGetVersion>
-        <SystemIOPipesVersion>4.3.0</SystemIOPipesVersion>
+        <RoslynAnalyzersVersion>2.6.2</RoslynAnalyzersVersion>
+        <MicrosoftBuildVersion>15.8.166</MicrosoftBuildVersion>
+        <NuGetVersion>4.8.0</NuGetVersion>
     </PropertyGroup>
 
     <ItemGroup>
@@ -14,11 +13,10 @@
         <PackageReference Update="Microsoft.Build" Version="$(MicrosoftBuildVersion)" />
         <PackageReference Update="Microsoft.Build.Utilities.Core" Version="$(MicrosoftBuildVersion)" />
         <PackageReference Update="NuGet.Frameworks" Version="$(NuGetVersion)" />
-        <PackageReference Update="System.IO.Pipes" Version="$(SystemIOPipesVersion)" />
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Update="@(MicrosoftAnalyzer)" Version="$(MicrosoftAnalyzersVersion)" />
+        <PackageReference Update="@(RoslynAnalyzer)" Version="$(RoslynAnalyzersVersion)" />
     </ItemGroup>
 
 </Project>

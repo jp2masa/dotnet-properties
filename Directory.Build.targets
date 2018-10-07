@@ -1,16 +1,15 @@
 <Project>
 
     <ItemGroup>
-        <MicrosoftAnalyzer Include="Microsoft.CodeAnalysis.Analyzers" />
-        <MicrosoftAnalyzer Include="Microsoft.CodeAnalysis.FxCopAnalyzers" />
-        <MicrosoftAnalyzer Include="Microsoft.CodeQuality.Analyzers" />
-        <MicrosoftAnalyzer Include="Microsoft.CodeQuality.Analyzers.Exp" />
-        <MicrosoftAnalyzer Include="Microsoft.NetCore.Analyzers" />
-        <MicrosoftAnalyzer Include="Microsoft.NetFramework.Analyzers" />
+        <RoslynAnalyzer Include="Microsoft.CodeAnalysis.Analyzers" />
+        <RoslynAnalyzer Include="Microsoft.CodeAnalysis.FxCopAnalyzers" />
+        <RoslynAnalyzer Include="Microsoft.CodeQuality.Analyzers" />
+        <RoslynAnalyzer Include="Microsoft.NetCore.Analyzers" />
+        <RoslynAnalyzer Include="Microsoft.NetFramework.Analyzers" />
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="@(MicrosoftAnalyzer)" PrivateAssets="All" />
+        <PackageReference Include="@(RoslynAnalyzer)" PrivateAssets="All" />
     </ItemGroup>
 
     <Import Project="build\Targets\Import.targets" />

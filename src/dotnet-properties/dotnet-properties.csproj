@@ -24,7 +24,6 @@
         <PackageReference Include="Microsoft.Build" />
         <PackageReference Include="Microsoft.Build.Utilities.Core" />
         <PackageReference Include="NuGet.Frameworks" />
-        <PackageReference Include="System.IO.Pipes" />
     </ItemGroup>
 
 </Project>
