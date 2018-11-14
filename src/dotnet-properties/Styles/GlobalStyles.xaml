@@ -16,7 +16,7 @@
     </Style>
 
     <Style Selector="DropDownItem:selected /template/ ContentPresenter">
-        <Setter Property="Background" Value="{DynamicResource ThemeBorderDarkBrush}"/>
+        <Setter Property="Background" Value="{DynamicResource ThemeBorderHighBrush}"/>
     </Style>
 
     <Style Selector="DropDownItem:pointerover /template/ ContentPresenter">
