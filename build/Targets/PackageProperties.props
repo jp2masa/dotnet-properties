@@ -13,7 +13,7 @@
         <Copyright>Copyright © $([System.DateTime]::Now.Year) jp2masa</Copyright>
         <!--<PackageIconUrl></PackageIconUrl>-->
         <PackageProjectUrl>http://github.com/jp2masa/dotnet-properties</PackageProjectUrl>
-        <PackageLicenseUrl>https://raw.githubusercontent.com/jp2masa/dotnet-properties/master/LICENSE.md</PackageLicenseUrl>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
         <PackageTags>dotnet properties core csharp vb visual basic fsharp csproj vbproj fsproj proj</PackageTags>
         <RepositoryType>git</RepositoryType>
