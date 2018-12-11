@@ -3,8 +3,8 @@
     <PropertyGroup>
         <AvaloniaVersion>0.7.0</AvaloniaVersion>
         <RoslynAnalyzersVersion>2.6.2</RoslynAnalyzersVersion>
-        <MicrosoftBuildVersion>15.8.166</MicrosoftBuildVersion>
-        <NuGetVersion>4.8.0</NuGetVersion>
+        <MicrosoftBuildVersion>15.9.20</MicrosoftBuildVersion>
+        <NuGetVersion>4.9.1</NuGetVersion>
     </PropertyGroup>
 
     <ItemGroup>
