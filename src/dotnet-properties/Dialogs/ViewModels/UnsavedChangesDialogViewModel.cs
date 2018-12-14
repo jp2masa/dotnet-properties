@@ -1,11 +1,15 @@
 ﻿using System;
 using System.Windows.Input;
+
 using Avalonia.Controls;
+
+using ReactiveUI;
+
 using DotNet.Properties.Dialogs.Models;
 
 namespace DotNet.Properties.Dialogs.ViewModels
 {
-    internal class UnsavedChangesDialogViewModel
+    internal class UnsavedChangesDialogViewModel : ReactiveObject
     {
         public ICommand YesCommand { get; }
         public ICommand NoCommand { get; }

@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using Microsoft.Build.Evaluation;
+
+using ReactiveUI;
 
 using DotNet.Properties.Dialogs.Models;
 using DotNet.Properties.Dialogs.ViewModels;
@@ -14,7 +15,7 @@ using DotNet.Properties.Services;
 
 namespace DotNet.Properties
 {
-    internal class MainWindowViewModel : INotifyPropertyChanged
+    internal class MainWindowViewModel : ReactiveObject
     {
         private const string AnyConfiguration = "Any Configuration";
         private const string AnyPlatform = "Any Platform";
@@ -23,8 +24,6 @@ namespace DotNet.Properties
         private Project _project;
 
         private IPropertyManager _propertyManager;
-
-        public event PropertyChangedEventHandler PropertyChanged;
 
         public MainWindowViewModel(
             string projectPath,
@@ -70,7 +69,7 @@ namespace DotNet.Properties
             set
             {
                 _propertyManager.Configuration = value == AnyConfiguration ? String.Empty : value;
-                OnPropertyChanged();
+                this.RaisePropertyChanged();
             }
         }
 
@@ -80,7 +79,7 @@ namespace DotNet.Properties
             set
             {
                 _propertyManager.Platform = value == AnyPlatform ? String.Empty : value;
-                OnPropertyChanged();
+                this.RaisePropertyChanged();
             }
         }
 
@@ -89,18 +88,6 @@ namespace DotNet.Properties
         public BuildEventsPageViewModel BuildEventsPageViewModel { get; }
         public PackagePageViewModel PackagePageViewModel { get; }
         public SigningPageViewModel SigningPageViewModel { get; }
-
-        private void SetProperty<T>(ref T propertyRef, T value, [CallerMemberName]string changedProperty = null)
-        {
-            if (!EqualityComparer<T>.Default.Equals(propertyRef, value))
-            {
-                propertyRef = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(changedProperty));
-            }
-        }
-
-        private void OnPropertyChanged([CallerMemberName]string propertyName = null) =>
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
         private string GetConfigurationDisplayName(string configuration) =>
             String.IsNullOrEmpty(configuration) ? AnyConfiguration : configuration;

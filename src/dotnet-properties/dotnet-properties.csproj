@@ -21,9 +21,11 @@
     <ItemGroup>
         <PackageReference Include="Avalonia" />
         <PackageReference Include="Avalonia.Desktop" />
+        <PackageReference Include="Avalonia.ReactiveUI" />
         <PackageReference Include="Microsoft.Build" />
         <PackageReference Include="Microsoft.Build.Utilities.Core" />
         <PackageReference Include="NuGet.Frameworks" />
+        <PackageReference Include="ReactiveUI" />
     </ItemGroup>
 
 </Project>

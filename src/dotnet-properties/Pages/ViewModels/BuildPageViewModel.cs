@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
+using ReactiveUI;
+
 using DotNet.Properties.Pages.Models;
 using DotNet.Properties.Services;
 
@@ -81,7 +83,7 @@ namespace DotNet.Properties.Pages.ViewModels
             set
             {
                 SetBooleanProperty(Property.AppendTargetFrameworkToOutputPath, value);
-                OnPropertyChanged(nameof(OutputPath));
+                this.RaisePropertyChanged(nameof(OutputPath));
             }
         }
 
@@ -91,7 +93,7 @@ namespace DotNet.Properties.Pages.ViewModels
             set
             {
                 SetBooleanProperty(Property.AppendRuntimeIdentifierToOutputPath, value);
-                OnPropertyChanged(nameof(OutputPath));
+                this.RaisePropertyChanged(nameof(OutputPath));
             }
         }
 
