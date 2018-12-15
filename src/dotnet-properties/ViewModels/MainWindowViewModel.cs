@@ -27,6 +27,7 @@ namespace DotNet.Properties
 
         public MainWindowViewModel(
             string projectPath,
+            IDotNetSdkResolver dotnetSdkResolver,
             IDialogService unsavedChangesDialogService,
             IOpenFileDialogService openFileDialogService)
         {
@@ -35,7 +36,9 @@ namespace DotNet.Properties
                 throw new FileNotFoundException("Project file not found!", projectPath);
             }
 
-            _msBuildProject = new MSBuildProject(projectPath);
+            dotnetSdkResolver.TryResolveSdkPath(Path.GetDirectoryName(projectPath), out var dotnetSdkPath);
+
+            _msBuildProject = new MSBuildProject(new DotNetSdkPaths(dotnetSdkPath), projectPath);
 
             _project = _msBuildProject.Project;
             _propertyManager = new PropertyManager(_project);

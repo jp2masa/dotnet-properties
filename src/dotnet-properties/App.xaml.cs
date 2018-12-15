@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Runtime.Loader;
 using System.Threading.Tasks;
 
 using Avalonia;
@@ -54,8 +55,24 @@ namespace DotNet.Properties
                 return false;
             }
 
+            IDotNetSdkResolver dotnetSdkResolver = new DotNetSdkResolver();
+            dotnetSdkResolver.TryResolveSdkPath(Path.GetDirectoryName(projectPath), out var path);
+
+            IMSBuildLoader msBuildLoader = new MSBuildLoader(path);
+
+            AssemblyLoadContext.Default.Resolving += (context, name) =>
+            {
+                if(msBuildLoader.TryResolveMSBuildAssembly(context, name.Name, out var assembly))
+                {
+                    return assembly;
+                }
+
+                return null;
+            };
+
             viewModel = new MainWindowViewModel(
                 projectPath,
+                dotnetSdkResolver,
                 new DialogService<UnsavedChangesDialog>(() => new UnsavedChangesDialog(), mainWindow),
                 new OpenFileDialogService(mainWindow));
 

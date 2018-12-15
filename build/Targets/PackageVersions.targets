@@ -4,7 +4,7 @@
         <AvaloniaVersion>0.7.0</AvaloniaVersion>
         <RoslynAnalyzersVersion>2.6.2</RoslynAnalyzersVersion>
         <MicrosoftBuildVersion>15.9.20</MicrosoftBuildVersion>
-        <NuGetVersion>4.9.1</NuGetVersion>
+        <NuGetVersion>4.9.2</NuGetVersion>
         <ReactiveUIVersion>9.4.1</ReactiveUIVersion>
     </PropertyGroup>
 
@@ -15,6 +15,7 @@
         <PackageReference Update="Microsoft.Build" Version="$(MicrosoftBuildVersion)" />
         <PackageReference Update="Microsoft.Build.Utilities.Core" Version="$(MicrosoftBuildVersion)" />
         <PackageReference Update="NuGet.Frameworks" Version="$(NuGetVersion)" />
+        <PackageReference Update="NuGet.Versioning" Version="$(NuGetVersion)" />
         <PackageReference Update="ReactiveUI" Version="$(ReactiveUIVersion)" />
     </ItemGroup>
 

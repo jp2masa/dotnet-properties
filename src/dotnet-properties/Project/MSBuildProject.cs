@@ -1,5 +1,6 @@
 ﻿// Most of the code in this file is copied from Buildalyzer (https://github.com/daveaglick/Buildalyzer)
 
+using System;
 using System.Collections.Generic;
 using System.IO;
 using Microsoft.Build.Construction;
@@ -10,9 +11,11 @@ namespace DotNet.Properties
 {
     internal class MSBuildProject
     {
-        private PathHelper _pathHelper;
-        private Dictionary<string, string> _globalProperties;
-        private string _projectPath;
+        private readonly DotNetSdkPaths _dotnetSdkPaths;
+
+        private readonly Dictionary<string, string> _globalProperties;
+        private readonly string _projectPath;
+
         private Project _project;
 
         public Project Project
@@ -28,19 +31,19 @@ namespace DotNet.Properties
             }
         }
 
-        public MSBuildProject(string projectPath)
+        public MSBuildProject(DotNetSdkPaths dotnetSdkPaths, string projectPath)
         {
-            _projectPath = projectPath;
+            _dotnetSdkPaths = dotnetSdkPaths;
 
-            _pathHelper = new PathHelper(_projectPath);
+            _projectPath = projectPath;
 
             // Set global properties
             _globalProperties = new Dictionary<string, string>
             {
                 { MSBuildProperties.SolutionDir, Path.GetDirectoryName(projectPath) },
-                { MSBuildProperties.MSBuildExtensionsPath, _pathHelper.ExtensionsPath },
-                { MSBuildProperties.MSBuildSDKsPath, _pathHelper.SDKsPath },
-                { MSBuildProperties.RoslynTargetsPath, _pathHelper.RoslynTargetsPath },
+                { MSBuildProperties.MSBuildExtensionsPath, _dotnetSdkPaths.ExtensionsPath },
+                { MSBuildProperties.MSBuildSDKsPath, _dotnetSdkPaths.SdksPath },
+                { MSBuildProperties.RoslynTargetsPath, _dotnetSdkPaths.RoslynTargetsPath },
                 //{ MsBuildProperties.DesignTimeBuild, "true" },
                 { MSBuildProperties.BuildProjectReferences, "false" },
                 { MSBuildProperties.SkipCompilerExecution, "true" },
@@ -53,7 +56,7 @@ namespace DotNet.Properties
         public Project Load()
         {
             // Create a project collection for each project since the toolset might change depending on the type of project
-            ProjectCollection projectCollection = CreateProjectCollection();
+            var projectCollection = CreateProjectCollection();
 
             // Load the project
             using (new BuildEnvironment(_globalProperties))
@@ -65,10 +68,10 @@ namespace DotNet.Properties
 
         private ProjectCollection CreateProjectCollection()
         {
-            ProjectCollection projectCollection = new ProjectCollection(_globalProperties);
+            var projectCollection = new ProjectCollection(_globalProperties);
 
             projectCollection.RemoveAllToolsets();  // Make sure we're only using the latest tools
-            projectCollection.AddToolset(new Toolset(ToolLocationHelper.CurrentToolsVersion, _pathHelper.ToolsPath, projectCollection, string.Empty));
+            projectCollection.AddToolset(new Toolset(ToolLocationHelper.CurrentToolsVersion, _dotnetSdkPaths.ToolsPath, projectCollection, String.Empty));
             projectCollection.DefaultToolsVersion = ToolLocationHelper.CurrentToolsVersion;
 
             return projectCollection;
