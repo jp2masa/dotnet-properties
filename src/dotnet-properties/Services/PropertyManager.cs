@@ -62,15 +62,18 @@ namespace DotNet.Properties.Services
 
         public void SetProperty(string propertyName, string value)
         {
-            if (IsAny(_configuration) || IsAny(_platform))
+            var isAnyConfiguration = IsAny(_configuration);
+            var isAnyPlatform = IsAny(_platform);
+
+            if (!isAnyConfiguration || !isAnyPlatform)
             {
                 ProjectPropertyGroupElement propertyGroup;
 
-                if (IsAny(_configuration))
+                if (isAnyConfiguration)
                 {
                     propertyGroup = GetPropertyGroupForPlatform(_platform);
                 }
-                else if (IsAny(_platform))
+                else if (isAnyPlatform)
                 {
                     propertyGroup = GetPropertyGroupForConfiguration(_configuration);
                 }
