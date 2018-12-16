@@ -1,5 +1,4 @@
-﻿using System;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 
 using Avalonia.Controls;
 
@@ -11,50 +10,29 @@ namespace DotNet.Properties.Dialogs.ViewModels
 {
     internal class UnsavedChangesDialogViewModel : ReactiveObject
     {
+        private UnsavedChangesDialogResult _dialogResult = UnsavedChangesDialogResult.Cancel;
+
+        public UnsavedChangesDialogViewModel()
+        {
+            YesCommand = ReactiveCommand.Create<Window>(window => Close(UnsavedChangesDialogResult.Yes, window));
+            NoCommand = ReactiveCommand.Create<Window>(window => Close(UnsavedChangesDialogResult.No, window));
+            CancelCommand = ReactiveCommand.Create<Window>(window => Close(UnsavedChangesDialogResult.Cancel, window));
+        }
+
         public ICommand YesCommand { get; }
         public ICommand NoCommand { get; }
         public ICommand CancelCommand { get; }
 
-        public UnsavedChangesDialogResult DialogResult { get; set; }
-
-        public UnsavedChangesDialogViewModel()
+        public UnsavedChangesDialogResult DialogResult
         {
-            YesCommand = new CloseCommand(this, UnsavedChangesDialogResult.Yes);
-            NoCommand = new CloseCommand(this, UnsavedChangesDialogResult.No);
-            CancelCommand = new CloseCommand(this, UnsavedChangesDialogResult.Cancel);
-
-            DialogResult = UnsavedChangesDialogResult.Cancel;
+            get => _dialogResult;
+            set => this.RaiseAndSetIfChanged(ref _dialogResult, value);
         }
 
-        private class CloseCommand : ICommand
+        private void Close(UnsavedChangesDialogResult dialogResult, Window window)
         {
-#pragma warning disable CS0067
-            public event EventHandler CanExecuteChanged;
-#pragma warning restore CS0067
-
-            private readonly UnsavedChangesDialogViewModel _viewModel;
-            private readonly UnsavedChangesDialogResult _dialogResult;
-
-            public CloseCommand(
-                UnsavedChangesDialogViewModel viewModel,
-                UnsavedChangesDialogResult dialogResult)
-            {
-                _viewModel = viewModel;
-                _dialogResult = dialogResult;
-            }
-
-            public bool CanExecute(object parameter) => true;
-
-            public void Execute(object parameter)
-            {
-                if (!(parameter is Window window))
-                {
-                    throw new InvalidOperationException("Internal error!");
-                }
-
-                _viewModel.DialogResult = _dialogResult;
-                window.Close();
-            }
+            DialogResult = dialogResult;
+            window.Close();
         }
     }
 }

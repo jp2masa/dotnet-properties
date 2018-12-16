@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Windows.Input;
 
 using Avalonia.Controls;
+
+using ReactiveUI;
 
 using DotNet.Properties.Services;
 
@@ -17,12 +20,16 @@ namespace DotNet.Properties.Pages.ViewModels
             public const string DelaySign = nameof(DelaySign);
         }
 
+        private readonly IOpenFileDialogService _openFileDialogService;
+
         public SigningPageViewModel(
             IPropertyManager propertyManager,
             IOpenFileDialogService openFileDialogService)
             : base(propertyManager)
         {
-            OpenKeyFileCommand = new OpenKeyFileCommand(this, openFileDialogService);
+            _openFileDialogService = openFileDialogService;
+
+            OpenKeyFileCommand = ReactiveCommand.Create(OpenKeyFile);
         }
 
         public bool SignAssembly
@@ -44,28 +51,8 @@ namespace DotNet.Properties.Pages.ViewModels
             get => GetBooleanProperty(Property.DelaySign);
             set => SetBooleanProperty(Property.DelaySign, value);
         }
-    }
 
-    internal class OpenKeyFileCommand : ICommand
-    {
-#pragma warning disable CS0067
-        public event EventHandler CanExecuteChanged;
-#pragma warning restore CS0067
-
-        private readonly SigningPageViewModel _viewModel;
-        private readonly IOpenFileDialogService _openFileDialogService;
-
-        public OpenKeyFileCommand(
-            SigningPageViewModel viewModel,
-            IOpenFileDialogService openFileDialogService)
-        {
-            _viewModel = viewModel;
-            _openFileDialogService = openFileDialogService;
-        }
-
-        public bool CanExecute(object parameter) => true;
-
-        public async void Execute(object parameter)
+        private async Task OpenKeyFile()
         {
             var openFileDialog = new OpenFileDialog()
             {
@@ -81,7 +68,7 @@ namespace DotNet.Properties.Pages.ViewModels
 
             if (paths != null && paths.Count > 0)
             {
-                _viewModel.AssemblyOriginatorKeyFile = paths[0];
+                AssemblyOriginatorKeyFile = paths[0];
             }
         }
     }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
+using System.Reactive.Linq;
 using System.Windows.Input;
 using Microsoft.Build.Evaluation;
 
@@ -20,10 +21,12 @@ namespace DotNet.Properties
         private const string AnyConfiguration = "Any Configuration";
         private const string AnyPlatform = "Any Platform";
 
-        private MSBuildProject _msBuildProject;
-        private Project _project;
+        private readonly IDialogService _unsavedChangesDialogService;
 
-        private IPropertyManager _propertyManager;
+        private readonly MSBuildProject _msBuildProject;
+        private readonly Project _project;
+
+        private readonly IPropertyManager _propertyManager;
 
         public MainWindowViewModel(
             string projectPath,
@@ -36,6 +39,8 @@ namespace DotNet.Properties
                 throw new FileNotFoundException("Project file not found!", projectPath);
             }
 
+            _unsavedChangesDialogService = unsavedChangesDialogService;
+
             dotnetSdkResolver.TryResolveSdkPath(Path.GetDirectoryName(projectPath), out var dotnetSdkPath);
 
             _msBuildProject = new MSBuildProject(new DotNetSdkPaths(dotnetSdkPath), projectPath);
@@ -43,10 +48,14 @@ namespace DotNet.Properties
             _project = _msBuildProject.Project;
             _propertyManager = new PropertyManager(_project);
 
-            var saveCommand = new SaveCommand(_propertyManager);
+            ClosingCommand = ReactiveCommand.Create<CancelEventArgs>(OnClosing);
 
-            ClosingCommand = new ClosingCommand(unsavedChangesDialogService, saveCommand);
-            SaveCommand = saveCommand;
+            SaveCommand = ReactiveCommand.Create(
+                _propertyManager.Save,
+                Observable.FromEventPattern(
+                    handler => _propertyManager.IsDirtyChanged += handler,
+                    handler => _propertyManager.IsDirtyChanged -= handler)
+                    .Select(_ => _propertyManager.IsDirty));
 
             ApplicationPageViewModel = new ApplicationPageViewModel(_propertyManager);
             BuildPageViewModel = new BuildPageViewModel(_propertyManager);
@@ -97,73 +106,30 @@ namespace DotNet.Properties
 
         private string GetPlatformDisplayName(string platform) =>
             String.IsNullOrEmpty(platform) ? AnyPlatform : platform;
-    }
 
-    internal class ClosingCommand : ICommand
-    {
-        private readonly IDialogService _unsavedChangesDialogFactory;
-        private readonly SaveCommand _saveCommand;
-
-#pragma warning disable CS0067
-        public event EventHandler CanExecuteChanged;
-#pragma warning restore CS0067
-
-        public ClosingCommand(
-            IDialogService unsavedChangesDialogFactory,
-            SaveCommand saveCommand)
+        private void OnClosing(CancelEventArgs e)
         {
-            _unsavedChangesDialogFactory = unsavedChangesDialogFactory;
-            _saveCommand = saveCommand;
-        }
-
-        public bool CanExecute(object parameter) => true;
-
-        public void Execute(object parameter)
-        {
-            if (!(parameter is CancelEventArgs cancelEventArgs))
+            if (_propertyManager.IsDirty)
             {
-                throw new InvalidOperationException("Internal error!");
-            }
+                var unsavedChangesDialogViewModel = new UnsavedChangesDialogViewModel();
+                _unsavedChangesDialogService.Show(unsavedChangesDialogViewModel);
 
-            var unsavedChangesDialogViewModel = new UnsavedChangesDialogViewModel();
-            _unsavedChangesDialogFactory.Show(unsavedChangesDialogViewModel);
-
-            switch (unsavedChangesDialogViewModel.DialogResult)
-            {
-                case UnsavedChangesDialogResult.Yes:
-                    _saveCommand.Execute(null);
-                    cancelEventArgs.Cancel = false;
-                    break;
-                case UnsavedChangesDialogResult.No:
-                    cancelEventArgs.Cancel = false;
-                    break;
-                case UnsavedChangesDialogResult.Cancel:
-                    cancelEventArgs.Cancel = true;
-                    break;
-                default:
-                    throw new InvalidOperationException("Internal error!");
+                switch (unsavedChangesDialogViewModel.DialogResult)
+                {
+                    case UnsavedChangesDialogResult.Yes:
+                        _propertyManager.Save();
+                        e.Cancel = false;
+                        break;
+                    case UnsavedChangesDialogResult.No:
+                        e.Cancel = false;
+                        break;
+                    case UnsavedChangesDialogResult.Cancel:
+                        e.Cancel = true;
+                        break;
+                    default:
+                        throw new InvalidOperationException("Internal error!");
+                }
             }
         }
-    }
-
-    internal class SaveCommand : ICommand
-    {
-        private IPropertyManager _propertyManager;
-
-        public event EventHandler CanExecuteChanged;
-
-        public SaveCommand(IPropertyManager propertyManager)
-        {
-            _propertyManager = propertyManager ?? throw new ArgumentNullException(nameof(propertyManager));
-
-            _propertyManager.IsDirtyChanged += delegate
-            {
-                CanExecuteChanged?.Invoke(this, EventArgs.Empty);
-            };
-        }
-
-        public bool CanExecute(object parameter) => _propertyManager.IsDirty;
-
-        public void Execute(object parameter) => _propertyManager.Save();
     }
 }
