@@ -104,7 +104,10 @@ namespace DotNet.Properties
                 return null;
             }).Result;
 
-        private static AppBuilder BuildAvaloniaApp() => AppBuilder.Configure<App>().UsePlatformDetect();
+        private static AppBuilder BuildAvaloniaApp() =>
+            AppBuilder.Configure<App>()
+                .UsePlatformDetect()
+                .UseReactiveUI();
 
         [Conditional("DEBUG")]
         private static void InitializeLogging() =>
