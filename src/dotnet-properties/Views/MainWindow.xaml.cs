@@ -5,7 +5,7 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 
-namespace DotNet.Properties
+namespace DotNet.Properties.Views
 {
     internal class MainWindow : Window
     {

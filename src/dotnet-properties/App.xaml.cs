@@ -12,8 +12,10 @@ using Avalonia.Markup.Xaml;
 
 using Serilog;
 
-using DotNet.Properties.Services;
 using DotNet.Properties.Dialogs.Views;
+using DotNet.Properties.Services;
+using DotNet.Properties.ViewModels;
+using DotNet.Properties.Views;
 
 namespace DotNet.Properties
 {

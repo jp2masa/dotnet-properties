@@ -14,7 +14,7 @@ using DotNet.Properties.Dialogs.ViewModels;
 using DotNet.Properties.Pages.ViewModels;
 using DotNet.Properties.Services;
 
-namespace DotNet.Properties
+namespace DotNet.Properties.ViewModels
 {
     internal class MainWindowViewModel : ReactiveObject
     {
