@@ -1,9 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>netcoreapp2.2</TargetFramework>
+        <TargetFramework>netcoreapp2.1</TargetFramework>
         <OutputType>Exe</OutputType>
         <RootNamespace>DotNet.Properties</RootNamespace>
+        <TieredCompilation>True</TieredCompilation>
         <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     </PropertyGroup>
 
@@ -28,5 +29,14 @@
         <PackageReference Include="NuGet.Versioning" />
         <PackageReference Include="ReactiveUI" />
     </ItemGroup>
+
+    <!-- Workaround for https://github.com/dotnet/sdk/issues/2777 -->
+    <Target Name="SetPublishDepsFilePath" BeforeTargets="GeneratePublishDependencyFile">
+
+        <PropertyGroup>
+            <PublishDepsFilePath Condition=" '$(PublishDepsFilePath)' == '' ">$(PublishDir)$(ProjectDepsFileName)</PublishDepsFilePath>
+        </PropertyGroup>
+
+    </Target>
 
 </Project>
