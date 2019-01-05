@@ -88,12 +88,12 @@ namespace DotNet.Properties
                 {
                     AllowMultiple = false,
                     Filters = new List<FileDialogFilter>()
-                {
-                    new FileDialogFilter() { Name = "All Project Files", Extensions = new List<string>() { "*proj" } },
-                    new FileDialogFilter() { Name = "C# Project Files", Extensions = new List<string>() { "csproj" } },
-                    new FileDialogFilter() { Name = "Visual Basic Project Files", Extensions = new List<string>() { "vbproj" } },
-                    new FileDialogFilter() { Name = "F# Project Files", Extensions = new List<string>() { "fsproj" } },
-                }
+                    {
+                        new FileDialogFilter() { Name = "All Project Files", Extensions = new List<string>() { "*proj" } },
+                        new FileDialogFilter() { Name = "C# Project Files", Extensions = new List<string>() { "csproj" } },
+                        new FileDialogFilter() { Name = "Visual Basic Project Files", Extensions = new List<string>() { "vbproj" } },
+                        new FileDialogFilter() { Name = "F# Project Files", Extensions = new List<string>() { "fsproj" } },
+                    }
                 };
 
                 var result = await openFileDialog.ShowAsync().ConfigureAwait(false);

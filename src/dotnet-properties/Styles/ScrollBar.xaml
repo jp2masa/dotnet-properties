@@ -50,6 +50,7 @@
             </ControlTemplate>
         </Setter>
     </Style>
+
     <Style Selector="ScrollBar:horizontal">
         <Setter Property="Height"
                 Value="10" />
