@@ -12,36 +12,36 @@ namespace DotNet.Properties.Pages.ViewModels
 {
     internal abstract class PropertyPageViewModel : ReactiveObject
     {
-        private IPropertyManager _propertyManager;
-
         public PropertyPageViewModel(IPropertyManager propertyManager)
         {
-            _propertyManager = propertyManager;
+            PropertyManager = propertyManager;
         }
-        
+
+        protected IPropertyManager PropertyManager { get; }
+
         protected bool GetBooleanProperty(string propertyName)
         {
-            var value = _propertyManager.GetProperty(propertyName);
+            var value = PropertyManager.GetProperty(propertyName);
             return String.Equals(value, Boolean.TrueString, StringComparison.InvariantCultureIgnoreCase);
         }
 
-        protected string GetStringProperty(string propertyName) => _propertyManager.GetProperty(propertyName);
+        protected string GetStringProperty(string propertyName) => PropertyManager.GetProperty(propertyName);
 
         protected IEnumerable<ProjectItem> GetItems(string itemType) =>
-            _propertyManager.GetItems(itemType);
+            PropertyManager.GetItems(itemType);
 
         protected void SetBooleanProperty(string propertyName, bool value, [CallerMemberName] string changedProperty = null)
         {
-            _propertyManager.SetProperty(propertyName, value.ToString(CultureInfo.InvariantCulture));
+            PropertyManager.SetProperty(propertyName, value.ToString(CultureInfo.InvariantCulture));
             this.RaisePropertyChanged(changedProperty);
         }
 
         protected void SetStringProperty(string propertyName, string value, [CallerMemberName] string changedProperty = null)
         {
-            _propertyManager.SetProperty(propertyName, value ?? String.Empty);
+            PropertyManager.SetProperty(propertyName, value ?? String.Empty);
             this.RaisePropertyChanged(changedProperty);
         }
 
-        protected void Save() => _propertyManager.Save();
+        protected void Save() => PropertyManager.Save();
     }
 }

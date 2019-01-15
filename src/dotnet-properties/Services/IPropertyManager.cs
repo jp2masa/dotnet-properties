@@ -22,5 +22,7 @@ namespace DotNet.Properties.Services
         void SetProperty(string propertyName, string value);
 
         void Save();
+
+        string MakeRelativePath(string path);
     }
 }

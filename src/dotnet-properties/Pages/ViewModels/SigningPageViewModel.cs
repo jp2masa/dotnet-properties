@@ -41,7 +41,7 @@ namespace DotNet.Properties.Pages.ViewModels
         public string AssemblyOriginatorKeyFile
         {
             get => GetStringProperty(Property.AssemblyOriginatorKeyFile);
-            set => SetStringProperty(Property.AssemblyOriginatorKeyFile, value);
+            set => SetStringProperty(Property.AssemblyOriginatorKeyFile, PropertyManager.MakeRelativePath(value));
         }
 
         public ICommand OpenKeyFileCommand { get; }

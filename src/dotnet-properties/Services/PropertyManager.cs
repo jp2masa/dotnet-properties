@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using Microsoft.Build.Construction;
 using Microsoft.Build.Evaluation;
@@ -101,6 +102,9 @@ namespace DotNet.Properties.Services
 
             OnIsDirtyChanged();
         }
+
+        public string MakeRelativePath(string path) =>
+            Path.GetRelativePath(_project.DirectoryPath, path);
 
         private void SetConfiguration(string configuration, bool reevaluateIfNecessary = true)
         {
