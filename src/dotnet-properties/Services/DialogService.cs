@@ -33,7 +33,7 @@ namespace DotNet.Properties.Services
             }
 
             var source = new CancellationTokenSource();
-            view.ShowDialog().ContinueWith(t => source.Cancel(), TaskScheduler.FromCurrentSynchronizationContext());
+            view.ShowDialog(_owner).ContinueWith(t => source.Cancel(), TaskScheduler.FromCurrentSynchronizationContext());
 
             Dispatcher.UIThread.MainLoop(source.Token);
 

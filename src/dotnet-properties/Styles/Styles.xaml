@@ -25,7 +25,7 @@
     </Style>
 
     <Style Selector="TextBlock">
-        <Setter Property="FontFamily" Value="resm:DotNet.Properties.Resources.Fonts.OpenSans?assembly=dotnet-properties#Open Sans" />
+        <!--<Setter Property="FontFamily" Value="resm:DotNet.Properties.Resources.Fonts.OpenSans?assembly=dotnet-properties#Open Sans" />-->
         <Setter Property="VerticalAlignment" Value="Center"/>
     </Style>
 
@@ -44,7 +44,7 @@
     </Style>
 
     <Style Selector="TextBox">
-        <Setter Property="FontFamily" Value="resm:DotNet.Properties.Resources.Fonts.OpenSans?assembly=dotnet-properties#Open Sans" />
+        <!--<Setter Property="FontFamily" Value="resm:DotNet.Properties.Resources.Fonts.OpenSans?assembly=dotnet-properties#Open Sans" />-->
         <Setter Property="VerticalAlignment" Value="Center" />
     </Style>
 

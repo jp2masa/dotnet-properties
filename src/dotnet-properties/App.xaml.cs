@@ -96,7 +96,7 @@ namespace DotNet.Properties
                     }
                 };
 
-                var result = await openFileDialog.ShowAsync().ConfigureAwait(false);
+                var result = await openFileDialog.ShowAsync(null).ConfigureAwait(false);
 
                 if (result != null && result.Length > 0)
                 {

@@ -1,44 +1,45 @@
 <Styles xmlns="https://github.com/avaloniaui"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" >
-
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Style Selector="TabControl.sidebar">
-                
+        <Setter Property="TabStripPlacement" Value="Left" />
+        <Setter Property="Padding" Value="8" />
+        <Setter Property="Background" Value="{DynamicResource ThemeAccentBrush}" />
         <Setter Property="Template">
             <ControlTemplate>
-                <DockPanel>
-                    <ScrollViewer DockPanel.Dock="Left"
-                                  MinWidth="190"
-                                  Background="{DynamicResource ThemeAccentBrush}">
-                        <TabStrip Name="PART_TabStrip"
-                                  MemberSelector="{x:Static TabControl.HeaderSelector}"
-                                  Items="{TemplateBinding Items}"
-                                  SelectedIndex="{TemplateBinding SelectedIndex, Mode=TwoWay}">
-                            <TabStrip.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <StackPanel Orientation="Vertical" />
-                                </ItemsPanelTemplate>
-                            </TabStrip.ItemsPanel>
-                        </TabStrip>
-                    </ScrollViewer>
-                    <ScrollViewer>
-                        <Carousel Name="PART_Content"
-                                  Margin="16,4,16,20"
-                                  MemberSelector="{x:Static TabControl.ContentSelector}"
-                                  Items="{TemplateBinding Items}"
-                                  SelectedIndex="{TemplateBinding SelectedIndex}"
-                                  PageTransition="{TemplateBinding PageTransition}"
-                                  Grid.Row="1" />
-                    </ScrollViewer>
-                </DockPanel>
+                <Border Margin="{TemplateBinding Margin}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}">
+                    <DockPanel>
+                        <ScrollViewer Name="PART_ScrollViewer"
+                                      HorizontalScrollBarVisibility="{TemplateBinding (ScrollViewer.HorizontalScrollBarVisibility)}"
+                                      VerticalScrollBarVisibility="{TemplateBinding (ScrollViewer.VerticalScrollBarVisibility)}"
+                                      Background="{TemplateBinding Background}">
+                            <ItemsPresenter Name="PART_ItemsPresenter"
+                                            Items="{TemplateBinding Items}"
+                                            ItemsPanel="{TemplateBinding ItemsPanel}"
+                                            ItemTemplate="{TemplateBinding ItemTemplate}"
+                                            MemberSelector="{TemplateBinding MemberSelector}" />
+                        </ScrollViewer>
+                        <ScrollViewer>
+                            <ContentPresenter Name="PART_Content"
+                                              Margin="{TemplateBinding Padding}"
+                                              HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                              Content="{TemplateBinding SelectedContent}"
+                                              ContentTemplate="{TemplateBinding SelectedContentTemplate}" />
+                        </ScrollViewer>
+                    </DockPanel>
+                </Border>
             </ControlTemplate>
         </Setter>
     </Style>
 
-    <Style Selector="TabControl.sidebar TabStripItem">
+    <Style Selector="TabControl.sidebar > TabItem">
+        <Setter Property="BorderThickness" Value="0" />
         <Setter Property="Foreground" Value="White" />
         <Setter Property="FontSize" Value="14" />
         <Setter Property="Margin" Value="0" />
-        <Setter Property="Padding" Value="12" />
+        <Setter Property="Padding" Value="16" />
         <Setter Property="Opacity" Value="0.5" />
         <Setter Property="Transitions">
             <Transitions>
@@ -46,14 +47,16 @@
             </Transitions>
         </Setter>
     </Style>
-
-    <Style Selector="TabControl.sidebar TabStripItem:pointerover">
+    <Style Selector="TabControl.sidebar > TabItem:pointerover">
         <Setter Property="Opacity" Value="1"/>
     </Style>
-
-    <Style Selector="TabControl.sidebar TabStripItem:selected">
-        <Setter Property="Background" Value="{DynamicResource ThemeAccentBrush2}" />
+    <Style Selector="TabControl.sidebar > TabItem:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+        <Setter Property="Background" Value="Transparent" />
+    </Style>
+    <Style Selector="TabControl.sidebar > TabItem:selected">
         <Setter Property="Opacity" Value="1" />
     </Style>
-
+    <Style Selector="TabControl.sidebar > TabItem:selected /template/ ContentPresenter#PART_ContentPresenter">
+        <Setter Property="Background" Value="{DynamicResource ThemeAccentBrush2}" />
+    </Style>
 </Styles>

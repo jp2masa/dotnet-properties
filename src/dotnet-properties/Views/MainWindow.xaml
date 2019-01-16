@@ -1,6 +1,7 @@
 ﻿<Window xmlns="https://github.com/avaloniaui"
         xmlns:pages="clr-namespace:DotNet.Properties.Pages.Views;assembly=dotnet-properties"
         ClosingCommand="{Binding ClosingCommand}"
+        FontFamily="resm:DotNet.Properties.Resources.Fonts.OpenSans?assembly=dotnet-properties#Open Sans"
         Icon="resm:DotNet.Properties.Resources.Icon.ico?assembly=dotnet-properties"
         MinWidth="800"
         MinHeight="480"
@@ -53,10 +54,6 @@
         
         <TabControl Grid.Row="4"
                     Classes="sidebar">
-            <TabControl.PageTransition>
-                <CrossFade Duration="0.25"/>
-            </TabControl.PageTransition>
-
             <TabItem Header="Application">
                 <pages:ApplicationPage DataContext="{Binding ApplicationPageViewModel}" />
             </TabItem>
