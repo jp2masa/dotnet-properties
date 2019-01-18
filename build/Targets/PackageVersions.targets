@@ -1,11 +1,11 @@
 <Project>
 
     <PropertyGroup>
-        <AvaloniaVersion>0.7.1-build1198-beta</AvaloniaVersion>
+        <AvaloniaVersion>0.7.1-build1244-beta</AvaloniaVersion>
         <RoslynAnalyzersVersion>2.6.3</RoslynAnalyzersVersion>
         <MicrosoftBuildVersion>15.9.20</MicrosoftBuildVersion>
         <NuGetVersion>4.9.2</NuGetVersion>
-        <ReactiveUIVersion>9.8.1</ReactiveUIVersion>
+        <ReactiveUIVersion>9.8.9</ReactiveUIVersion>
     </PropertyGroup>
 
     <ItemGroup>
