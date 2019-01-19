@@ -8,7 +8,7 @@ namespace DotNet.Properties.Dialogs.Views
     {
         public UnsavedChangesDialog()
         {
-            this.InitializeComponent();
+            InitializeComponent();
 #if DEBUG
             this.AttachDevTools();
 #endif

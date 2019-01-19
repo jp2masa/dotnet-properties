@@ -7,7 +7,7 @@ namespace DotNet.Properties.Pages.Views
     {
         public BuildEventsPage()
         {
-            this.InitializeComponent();
+            InitializeComponent();
         }
 
         private void InitializeComponent()

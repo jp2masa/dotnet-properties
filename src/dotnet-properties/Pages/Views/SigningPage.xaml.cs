@@ -7,7 +7,7 @@ namespace DotNet.Properties.Pages.Views
     {
         public SigningPage()
         {
-            this.InitializeComponent();
+            InitializeComponent();
         }
 
         private void InitializeComponent()

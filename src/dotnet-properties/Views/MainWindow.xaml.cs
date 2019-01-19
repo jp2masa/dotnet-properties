@@ -20,14 +20,14 @@ namespace DotNet.Properties.Views
 
         public MainWindow()
         {
-            this.InitializeComponent();
+            InitializeComponent();
 #if DEBUG
             this.AttachDevTools();
 #endif
 
             Closing += HandleClosingCommand;
         }
-        
+
         private void InitializeComponent() => AvaloniaXamlLoader.Load(this);
 
         private void HandleClosingCommand(object sender, CancelEventArgs e)
