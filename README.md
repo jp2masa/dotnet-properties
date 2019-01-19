@@ -1,5 +1,6 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/ibaest9dvdww8dtg/branch/master?svg=true)](https://ci.appveyor.com/project/jp2masa/dotnet-properties/branch/master)
-[![NuGet](https://img.shields.io/nuget/dt/dotnet-properties.svg)](https://www.nuget.org/packages/dotnet-properties/)
+[![NuGet](https://img.shields.io/nuget/v/dotnet-properties.svg)](https://www.nuget.org/packages/dotnet-properties/)
+[![MyGet](https://img.shields.io/myget/jp2masa/vpre/dotnet-properties.svg?label=myget)](https://www.myget.org/feed/jp2masa/package/nuget/dotnet-properties)
 
 # dotnet-properties
 
