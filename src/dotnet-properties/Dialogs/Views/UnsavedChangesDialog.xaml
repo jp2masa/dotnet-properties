@@ -1,6 +1,7 @@
 ﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:vm="clr-namespace:DotNet.Properties.Dialogs.ViewModels;assembly=dotnet-properties"
-        Icon="resm:DotNet.Properties.Resources.Icon.ico?assembly=dotnet-properties"
+        x:Class="DotNet.Properties.Dialogs.Views.UnsavedChangesDialog"
         Name="Dialog"
         SizeToContent="WidthAndHeight"
         Title="dotnet-properties"

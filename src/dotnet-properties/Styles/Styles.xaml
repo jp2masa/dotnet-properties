@@ -1,8 +1,12 @@
 <Styles xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" >
 
-    <StyleInclude Source="resm:DotNet.Properties.Styles.ScrollBar.xaml" />
-    <StyleInclude Source="resm:DotNet.Properties.Styles.SideBar.xaml" />
+    <Styles.Resources>
+        <FontFamily x:Key="OpenSans">/Resources/Fonts/OpenSans#Open Sans</FontFamily>
+        <WindowIcon x:Key="WindowIcon">/Resources/Icon.ico</WindowIcon>
+    </Styles.Resources>
+
+    <StyleInclude Source="/Styles/SideBar.xaml" />
 
     <Style Selector="CheckBox">
         <Setter Property="VerticalAlignment" Value="Center" />
@@ -12,20 +16,7 @@
         <Setter Property="MinHeight" Value="28" />
     </Style>
 
-    <Style Selector="DropDown /template/ ToggleButton#toggle">
-        <Setter Property="Background" Value="#000000" />
-    </Style>
-
-    <Style Selector="DropDownItem:selected /template/ ContentPresenter">
-        <Setter Property="Background" Value="{DynamicResource ThemeBorderHighBrush}"/>
-    </Style>
-
-    <Style Selector="DropDownItem:pointerover /template/ ContentPresenter">
-        <Setter Property="Background" Value="{DynamicResource ThemeBorderMidBrush}"/>
-    </Style>
-
     <Style Selector="TextBlock">
-        <!--<Setter Property="FontFamily" Value="resm:DotNet.Properties.Resources.Fonts.OpenSans?assembly=dotnet-properties#Open Sans" />-->
         <Setter Property="VerticalAlignment" Value="Center"/>
     </Style>
 
@@ -44,8 +35,12 @@
     </Style>
 
     <Style Selector="TextBox">
-        <!--<Setter Property="FontFamily" Value="resm:DotNet.Properties.Resources.Fonts.OpenSans?assembly=dotnet-properties#Open Sans" />-->
         <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+
+    <Style Selector=":is(Window)">
+        <Setter Property="FontFamily" Value="{DynamicResource OpenSans}" />
+        <Setter Property="Icon" Value="{DynamicResource WindowIcon}" />
     </Style>
 
 </Styles>

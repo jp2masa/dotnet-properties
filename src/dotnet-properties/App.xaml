@@ -1,11 +1,13 @@
 ﻿<Application xmlns="https://github.com/avaloniaui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="DotNet.Properties.App">
 
     <Application.Resources>
 
         <SolidColorBrush x:Key="ThemeControlLowBrush">#FF1099FF</SolidColorBrush>
         <SolidColorBrush x:Key="ThemeControlMidBrush">#FF1088DD</SolidColorBrush>
         <SolidColorBrush x:Key="ThemeControlHighBrush">#FF1077BB</SolidColorBrush>
+        <SolidColorBrush x:Key="ThemeControlHighlightMidBrush">#99119EDA</SolidColorBrush>
 
         <SolidColorBrush x:Key="ThemeBorderLowBrush">#FF1099FF</SolidColorBrush>
         <SolidColorBrush x:Key="ThemeBorderMidBrush">#FF1088DD</SolidColorBrush>
@@ -18,10 +20,10 @@
 
     <Application.Styles>
 
-        <StyleInclude Source="resm:Avalonia.Themes.Default.DefaultTheme.xaml?assembly=Avalonia.Themes.Default" />
-        <StyleInclude Source="resm:Avalonia.Themes.Default.Accents.BaseLight.xaml?assembly=Avalonia.Themes.Default" />
+        <StyleInclude Source="avares://Avalonia.Themes.Default/DefaultTheme.xaml"/>
+        <StyleInclude Source="avares://Avalonia.Themes.Default/Accents/BaseDark.xaml" />
 
-        <StyleInclude Source="resm:DotNet.Properties.Styles.Styles.xaml" />
+        <StyleInclude Source="/Styles/Styles.xaml" />
 
     </Application.Styles>
 

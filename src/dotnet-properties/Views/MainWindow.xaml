@@ -1,8 +1,8 @@
 ﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:pages="clr-namespace:DotNet.Properties.Pages.Views;assembly=dotnet-properties"
+        x:Class="DotNet.Properties.Views.MainWindow"
         ClosingCommand="{Binding ClosingCommand}"
-        FontFamily="resm:DotNet.Properties.Resources.Fonts.OpenSans?assembly=dotnet-properties#Open Sans"
-        Icon="resm:DotNet.Properties.Resources.Icon.ico?assembly=dotnet-properties"
         MinWidth="800"
         MinHeight="480"
         Title="dotnet-properties"
@@ -54,21 +54,29 @@
         
         <TabControl Grid.Row="4"
                     Classes="sidebar">
+
             <TabItem Header="Application">
                 <pages:ApplicationPage DataContext="{Binding ApplicationPageViewModel}" />
             </TabItem>
+
             <TabItem Header="Build">
                 <pages:BuildPage DataContext="{Binding BuildPageViewModel}" />
             </TabItem>
+
             <TabItem Header="Build Events">
                 <pages:BuildEventsPage DataContext="{Binding BuildEventsPageViewModel}" />
             </TabItem>
+
             <TabItem Header="Package">
                 <pages:PackagePage DataContext="{Binding PackagePageViewModel}" />
             </TabItem>
+
             <TabItem Header="Signing">
                 <pages:SigningPage DataContext="{Binding SigningPageViewModel}" />
             </TabItem>
+
         </TabControl>
+
     </Grid>
+
 </Window>
