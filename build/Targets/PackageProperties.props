@@ -11,7 +11,7 @@
     <PropertyGroup>
         <Authors>jp2masa</Authors>
         <Copyright>Copyright © $([System.DateTime]::Now.Year) jp2masa</Copyright>
-        <!--<PackageIconUrl></PackageIconUrl>-->
+        <PackageIconUrl>https://raw.githubusercontent.com/jp2masa/dotnet-properties/master/Icon.png</PackageIconUrl>
         <PackageProjectUrl>http://github.com/jp2masa/dotnet-properties</PackageProjectUrl>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
