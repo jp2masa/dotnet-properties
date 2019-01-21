@@ -21,7 +21,7 @@ namespace DotNet.Properties.ViewModels
         private const string AnyConfiguration = "Any Configuration";
         private const string AnyPlatform = "Any Platform";
 
-        private readonly IDialogService _unsavedChangesDialogService;
+        private readonly IDialogService<UnsavedChangesDialogViewModel> _unsavedChangesDialogService;
 
         private readonly MSBuildProject _msBuildProject;
         private readonly Project _project;
@@ -31,7 +31,7 @@ namespace DotNet.Properties.ViewModels
         public MainWindowViewModel(
             string projectPath,
             IDotNetSdkResolver dotnetSdkResolver,
-            IDialogService unsavedChangesDialogService,
+            IDialogService<UnsavedChangesDialogViewModel> unsavedChangesDialogService,
             IOpenFileDialogService openFileDialogService)
         {
             if (!File.Exists(projectPath))

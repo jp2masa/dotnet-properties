@@ -7,7 +7,7 @@ using Avalonia.Threading;
 
 namespace DotNet.Properties.Services
 {
-    internal class DialogService<TView> : IDialogService where TView : Window
+    internal class DialogService<TView, TViewModel> : IDialogService<TViewModel> where TView : Window
     {
         private readonly Func<TView> _viewFactory;
         private readonly Window _owner;
@@ -20,7 +20,7 @@ namespace DotNet.Properties.Services
             _owner = owner;
         }
 
-        public void Show(object viewModel)
+        public void Show(TViewModel viewModel)
         {
             var view = _viewFactory();
 

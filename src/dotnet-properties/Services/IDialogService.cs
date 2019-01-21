@@ -1,7 +1,7 @@
 ﻿namespace DotNet.Properties.Services
 {
-    internal interface IDialogService
+    internal interface IDialogService<TViewModel>
     {
-        void Show(object viewModel);
+        void Show(TViewModel viewModel);
     }
 }

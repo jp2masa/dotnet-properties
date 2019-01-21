@@ -13,6 +13,7 @@ using Avalonia.Markup.Xaml;
 using Serilog;
 
 using DotNet.Properties.Dialogs.Views;
+using DotNet.Properties.Dialogs.ViewModels;
 using DotNet.Properties.Services;
 using DotNet.Properties.ViewModels;
 using DotNet.Properties.Views;
@@ -75,7 +76,8 @@ namespace DotNet.Properties
             viewModel = new MainWindowViewModel(
                 projectPath,
                 dotnetSdkResolver,
-                new DialogService<UnsavedChangesDialog>(() => new UnsavedChangesDialog(), mainWindow),
+                new DialogService<UnsavedChangesDialog, UnsavedChangesDialogViewModel>(
+                    () => new UnsavedChangesDialog(), mainWindow),
                 new OpenFileDialogService(mainWindow));
 
             return true;
