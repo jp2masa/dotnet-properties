@@ -2,7 +2,8 @@
 
     <PropertyGroup>
         <TargetFramework>netcoreapp2.1</TargetFramework>
-        <OutputType>Exe</OutputType>
+        <OutputType>WinExe</OutputType>
+        <ApplicationIcon>Resources\Icon.ico</ApplicationIcon>
         <RootNamespace>DotNet.Properties</RootNamespace>
         <TieredCompilation>True</TieredCompilation>
         <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
