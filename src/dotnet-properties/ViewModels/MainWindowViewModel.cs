@@ -23,9 +23,7 @@ namespace DotNet.Properties.ViewModels
 
         private readonly IDialogService<UnsavedChangesDialogViewModel> _unsavedChangesDialogService;
 
-        private readonly MSBuildProject _msBuildProject;
         private readonly Project _project;
-
         private readonly IPropertyManager _propertyManager;
 
         public MainWindowViewModel(
@@ -43,9 +41,9 @@ namespace DotNet.Properties.ViewModels
 
             dotnetSdkResolver.TryResolveSdkPath(Path.GetDirectoryName(projectPath), out var dotnetSdkPath);
 
-            _msBuildProject = new MSBuildProject(new DotNetSdkPaths(dotnetSdkPath), projectPath);
+            var msBuildProject = new MSBuildProject(new DotNetSdkPaths(dotnetSdkPath), projectPath);
 
-            _project = _msBuildProject.Project;
+            _project = msBuildProject.Project;
             _propertyManager = new PropertyManager(_project);
 
             ClosingCommand = ReactiveCommand.Create<CancelEventArgs>(OnClosing);
