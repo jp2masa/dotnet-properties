@@ -5,6 +5,8 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 
+using DotNet.Properties.ViewModels;
+
 namespace DotNet.Properties.Views
 {
     internal class MainWindow : Window
@@ -26,6 +28,17 @@ namespace DotNet.Properties.Views
 #endif
 
             Closing += HandleClosingCommand;
+        }
+
+        // the workaround in App isn't enough, as the window is only added to Application.Windows on Show
+        public override void Show()
+        {
+            base.Show();
+
+            var dummyStyle = new Avalonia.Styling.Style();
+
+            Styles.Add(dummyStyle);
+            Styles.Remove(dummyStyle);
         }
 
         private void InitializeComponent() => AvaloniaXamlLoader.Load(this);

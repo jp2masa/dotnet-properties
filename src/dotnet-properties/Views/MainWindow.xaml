@@ -9,7 +9,7 @@
         WindowStartupLocation="CenterScreen">
 
     <Grid Margin="0,8,0,0"
-          RowDefinitions="Auto,12,Auto,12,*">
+          RowDefinitions="Auto,12,Auto,12,*,12,Auto">
 
         <Grid Grid.Row="0"
               Margin="8,0"
@@ -76,6 +76,25 @@
             </TabItem>
 
         </TabControl>
+
+        <StackPanel Grid.Row="6"
+                    HorizontalAlignment="Right"
+                    Margin="8"
+                    Orientation="Horizontal"
+                    Spacing="8">
+
+            <TextBlock Text="Theme:" />
+
+            <DropDown Items="{Binding AvailableThemes}"
+                      SelectedItem="{Binding CurrentTheme}">
+                <DropDown.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Name}" />
+                    </DataTemplate>
+                </DropDown.ItemTemplate>
+            </DropDown>
+
+        </StackPanel>
 
     </Grid>
 

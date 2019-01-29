@@ -26,11 +26,14 @@ namespace DotNet.Properties.ViewModels
         private readonly Project _project;
         private readonly IPropertyManager _propertyManager;
 
+        private readonly IThemeService _themeService;
+
         public MainWindowViewModel(
             string projectPath,
             IDotNetSdkResolver dotnetSdkResolver,
             IDialogService<UnsavedChangesDialogViewModel> unsavedChangesDialogService,
-            IOpenFileDialogService openFileDialogService)
+            IOpenFileDialogService openFileDialogService,
+            IThemeService themeService)
         {
             if (!File.Exists(projectPath))
             {
@@ -60,6 +63,8 @@ namespace DotNet.Properties.ViewModels
             BuildEventsPageViewModel = new BuildEventsPageViewModel(_propertyManager);
             PackagePageViewModel = new PackagePageViewModel(_propertyManager);
             SigningPageViewModel = new SigningPageViewModel(_propertyManager, openFileDialogService);
+
+            _themeService = themeService;
         }
 
         public ICommand ClosingCommand { get; }
@@ -98,6 +103,18 @@ namespace DotNet.Properties.ViewModels
         public BuildEventsPageViewModel BuildEventsPageViewModel { get; }
         public PackagePageViewModel PackagePageViewModel { get; }
         public SigningPageViewModel SigningPageViewModel { get; }
+
+        public IEnumerable<ITheme> AvailableThemes => _themeService.AvailableThemes;
+
+        public ITheme CurrentTheme
+        {
+            get => _themeService.CurrentTheme;
+            set
+            {
+                _themeService.CurrentTheme = value;
+                this.RaisePropertyChanged();
+            }
+        }
 
         private string GetConfigurationDisplayName(string configuration) =>
             String.IsNullOrEmpty(configuration) ? AnyConfiguration : configuration;

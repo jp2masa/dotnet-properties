@@ -9,6 +9,7 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Logging.Serilog;
 using Avalonia.Markup.Xaml;
+using Avalonia.Styling;
 
 using Serilog;
 
@@ -34,18 +35,31 @@ namespace DotNet.Properties
             var appBuilder = BuildAvaloniaApp();
             var app = (App)appBuilder.Instance;
 
+            // workaround (TopLevel should apply styles when global styles change)
+            app.Styles.CollectionChanged +=
+                (sender, e) =>
+                {
+                    var dummyStyle = new Style();
+
+                    foreach (var window in app.Windows)
+                    {
+                        window.Styles.Add(dummyStyle);
+                        window.Styles.Remove(dummyStyle);
+                    }
+                };
+
             appBuilder.SetupWithoutStarting();
 
             var mainWindow = new MainWindow();
 
-            if (TryBuildMainWindowDataContext(mainWindow, out var mainWindowDataContext))
+            if (app.TryBuildMainWindowDataContext(mainWindow, out var mainWindowDataContext))
             {
                 mainWindow.DataContext = mainWindowDataContext;
                 app.Run(mainWindow);
             }
         }
 
-        private static bool TryBuildMainWindowDataContext(
+        private bool TryBuildMainWindowDataContext(
             MainWindow mainWindow,
             out MainWindowViewModel viewModel)
         {
@@ -78,7 +92,8 @@ namespace DotNet.Properties
                 dotnetSdkResolver,
                 new DialogService<UnsavedChangesDialog, UnsavedChangesDialogViewModel>(
                     () => new UnsavedChangesDialog(), mainWindow),
-                new OpenFileDialogService(mainWindow));
+                new OpenFileDialogService(mainWindow),
+                new ThemeService(this));
 
             return true;
         }
