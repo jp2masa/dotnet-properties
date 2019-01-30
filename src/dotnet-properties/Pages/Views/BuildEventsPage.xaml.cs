@@ -1,9 +1,11 @@
-using Avalonia.Controls;
+using Avalonia;
 using Avalonia.Markup.Xaml;
+
+using DotNet.Properties.Pages.ViewModels;
 
 namespace DotNet.Properties.Pages.Views
 {
-    internal class BuildEventsPage : UserControl
+    internal class BuildEventsPage : ReactiveUserControl<BuildEventsPageViewModel>
     {
         public BuildEventsPage()
         {

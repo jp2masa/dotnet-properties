@@ -1,9 +1,11 @@
-using Avalonia.Controls;
+using Avalonia;
 using Avalonia.Markup.Xaml;
+
+using DotNet.Properties.Pages.ViewModels;
 
 namespace DotNet.Properties.Pages.Views
 {
-    internal class ApplicationPage : UserControl
+    internal class ApplicationPage : ReactiveUserControl<ApplicationPageViewModel>
     {
         public ApplicationPage()
         {

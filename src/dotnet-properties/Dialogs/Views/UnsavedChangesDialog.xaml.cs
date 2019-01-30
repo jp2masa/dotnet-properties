@@ -1,10 +1,11 @@
 ﻿using Avalonia;
-using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
+
+using DotNet.Properties.Dialogs.ViewModels;
 
 namespace DotNet.Properties.Dialogs.Views
 {
-    internal class UnsavedChangesDialog : Window
+    internal class UnsavedChangesDialog : ReactiveWindow<UnsavedChangesDialogViewModel>
     {
         public UnsavedChangesDialog()
         {
