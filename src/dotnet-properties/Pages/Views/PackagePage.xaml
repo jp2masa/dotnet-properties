@@ -68,24 +68,65 @@
                 <TextBlock Text="Copyright:" />
                 <TextBox Text="{Binding Copyright}" />
             </StackPanel>
-            
-            <Grid ColumnDefinitions="*,8,Auto"
-                  RowDefinitions="Auto,4,Auto">
 
-                <TextBlock Grid.Column="0"
-                           Grid.Row="0"
-                           Text="License URL:" />
+            <DockPanel>
+
+                <StackPanel Spacing="8">
+
+                    <TextBlock Text="License:" />
+
+                    <DockPanel>
+
+                        <StackPanel DockPanel.Dock="Left"
+                                    Orientation="Horizontal"
+                                    Spacing="8">
+
+                            <RadioButton Content="URL"
+                                         IsChecked="{Binding IsLicenseURL}" />
+
+                            <RadioButton Content="File"
+                                         IsChecked="{Binding IsLicenseFile}" />
+
+                            <RadioButton Content="Expression"
+                                         IsChecked="{Binding IsLicenseExpression}" />
+
+                        </StackPanel>
+
+                        <CheckBox DockPanel.Dock="Right"
+                                  Margin="16,0,0,0"
+                                  HorizontalAlignment="Right"
+                                  IsChecked="{Binding RequireLicenseAcceptance}"
+                                  Content="Require license acceptance" />
+
+                    </DockPanel>
+
+                    <StackPanel Spacing="4"
+                                IsVisible="{Binding IsLicenseURL}">
+
+                        <TextBlock Text="License URL:" />
+                        <TextBox Text="{Binding LicenseURL}" />
+
+                    </StackPanel>
+
+                    <StackPanel Spacing="4"
+                                IsVisible="{Binding IsLicenseFile}">
+
+                        <TextBlock Text="License file:" />
+                        <TextBox Text="{Binding LicenseFile}" />
+
+                    </StackPanel>
+
+                    <StackPanel Spacing="4"
+                                IsVisible="{Binding IsLicenseExpression}">
+
+                        <TextBlock Text="License expression:" />
+                        <TextBox Text="{Binding LicenseExpression}" />
+
+                    </StackPanel>
+
+                </StackPanel>
                 
-                <TextBox Grid.Column="0"
-                         Grid.Row="2"
-                         Text="{Binding LicenseURL}" />
-                
-                <CheckBox Grid.Column="2"
-                          Grid.Row="2"
-                          IsChecked="{Binding RequireLicenseAcceptance}"
-                          Content="Require license acceptance" />
-                
-            </Grid>
+            </DockPanel>
 
             <StackPanel Spacing="4">
                 <TextBlock Text="Project URL:" />

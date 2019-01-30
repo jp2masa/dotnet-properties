@@ -1,4 +1,9 @@
-﻿using DotNet.Properties.Services;
+﻿using System;
+using System.Runtime.CompilerServices;
+
+using ReactiveUI;
+
+using DotNet.Properties.Services;
 
 namespace DotNet.Properties.Pages.ViewModels
 {
@@ -15,6 +20,8 @@ namespace DotNet.Properties.Pages.ViewModels
             public const string PackageDescription = nameof(PackageDescription);
             public const string Copyright = nameof(Copyright);
             public const string PackageLicenseUrl = nameof(PackageLicenseUrl);
+            public const string PackageLicenseFile = nameof(PackageLicenseFile);
+            public const string PackageLicenseExpression = nameof(PackageLicenseExpression);
             public const string PackageRequireLicenseAcceptance = nameof(PackageRequireLicenseAcceptance);
             public const string PackageProjectUrl = nameof(PackageProjectUrl);
             public const string PackageIconUrl = nameof(PackageIconUrl);
@@ -23,6 +30,14 @@ namespace DotNet.Properties.Pages.ViewModels
             public const string PackageTags = nameof(PackageTags);
             public const string PackageReleaseNotes = nameof(PackageReleaseNotes);
         }
+
+        private bool? _isLicenseURL;
+        private bool? _isLicenseFile;
+        private bool? _isLicenseExpression;
+
+        private string _licenseURL;
+        private string _licenseFile;
+        private string _licenseExpression;
 
         public PackagePageViewModel(IPropertyManager propertyManager)
             : base(propertyManager)
@@ -80,7 +95,37 @@ namespace DotNet.Properties.Pages.ViewModels
         public string LicenseURL
         {
             get => GetStringProperty(Property.PackageLicenseUrl);
-            set => SetStringProperty(Property.PackageLicenseUrl, value);
+            set => UpdateLicense(ref _licenseURL, value, Property.PackageLicenseUrl);
+        }
+
+        public string LicenseFile
+        {
+            get => GetStringProperty(Property.PackageLicenseFile);
+            set => UpdateLicense(ref _licenseFile, value, Property.PackageLicenseFile);
+        }
+
+        public string LicenseExpression
+        {
+            get => _licenseExpression ?? (_licenseExpression = GetStringProperty(Property.PackageLicenseExpression));
+            set => UpdateLicense(ref _licenseExpression, value, Property.PackageLicenseExpression);
+        }
+
+        public bool IsLicenseURL
+        {
+            get => _isLicenseURL ?? (_isLicenseURL = !String.IsNullOrEmpty(LicenseURL)).Value;
+            set => ChangeLicenseKind(_licenseURL, null, null, ref _isLicenseURL, value);
+        }
+
+        public bool IsLicenseFile
+        {
+            get => _isLicenseFile ?? (_isLicenseFile = !String.IsNullOrEmpty(LicenseFile)).Value;
+            set => ChangeLicenseKind(null, _licenseFile, null, ref _isLicenseFile, value);
+        }
+
+        public bool IsLicenseExpression
+        {
+            get => _isLicenseExpression ?? (_isLicenseExpression = !String.IsNullOrEmpty(LicenseExpression)).Value;
+            set => ChangeLicenseKind(null, null, _licenseExpression, ref _isLicenseExpression, value);
         }
 
         public bool RequireLicenseAcceptance
@@ -123,6 +168,38 @@ namespace DotNet.Properties.Pages.ViewModels
         {
             get => GetStringProperty(Property.PackageReleaseNotes);
             set => SetStringProperty(Property.PackageReleaseNotes, value);
+        }
+
+        private void ChangeLicenseKind(
+            string licenseURL,
+            string licenseFile,
+            string licenseExpression,
+            ref bool? isLicenseField,
+            bool isLicense,
+            [CallerMemberName] string propertyName = null)
+        {
+            if (isLicense)
+            {
+                LicenseURL = licenseURL;
+                LicenseFile = licenseFile;
+                LicenseExpression = licenseExpression;
+            }
+
+            this.RaiseAndSetIfChanged(ref isLicenseField, isLicense, propertyName);
+        }
+
+        private void UpdateLicense(
+            ref string licenseField,
+            string license,
+            string licensePropertyName,
+            [CallerMemberName] string propertyName = null)
+        {
+            if (license != null)
+            {
+                licenseField = license;
+            }
+
+            SetStringProperty(licensePropertyName, license, propertyName);
         }
     }
 }
