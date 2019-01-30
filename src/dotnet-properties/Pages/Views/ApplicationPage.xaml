@@ -62,7 +62,7 @@
 
                 <DropDown HorizontalAlignment="Stretch"
                           MinHeight="28"
-                          Items="{Binding SupportedOutputTypes, Mode=OneWay}"
+                          Items="{Binding SupportedOutputTypes}"
                           SelectedItem="{Binding OutputType}" />
 
             </StackPanel>

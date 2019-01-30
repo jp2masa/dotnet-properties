@@ -42,14 +42,15 @@
             <TextBlock Text="Configuration:" />
             
             <DropDown Grid.Column="0"
-                      Items="{Binding AvailableConfigurations, Mode=OneWay}"
+                      Items="{Binding AvailableConfigurations}"
                       SelectedItem="{Binding Configuration}" />
 
             <TextBlock Text="Platform:" />
 
             <DropDown Grid.Column="2"
-                      Items="{Binding AvailablePlatforms, Mode=OneWay}"
+                      Items="{Binding AvailablePlatforms}"
                       SelectedItem="{Binding Platform}" />
+
         </StackPanel>
         
         <TabControl Grid.Row="4"
