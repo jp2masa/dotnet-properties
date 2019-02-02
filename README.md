@@ -24,4 +24,4 @@ A big part of the project loading code comes from Buildalyzer.
 
 ### linea
 
-The project logo is from [linea.io](linea.io).
+The project logo is from [linea.io](http://linea.io).
