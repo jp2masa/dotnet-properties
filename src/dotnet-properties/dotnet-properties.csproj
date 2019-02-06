@@ -31,13 +31,4 @@
         <PackageReference Include="ReactiveUI" />
     </ItemGroup>
 
-    <!-- Workaround for https://github.com/dotnet/sdk/issues/2777 -->
-    <Target Name="SetPublishDepsFilePath" BeforeTargets="GeneratePublishDependencyFile">
-
-        <PropertyGroup>
-            <PublishDepsFilePath Condition=" '$(PublishDepsFilePath)' == '' ">$(PublishDir)$(ProjectDepsFileName)</PublishDepsFilePath>
-        </PropertyGroup>
-
-    </Target>
-
 </Project>
