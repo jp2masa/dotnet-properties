@@ -17,7 +17,7 @@ namespace DotNet.Properties.Pages.ViewModels
             public const string OutputType = nameof(OutputType);
         }
 
-        private Lazy<IEnumerable<TargetFramework>> _supportedTargetFrameworks;
+        private readonly Lazy<IEnumerable<TargetFramework>> _supportedTargetFrameworks;
 
         private static readonly IEnumerable<OutputType> _outputTypes = new List<OutputType>()
         {

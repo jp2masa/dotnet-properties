@@ -24,7 +24,7 @@ namespace DotNet.Properties.Pages.ViewModels
             public const string DocumentationFile = nameof(DocumentationFile);
         }
 
-        private static IEnumerable<PlatformTarget> _platformTargets = new List<PlatformTarget>()
+        private static readonly IEnumerable<PlatformTarget> _platformTargets = new List<PlatformTarget>()
         {
             new PlatformTarget("AnyCPU", "Any CPU"),
             new PlatformTarget("x64", "x64"),
