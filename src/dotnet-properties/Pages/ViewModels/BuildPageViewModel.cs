@@ -12,11 +12,16 @@ namespace DotNet.Properties.Pages.ViewModels
     {
         private static class Property
         {
+            // General
             public const string DefineConstants = nameof(DefineConstants);
             public const string PlatformTarget = nameof(PlatformTarget);
             public const string Prefer32Bit = nameof(Prefer32Bit);
             public const string AllowUnsafeBlocks = nameof(AllowUnsafeBlocks);
             public const string Optimize = nameof(Optimize);
+            // Errors and warnings
+            public const string WarningLevel = nameof(WarningLevel);
+            public const string NoWarn = nameof(NoWarn);
+            // Output
             public const string OutputPath = nameof(OutputPath);
             public const string AppendTargetFrameworkToOutputPath = nameof(AppendTargetFrameworkToOutputPath);
             public const string AppendRuntimeIdentifierToOutputPath = nameof(AppendRuntimeIdentifierToOutputPath);
@@ -30,6 +35,15 @@ namespace DotNet.Properties.Pages.ViewModels
             new PlatformTarget("x64", "x64"),
             new PlatformTarget("x86", "x86"),
             new PlatformTarget("ARM", "ARM")
+        };
+
+        private static readonly IEnumerable<string> _warningLevels = new List<string>()
+        {
+            "0",
+            "1",
+            "2",
+            "3",
+            "4"
         };
 
         public BuildPageViewModel(IPropertyManager propertyManager)
@@ -69,6 +83,20 @@ namespace DotNet.Properties.Pages.ViewModels
         {
             get => GetBooleanProperty(Property.Optimize);
             set => SetBooleanProperty(Property.Optimize, value);
+        }
+
+        public IEnumerable<string> AvailableWarningLevels => _warningLevels;
+
+        public string WarningLevel
+        {
+            get => GetStringProperty(Property.WarningLevel);
+            set => SetStringProperty(Property.WarningLevel, value);
+        }
+
+        public string NoWarn
+        {
+            get => GetStringProperty(Property.NoWarn);
+            set => SetStringProperty(Property.NoWarn, value);
         }
 
         public string OutputPath

@@ -8,7 +8,7 @@
                    Text="Build" />
 
         <StackPanel Spacing="8">
-        
+
             <StackPanel Margin="0, 12, 0, 0"
                         Spacing="12">
 
@@ -25,14 +25,14 @@
 
                     <StackPanel Orientation="Horizontal"
                                 Spacing="8">
-                    
+
                         <TextBlock Text="Target platform:" />
 
                         <DropDown MinWidth="120"
                                   IsEnabled="{Binding PlatformTargetEnabled}"
                                   Items="{Binding AvailablePlatformTargets}"
                                   SelectedItem="{Binding PlatformTarget}" />
-                    
+
                     </StackPanel>
 
                     <CheckBox IsChecked="{Binding Prefer32Bit}"
@@ -45,16 +45,45 @@
 
                     <CheckBox IsChecked="{Binding AllowUnsafeCode}"
                               Content="Allow unsafe code" />
-                
+
                     <CheckBox IsChecked="{Binding OptimizeCode}"
                               Content="Optimize code" />
 
                 </StackPanel>
-            
+
             </StackPanel>
 
             <StackPanel Margin="0, 12, 0, 0"
-                                Spacing="12">
+                        Spacing="12">
+
+                <TextBlock Classes="h2"
+                           Text="Errors and warnings" />
+
+                <StackPanel Orientation="Horizontal"
+                            Spacing="4">
+
+                    <TextBlock Text="Warning level:" />
+
+                    <DropDown MinWidth="120"
+                              Items="{Binding AvailableWarningLevels}"
+                              SelectedItem="{Binding WarningLevel}" />
+
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal"
+                            Spacing="4">
+
+                    <TextBlock Text="Suppress warnings:" />
+
+                    <TextBox Width="240"
+                             Text="{Binding NoWarn}" />
+
+                </StackPanel>
+
+            </StackPanel>
+
+            <StackPanel Margin="0, 12, 0, 0"
+                        Spacing="12">
 
                 <TextBlock Classes="h2"
                            Text="Output" />
@@ -72,21 +101,21 @@
 
                     <CheckBox IsChecked="{Binding AppendRuntimeIdentifierToOutputPath}"
                               Content="Append runtime identifier to output path" />
-                
+
                 </StackPanel>
 
                 <CheckBox IsChecked="{Binding GenerateDocumentationFile}"
                           Content="Generate XML documentation file" />
-            
+
                 <StackPanel Spacing="4">
                     <TextBlock Text="Documentation file path:" />
                     <TextBox Text="{Binding DocumentationFile}" />
                 </StackPanel>
-            
+
             </StackPanel>
-            
+
         </StackPanel>
-    
+
     </StackPanel>
 
 </UserControl>
