@@ -16,7 +16,7 @@
                       IsChecked="{Binding SignAssembly}"
                       Content="Sign assembly"/>
 
-            <StackPanel IsEnabled="{Binding #SignAssembly.IsChecked}"
+            <StackPanel IsEnabled="{Binding SignAssembly}"
                         Spacing="12">
 
                 <DockPanel>

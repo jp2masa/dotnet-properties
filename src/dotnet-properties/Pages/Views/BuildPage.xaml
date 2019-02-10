@@ -107,7 +107,8 @@
                 <CheckBox IsChecked="{Binding GenerateDocumentationFile}"
                           Content="Generate XML documentation file" />
 
-                <StackPanel Spacing="4">
+                <StackPanel IsEnabled="{Binding GenerateDocumentationFile}"
+                            Spacing="4">
                     <TextBlock Text="Documentation file path:" />
                     <TextBox Text="{Binding DocumentationFile}" />
                 </StackPanel>
