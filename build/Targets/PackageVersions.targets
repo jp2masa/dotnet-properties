@@ -1,7 +1,7 @@
 <Project>
 
     <PropertyGroup>
-        <AvaloniaVersion>0.7.1-cibuild0001391-beta</AvaloniaVersion>
+        <AvaloniaVersion>0.7.1-cibuild0001425-beta</AvaloniaVersion>
         <RoslynAnalyzersVersion>2.6.3</RoslynAnalyzersVersion>
         <MicrosoftBuildVersion>15.9.20</MicrosoftBuildVersion>
         <NuGetVersion>4.9.3</NuGetVersion>
