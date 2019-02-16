@@ -5,7 +5,7 @@
         <RoslynAnalyzersVersion>2.6.3</RoslynAnalyzersVersion>
         <MicrosoftBuildVersion>15.9.20</MicrosoftBuildVersion>
         <NuGetVersion>4.9.3</NuGetVersion>
-        <ReactiveUIVersion>9.10.1</ReactiveUIVersion>
+        <ReactiveUIVersion>9.10.7</ReactiveUIVersion>
     </PropertyGroup>
 
     <ItemGroup>
