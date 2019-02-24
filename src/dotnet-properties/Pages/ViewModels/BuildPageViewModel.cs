@@ -21,6 +21,8 @@ namespace DotNet.Properties.Pages.ViewModels
             // Errors and warnings
             public const string WarningLevel = nameof(WarningLevel);
             public const string NoWarn = nameof(NoWarn);
+            public const string TreatWarningsAsErrors = nameof(TreatWarningsAsErrors);
+            public const string WarningsAsErrors = nameof(WarningsAsErrors);
             // Output
             public const string OutputPath = nameof(OutputPath);
             public const string AppendTargetFrameworkToOutputPath = nameof(AppendTargetFrameworkToOutputPath);
@@ -97,6 +99,18 @@ namespace DotNet.Properties.Pages.ViewModels
         {
             get => GetStringProperty(Property.NoWarn);
             set => SetStringProperty(Property.NoWarn, value);
+        }
+
+        public bool TreatWarningsAsErrors
+        {
+            get => GetBooleanProperty(Property.TreatWarningsAsErrors);
+            set => SetBooleanProperty(Property.TreatWarningsAsErrors, value);
+        }
+
+        public string WarningsAsErrors
+        {
+            get => GetStringProperty(Property.WarningsAsErrors);
+            set => SetStringProperty(Property.WarningsAsErrors, value);
         }
 
         public string OutputPath

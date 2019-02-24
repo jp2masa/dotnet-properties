@@ -80,6 +80,20 @@
 
                 </StackPanel>
 
+                <StackPanel Orientation="Horizontal"
+                            Spacing="16">
+
+                    <CheckBox IsChecked="{Binding TreatWarningsAsErrors}"
+                              Content="Treat warnings as errors" />
+
+                    <TextBlock Text="Warnings as errors:" />
+
+                    <TextBox Width="240"
+                             Text="{Binding WarningsAsErrors}"
+                             IsEnabled="{Binding !TreatWarningsAsErrors}" />
+
+                </StackPanel>
+
             </StackPanel>
 
             <StackPanel Margin="0, 12, 0, 0"
