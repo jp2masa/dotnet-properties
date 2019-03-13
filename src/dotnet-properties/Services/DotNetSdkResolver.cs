@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
+using System.IO;
 
 namespace DotNet.Properties.Services
 {
@@ -57,7 +59,11 @@ namespace DotNet.Properties.Services
 
                     process = Process.Start(startInfo);
                 }
-                catch
+                catch(FileNotFoundException)
+                {
+                    return DotNetInfo.Empty;
+                }
+                catch(Win32Exception)
                 {
                     return DotNetInfo.Empty;
                 }

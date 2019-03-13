@@ -36,7 +36,10 @@ namespace DotNet.Properties.Services
                         assembly = context.LoadFromAssemblyPath(assemblyPath);
                         return true;
                     }
-                    catch
+                    catch(FileLoadException)
+                    {
+                    }
+                    catch(BadImageFormatException)
                     {
                     }
                 }
