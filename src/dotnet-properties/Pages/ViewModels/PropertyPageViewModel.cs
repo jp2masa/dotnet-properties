@@ -12,7 +12,7 @@ namespace DotNet.Properties.Pages.ViewModels
 {
     internal abstract class PropertyPageViewModel : ReactiveObject
     {
-        public PropertyPageViewModel(IPropertyManager propertyManager)
+        protected PropertyPageViewModel(IPropertyManager propertyManager)
         {
             PropertyManager = propertyManager;
         }
