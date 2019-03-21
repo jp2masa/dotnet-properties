@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <AvaloniaVersion>0.7.1-cibuild0001689-beta</AvaloniaVersion>
-        <RoslynAnalyzersVersion>2.9.0-beta2.19170.1</RoslynAnalyzersVersion>
+        <RoslynAnalyzersVersion>2.9.0-beta2.19171.2</RoslynAnalyzersVersion>
         <MicrosoftBuildVersion>15.9.20</MicrosoftBuildVersion>
         <NuGetVersion>4.9.3</NuGetVersion>
         <ReactiveUIVersion>9.12.1</ReactiveUIVersion>
