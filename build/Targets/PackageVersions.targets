@@ -4,7 +4,7 @@
         <AvaloniaVersion>0.7.1-cibuild0001754-beta</AvaloniaVersion>
         <RoslynAnalyzersVersion>2.9.1</RoslynAnalyzersVersion>
         <MicrosoftBuildVersion>15.9.20</MicrosoftBuildVersion>
-        <NuGetVersion>4.9.3</NuGetVersion>
+        <NuGetVersion>4.9.4</NuGetVersion>
         <ReactiveUIVersion>9.12.1</ReactiveUIVersion>
     </PropertyGroup>
 
