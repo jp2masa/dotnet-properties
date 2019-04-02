@@ -47,7 +47,7 @@
 
                 <TextBlock Text="Target framework:" />
 
-                <DropDown HorizontalAlignment="Stretch"
+                <ComboBox HorizontalAlignment="Stretch"
                           MinHeight="28"
                           Items="{Binding SupportedTargetFrameworks}"
                           SelectedItem="{Binding TargetFramework}" />
@@ -60,7 +60,7 @@
 
                 <TextBlock Text="Output type:" />
 
-                <DropDown HorizontalAlignment="Stretch"
+                <ComboBox HorizontalAlignment="Stretch"
                           MinHeight="28"
                           Items="{Binding SupportedOutputTypes}"
                           SelectedItem="{Binding OutputType}" />

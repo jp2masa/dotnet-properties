@@ -31,7 +31,7 @@
                     Spacing="8"
                     HorizontalAlignment="Center">
             <StackPanel.Styles>
-                <Style Selector="DropDown">
+                <Style Selector="ComboBox">
                     <Setter Property="MinWidth" Value="120" />
                 </Style>
                 <Style Selector="TextBlock">
@@ -41,13 +41,13 @@
             
             <TextBlock Text="Configuration:" />
             
-            <DropDown Grid.Column="0"
+            <ComboBox Grid.Column="0"
                       Items="{Binding AvailableConfigurations}"
                       SelectedItem="{Binding Configuration}" />
 
             <TextBlock Text="Platform:" />
 
-            <DropDown Grid.Column="2"
+            <ComboBox Grid.Column="2"
                       Items="{Binding AvailablePlatforms}"
                       SelectedItem="{Binding Platform}" />
 
@@ -86,14 +86,14 @@
 
             <TextBlock Text="Theme:" />
 
-            <DropDown Items="{Binding AvailableThemes}"
+            <ComboBox Items="{Binding AvailableThemes}"
                       SelectedItem="{Binding CurrentTheme}">
-                <DropDown.ItemTemplate>
+                <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding Name}" />
                     </DataTemplate>
-                </DropDown.ItemTemplate>
-            </DropDown>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
 
         </StackPanel>
 

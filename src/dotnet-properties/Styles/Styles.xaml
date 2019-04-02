@@ -12,7 +12,7 @@
         <Setter Property="VerticalAlignment" Value="Center" />
     </Style>
 
-    <Style Selector="DropDown">
+    <Style Selector="ComboBox">
         <Setter Property="MinHeight" Value="28" />
     </Style>
 

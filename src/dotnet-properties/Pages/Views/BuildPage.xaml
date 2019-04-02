@@ -28,7 +28,7 @@
 
                         <TextBlock Text="Target platform:" />
 
-                        <DropDown MinWidth="120"
+                        <ComboBox MinWidth="120"
                                   IsEnabled="{Binding PlatformTargetEnabled}"
                                   Items="{Binding AvailablePlatformTargets}"
                                   SelectedItem="{Binding PlatformTarget}" />
@@ -64,7 +64,7 @@
 
                     <TextBlock Text="Warning level:" />
 
-                    <DropDown MinWidth="120"
+                    <ComboBox MinWidth="120"
                               Items="{Binding AvailableWarningLevels}"
                               SelectedItem="{Binding WarningLevel}" />
 

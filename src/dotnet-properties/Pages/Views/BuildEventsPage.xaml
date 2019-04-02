@@ -38,7 +38,7 @@
 
                 <TextBlock Text="Run post-build event:" />
 
-                <DropDown Items="{Binding SupportedRunPostBuildEvent}"
+                <ComboBox Items="{Binding SupportedRunPostBuildEvent}"
                           SelectedItem="{Binding RunPostBuildEvent}" />
                 
             </StackPanel>
