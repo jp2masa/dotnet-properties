@@ -2,6 +2,7 @@
 
     <PropertyGroup>
         <AvaloniaVersion>0.8.0</AvaloniaVersion>
+        <AvaloniaSkiaLinuxNativesVersion>1.68.0.2</AvaloniaSkiaLinuxNativesVersion>
         <RoslynAnalyzersVersion>2.9.1</RoslynAnalyzersVersion>
         <MicrosoftBuildVersion>16.0.461</MicrosoftBuildVersion>
         <NuGetVersion>5.0.0</NuGetVersion>
@@ -12,6 +13,7 @@
         <PackageReference Update="Avalonia" Version="$(AvaloniaVersion)" />
         <PackageReference Update="Avalonia.Desktop" Version="$(AvaloniaVersion)" />
         <PackageReference Update="Avalonia.ReactiveUI" Version="$(AvaloniaVersion)" />
+        <PackageReference Update="Avalonia.Skia.Linux.Natives" Version="$(AvaloniaSkiaLinuxNativesVersion)" />
         <PackageReference Update="Microsoft.Build" Version="$(MicrosoftBuildVersion)" />
         <PackageReference Update="Microsoft.Build.Utilities.Core" Version="$(MicrosoftBuildVersion)" />
         <PackageReference Update="NuGet.Frameworks" Version="$(NuGetVersion)" />
