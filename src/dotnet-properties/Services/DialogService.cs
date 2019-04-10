@@ -10,11 +10,11 @@ namespace DotNet.Properties.Services
     internal class DialogService<TView, TViewModel> : IDialogService<TViewModel> where TView : Window
     {
         private readonly Func<TView> _viewFactory;
-        private readonly Window _owner;
+        private readonly Window? _owner;
 
         public DialogService(
             Func<TView> viewFactory,
-            Window owner = null)
+            Window? owner = null)
         {
             _viewFactory = viewFactory;
             _owner = owner;

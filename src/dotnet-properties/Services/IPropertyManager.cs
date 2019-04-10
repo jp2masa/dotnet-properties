@@ -13,8 +13,8 @@ namespace DotNet.Properties.Services
         IEnumerable<string> AvailableConfigurations { get; }
         IEnumerable<string> AvailablePlatforms { get; }
 
-        string Configuration { get; set; }
-        string Platform { get; set; }
+        string? Configuration { get; set; }
+        string? Platform { get; set; }
 
         string GetProperty(string propertyName, bool evaluatedValue = true);
         IEnumerable<ProjectItem> GetItems(string itemType);

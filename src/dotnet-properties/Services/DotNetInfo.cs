@@ -12,12 +12,12 @@ namespace DotNet.Properties.Services
 
         public bool IsEmpty { get; }
 
-        public SemanticVersion Version { get; }
-        public string OSName { get; }
-        public string OSVersion { get; }
-        public string OSPlatform { get; }
-        public string RID { get; }
-        public string BasePath { get; }
+        public SemanticVersion? Version { get; }
+        public string? OSName { get; }
+        public string? OSVersion { get; }
+        public string? OSPlatform { get; }
+        public string? RID { get; }
+        public string? BasePath { get; }
 
         private DotNetInfo()
         {

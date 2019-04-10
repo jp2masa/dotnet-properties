@@ -13,7 +13,7 @@ namespace DotNet.Properties.Services
     {
         private readonly ConcurrentDictionary<string, DotNetInfo> _dotnetInfos = new ConcurrentDictionary<string, DotNetInfo>();
 
-        public bool TryResolveSdkPath(string workingDirectory, out string path)
+        public bool TryResolveSdkPath(string workingDirectory, out string? path)
         {
             if (_dotnetInfos.TryGetValue(workingDirectory, out var info))
             {

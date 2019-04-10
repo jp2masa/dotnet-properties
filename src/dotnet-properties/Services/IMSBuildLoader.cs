@@ -5,6 +5,6 @@ namespace DotNet.Properties.Services
 {
     internal interface IMSBuildLoader
     {
-        bool TryResolveMSBuildAssembly(AssemblyLoadContext context, string assemblyName, out Assembly assembly);
+        bool TryResolveMSBuildAssembly(AssemblyLoadContext context, string assemblyName, out Assembly? assembly);
     }
 }

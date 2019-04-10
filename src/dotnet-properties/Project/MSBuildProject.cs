@@ -16,7 +16,7 @@ namespace DotNet.Properties
         private readonly Dictionary<string, string> _globalProperties;
         private readonly string _projectPath;
 
-        private Project _project;
+        private Project? _project;
 
         public Project Project
         {

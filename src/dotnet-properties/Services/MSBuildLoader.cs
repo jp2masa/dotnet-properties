@@ -23,7 +23,7 @@ namespace DotNet.Properties.Services
             _dotnetSdkPath = dotnetSdkPath;
         }
 
-        public bool TryResolveMSBuildAssembly(AssemblyLoadContext context, string assemblyName, out Assembly assembly)
+        public bool TryResolveMSBuildAssembly(AssemblyLoadContext context, string assemblyName, out Assembly? assembly)
         {
             if (MSBuildAssemblies.Contains(assemblyName))
             {

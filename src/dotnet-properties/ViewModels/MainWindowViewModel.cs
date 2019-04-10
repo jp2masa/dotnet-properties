@@ -29,7 +29,7 @@ namespace DotNet.Properties.ViewModels
         private readonly IThemeService _themeService;
 
         public MainWindowViewModel(
-            string projectPath,
+            string? projectPath,
             IDotNetSdkResolver dotnetSdkResolver,
             IDialogService<UnsavedChangesDialogViewModel> unsavedChangesDialogService,
             IOpenFileDialogService openFileDialogService,
@@ -44,7 +44,10 @@ namespace DotNet.Properties.ViewModels
 
             dotnetSdkResolver.TryResolveSdkPath(Path.GetDirectoryName(projectPath), out var dotnetSdkPath);
 
+            // File.Exists checks for null, so projectPath can't be null
+#nullable disable
             var msBuildProject = new MSBuildProject(new DotNetSdkPaths(dotnetSdkPath), projectPath);
+#nullable enable
 
             _project = msBuildProject.Project;
             _propertyManager = new PropertyManager(_project);
@@ -116,10 +119,10 @@ namespace DotNet.Properties.ViewModels
             }
         }
 
-        private string GetConfigurationDisplayName(string configuration) =>
+        private string GetConfigurationDisplayName(string? configuration) =>
             String.IsNullOrEmpty(configuration) ? AnyConfiguration : configuration;
 
-        private string GetPlatformDisplayName(string platform) =>
+        private string GetPlatformDisplayName(string? platform) =>
             String.IsNullOrEmpty(platform) ? AnyPlatform : platform;
 
         private void OnClosing(CancelEventArgs e)

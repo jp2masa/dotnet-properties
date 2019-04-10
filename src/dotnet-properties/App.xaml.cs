@@ -61,7 +61,7 @@ namespace DotNet.Properties
 
         private bool TryBuildMainWindowDataContext(
             MainWindow mainWindow,
-            out MainWindowViewModel viewModel)
+            out MainWindowViewModel? viewModel)
         {
             var projFiles = Directory.GetFiles(Environment.CurrentDirectory, "*.*proj");
             var projectPath = projFiles.Length == 1 ? projFiles[0] : OpenProjectFile();
@@ -74,6 +74,12 @@ namespace DotNet.Properties
 
             IDotNetSdkResolver dotnetSdkResolver = new DotNetSdkResolver();
             dotnetSdkResolver.TryResolveSdkPath(Path.GetDirectoryName(projectPath), out var path);
+
+            if (path == null)
+            {
+                viewModel = null;
+                return false;
+            }
 
             IMSBuildLoader msBuildLoader = new MSBuildLoader(path);
 
@@ -98,7 +104,7 @@ namespace DotNet.Properties
             return true;
         }
 
-        private static string OpenProjectFile() =>
+        private static string? OpenProjectFile() =>
             Task.Run(async () =>
             {
                 var openFileDialog = new OpenFileDialog

@@ -7,8 +7,8 @@ namespace DotNet.Properties
 {
     internal sealed class BuildEnvironment : IDisposable
     {
-        private readonly string _oldMsBuildExtensionsPath = null;
-        private readonly string _oldMsBuildSdksPath = null;
+        private readonly string? _oldMsBuildExtensionsPath = null;
+        private readonly string? _oldMsBuildSdksPath = null;
 
         public BuildEnvironment(IReadOnlyDictionary<string, string> globalProperties)
         {

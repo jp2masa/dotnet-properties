@@ -24,13 +24,13 @@ namespace DotNet.Properties.Services
         public IEnumerable<string> AvailablePlatforms =>
             _project.GetPropertyValue("Platforms").Split(';').Select(c => c.Trim());
 
-        public string Configuration
+        public string? Configuration
         {
             get => _configuration;
             set => SetConfiguration(value);
         }
 
-        public string Platform
+        public string? Platform
         {
             get => _platform;
             set => SetPlatform(value);
@@ -38,8 +38,8 @@ namespace DotNet.Properties.Services
 
         private Project _project;
 
-        private string _configuration;
-        private string _platform;
+        private string? _configuration;
+        private string? _platform;
 
         public PropertyManager(Project project)
         {
@@ -70,6 +70,9 @@ namespace DotNet.Properties.Services
             {
                 ProjectPropertyGroupElement propertyGroup;
 
+                // IsAny checks for null, so _platform and _configuration can't be null
+#nullable disable
+
                 if (isAnyConfiguration)
                 {
                     propertyGroup = GetPropertyGroupForPlatform(_platform);
@@ -82,6 +85,8 @@ namespace DotNet.Properties.Services
                 {
                     propertyGroup = GetPropertyGroupForConfigurationAndPlatform(_configuration, _platform);
                 }
+
+#nullable enable
 
                 propertyGroup.SetProperty(propertyName, value);
 
@@ -106,7 +111,7 @@ namespace DotNet.Properties.Services
         public string MakeRelativePath(string path) =>
             Path.GetRelativePath(_project.DirectoryPath, path);
 
-        private void SetConfiguration(string configuration, bool reevaluateIfNecessary = true)
+        private void SetConfiguration(string? configuration, bool reevaluateIfNecessary = true)
         {
             if (_configuration != configuration)
             {
@@ -120,7 +125,7 @@ namespace DotNet.Properties.Services
             }
         }
 
-        private void SetPlatform(string platform, bool reevaluateIfNecessary = true)
+        private void SetPlatform(string? platform, bool reevaluateIfNecessary = true)
         {
             if (_platform != platform)
             {
@@ -158,7 +163,7 @@ namespace DotNet.Properties.Services
 
         private void OnIsDirtyChanged() => IsDirtyChanged?.Invoke(this, EventArgs.Empty);
 
-        private static bool IsAny(string value) => String.IsNullOrEmpty(value);
+        private static bool IsAny(string? value) => String.IsNullOrEmpty(value);
 
         private static string Format(string format, object arg0) =>
             String.Format(CultureInfo.InvariantCulture, format, arg0);

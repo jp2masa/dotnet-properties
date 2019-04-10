@@ -35,9 +35,9 @@ namespace DotNet.Properties.Pages.ViewModels
         private bool? _isLicenseFile;
         private bool? _isLicenseExpression;
 
-        private string _licenseURL;
-        private string _licenseFile;
-        private string _licenseExpression;
+        private string? _licenseURL;
+        private string? _licenseFile;
+        private string? _licenseExpression;
 
         public PackagePageViewModel(IPropertyManager propertyManager)
             : base(propertyManager)
@@ -92,19 +92,19 @@ namespace DotNet.Properties.Pages.ViewModels
             set => SetStringProperty(Property.Copyright, value);
         }
 
-        public string LicenseURL
+        public string? LicenseURL
         {
             get => GetStringProperty(Property.PackageLicenseUrl);
             set => UpdateLicense(ref _licenseURL, value, Property.PackageLicenseUrl);
         }
 
-        public string LicenseFile
+        public string? LicenseFile
         {
             get => GetStringProperty(Property.PackageLicenseFile);
             set => UpdateLicense(ref _licenseFile, value, Property.PackageLicenseFile);
         }
 
-        public string LicenseExpression
+        public string? LicenseExpression
         {
             get => _licenseExpression ?? (_licenseExpression = GetStringProperty(Property.PackageLicenseExpression));
             set => UpdateLicense(ref _licenseExpression, value, Property.PackageLicenseExpression);
@@ -171,12 +171,12 @@ namespace DotNet.Properties.Pages.ViewModels
         }
 
         private void ChangeLicenseKind(
-            string licenseURL,
-            string licenseFile,
-            string licenseExpression,
+            string? licenseURL,
+            string? licenseFile,
+            string? licenseExpression,
             ref bool? isLicenseField,
             bool isLicense,
-            [CallerMemberName] string propertyName = null)
+            [CallerMemberName] string? propertyName = null)
         {
             if (isLicense)
             {
@@ -189,10 +189,10 @@ namespace DotNet.Properties.Pages.ViewModels
         }
 
         private void UpdateLicense(
-            ref string licenseField,
-            string license,
+            ref string? licenseField,
+            string? license,
             string licensePropertyName,
-            [CallerMemberName] string propertyName = null)
+            [CallerMemberName] string? propertyName = null)
         {
             if (license != null)
             {
