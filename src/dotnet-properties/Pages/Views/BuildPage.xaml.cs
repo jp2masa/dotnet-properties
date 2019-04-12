@@ -1,5 +1,5 @@
-using Avalonia;
 using Avalonia.Markup.Xaml;
+using Avalonia.ReactiveUI;
 
 using DotNet.Properties.Pages.ViewModels;
 
