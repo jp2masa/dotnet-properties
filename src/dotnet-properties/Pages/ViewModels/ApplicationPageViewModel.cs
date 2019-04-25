@@ -33,7 +33,7 @@ namespace DotNet.Properties.Pages.ViewModels
                 () => GetItems("SupportedTargetFramework").Select(
                     i => new TargetFramework(i.EvaluatedInclude, i.GetMetadata("DisplayName").EvaluatedValue)));
         }
-        
+
         public string AssemblyName
         {
             get => GetStringProperty(Property.AssemblyName);

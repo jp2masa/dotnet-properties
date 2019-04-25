@@ -65,7 +65,7 @@ namespace DotNet.Properties.Pages.ViewModels
 
         public PlatformTarget PlatformTarget
         {
-            get =>_platformTargets.Single(t => t.Value == (GetStringProperty(Property.PlatformTarget) ?? "AnyCPU"));
+            get => _platformTargets.Single(t => t.Value == (GetStringProperty(Property.PlatformTarget) ?? "AnyCPU"));
             set => SetStringProperty(Property.PlatformTarget, value.Value);
         }
 

@@ -15,7 +15,7 @@ namespace DotNet.Properties.Services
                 "Microsoft.Build.Framework",
                 "Microsoft.Build.Tasks.Core",
                 "Microsoft.Build.Utilities.Core");
-        
+
         private readonly string _dotnetSdkPath;
 
         public MSBuildLoader(string dotnetSdkPath)
@@ -36,10 +36,10 @@ namespace DotNet.Properties.Services
                         assembly = context.LoadFromAssemblyPath(assemblyPath);
                         return true;
                     }
-                    catch(FileLoadException)
+                    catch (FileLoadException)
                     {
                     }
-                    catch(BadImageFormatException)
+                    catch (BadImageFormatException)
                     {
                     }
                 }

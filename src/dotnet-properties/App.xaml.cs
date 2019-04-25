@@ -86,7 +86,7 @@ namespace DotNet.Properties
 
             AssemblyLoadContext.Default.Resolving += (context, name) =>
             {
-                if(msBuildLoader.TryResolveMSBuildAssembly(context, name.Name, out var assembly))
+                if (msBuildLoader.TryResolveMSBuildAssembly(context, name.Name, out var assembly))
                 {
                     return assembly;
                 }

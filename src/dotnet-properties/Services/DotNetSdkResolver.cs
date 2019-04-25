@@ -46,6 +46,7 @@ namespace DotNet.Properties.Services
             try
             {
                 Process process;
+
                 try
                 {
                     var startInfo = new ProcessStartInfo("dotnet", "--info")
@@ -59,11 +60,11 @@ namespace DotNet.Properties.Services
 
                     process = Process.Start(startInfo);
                 }
-                catch(FileNotFoundException)
+                catch (FileNotFoundException)
                 {
                     return DotNetInfo.Empty;
                 }
-                catch(Win32Exception)
+                catch (Win32Exception)
                 {
                     return DotNetInfo.Empty;
                 }
