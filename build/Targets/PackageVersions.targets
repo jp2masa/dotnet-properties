@@ -5,8 +5,8 @@
         <AvaloniaSkiaLinuxNativesVersion>1.68.0.2</AvaloniaSkiaLinuxNativesVersion>
         <MicrosoftBuildVersion>16.0.461</MicrosoftBuildVersion>
         <NuGetVersion>5.0.0</NuGetVersion>
-        <ReactiveUIVersion>9.13.1</ReactiveUIVersion>
-        <RoslynAnalyzersVersion>3.0.0-beta2.19218.6</RoslynAnalyzersVersion>
+        <ReactiveUIVersion>9.14.1</ReactiveUIVersion>
+        <RoslynAnalyzersVersion>3.0.0-beta2.19258.3</RoslynAnalyzersVersion>
     </PropertyGroup>
 
     <ItemGroup>
