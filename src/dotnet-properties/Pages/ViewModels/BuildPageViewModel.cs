@@ -53,7 +53,7 @@ namespace DotNet.Properties.Pages.ViewModels
         {
         }
 
-        public string ConditionalCompilationSymbols
+        public string? ConditionalCompilationSymbols
         {
             get => GetStringProperty(Property.DefineConstants);
             set => SetStringProperty(Property.DefineConstants, value);
@@ -89,13 +89,13 @@ namespace DotNet.Properties.Pages.ViewModels
 
         public IEnumerable<string> AvailableWarningLevels => _warningLevels;
 
-        public string WarningLevel
+        public string? WarningLevel
         {
             get => GetStringProperty(Property.WarningLevel);
             set => SetStringProperty(Property.WarningLevel, value);
         }
 
-        public string NoWarn
+        public string? NoWarn
         {
             get => GetStringProperty(Property.NoWarn);
             set => SetStringProperty(Property.NoWarn, value);
@@ -107,13 +107,13 @@ namespace DotNet.Properties.Pages.ViewModels
             set => SetBooleanProperty(Property.TreatWarningsAsErrors, value);
         }
 
-        public string WarningsAsErrors
+        public string? WarningsAsErrors
         {
             get => GetStringProperty(Property.WarningsAsErrors);
             set => SetStringProperty(Property.WarningsAsErrors, value);
         }
 
-        public string OutputPath
+        public string? OutputPath
         {
             get => GetStringProperty(Property.OutputPath);
             set => SetStringProperty(Property.OutputPath, value);
@@ -145,7 +145,7 @@ namespace DotNet.Properties.Pages.ViewModels
             set => SetBooleanProperty(Property.GenerateDocumentationFile, value);
         }
 
-        public string DocumentationFile
+        public string? DocumentationFile
         {
             get => GetStringProperty(Property.DocumentationFile);
             set => SetStringProperty(Property.DocumentationFile, value);

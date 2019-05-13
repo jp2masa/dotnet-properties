@@ -34,13 +34,13 @@ namespace DotNet.Properties.Pages.ViewModels
                     i => new TargetFramework(i.EvaluatedInclude, i.GetMetadata("DisplayName").EvaluatedValue)));
         }
 
-        public string AssemblyName
+        public string? AssemblyName
         {
             get => GetStringProperty(Property.AssemblyName);
             set => SetStringProperty(Property.AssemblyName, value);
         }
 
-        public string DefaultNamespace
+        public string? DefaultNamespace
         {
             get => GetStringProperty(Property.RootNamespace);
             set => SetStringProperty(Property.RootNamespace, value);

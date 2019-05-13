@@ -25,7 +25,7 @@ namespace DotNet.Properties.Pages.ViewModels
             return String.Equals(value, Boolean.TrueString, StringComparison.InvariantCultureIgnoreCase);
         }
 
-        protected string GetStringProperty(string propertyName) => PropertyManager.GetProperty(propertyName);
+        protected string? GetStringProperty(string propertyName) => PropertyManager.GetProperty(propertyName);
 
         protected IEnumerable<ProjectItem> GetItems(string itemType) =>
             PropertyManager.GetItems(itemType);

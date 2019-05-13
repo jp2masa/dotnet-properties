@@ -50,43 +50,43 @@ namespace DotNet.Properties.Pages.ViewModels
             set => SetBooleanProperty(Property.GeneratePackageOnBuild, value);
         }
 
-        public string PackageId
+        public string? PackageId
         {
             get => GetStringProperty(Property.PackageId);
             set => SetStringProperty(Property.PackageId, value);
         }
 
-        public string PackageTitle
+        public string? PackageTitle
         {
             get => GetStringProperty(Property.Title);
             set => SetStringProperty(Property.Title, value);
         }
 
-        public string PackageVersion
+        public string? PackageVersion
         {
             get => GetStringProperty(Property.PackageVersion);
             set => SetStringProperty(Property.PackageVersion, value);
         }
 
-        public string Authors
+        public string? Authors
         {
             get => GetStringProperty(Property.Authors);
             set => SetStringProperty(Property.Authors, value);
         }
 
-        public string Company
+        public string? Company
         {
             get => GetStringProperty(Property.Company);
             set => SetStringProperty(Property.Company, value);
         }
 
-        public string PackageDescription
+        public string? PackageDescription
         {
             get => GetStringProperty(Property.PackageDescription);
             set => SetStringProperty(Property.PackageDescription, value);
         }
 
-        public string Copyright
+        public string? Copyright
         {
             get => GetStringProperty(Property.Copyright);
             set => SetStringProperty(Property.Copyright, value);
@@ -134,37 +134,37 @@ namespace DotNet.Properties.Pages.ViewModels
             set => SetBooleanProperty(Property.PackageRequireLicenseAcceptance, value);
         }
 
-        public string ProjectURL
+        public string? ProjectURL
         {
             get => GetStringProperty(Property.PackageProjectUrl);
             set => SetStringProperty(Property.PackageProjectUrl, value);
         }
 
-        public string IconURL
+        public string? IconURL
         {
             get => GetStringProperty(Property.PackageIconUrl);
             set => SetStringProperty(Property.PackageIconUrl, value);
         }
 
-        public string RepositoryURL
+        public string? RepositoryURL
         {
             get => GetStringProperty(Property.RepositoryUrl);
             set => SetStringProperty(Property.RepositoryUrl, value);
         }
 
-        public string RepositoryType
+        public string? RepositoryType
         {
             get => GetStringProperty(Property.RepositoryType);
             set => SetStringProperty(Property.RepositoryType, value);
         }
 
-        public string Tags
+        public string? Tags
         {
             get => GetStringProperty(Property.PackageTags);
             set => SetStringProperty(Property.PackageTags, value);
         }
 
-        public string ReleaseNotes
+        public string? ReleaseNotes
         {
             get => GetStringProperty(Property.PackageReleaseNotes);
             set => SetStringProperty(Property.PackageReleaseNotes, value);

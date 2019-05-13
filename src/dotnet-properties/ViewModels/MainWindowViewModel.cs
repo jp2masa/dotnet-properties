@@ -72,7 +72,7 @@ namespace DotNet.Properties.ViewModels
 
         public ICommand ClosingCommand { get; }
 
-        public string ProjectPath => _project?.FullPath;
+        public string? ProjectPath => _project?.FullPath;
         public ICommand SaveCommand { get; }
 
         public IEnumerable<string> AvailableConfigurations =>

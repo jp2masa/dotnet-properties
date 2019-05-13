@@ -38,7 +38,7 @@ namespace DotNet.Properties.Pages.ViewModels
             set => SetBooleanProperty(Property.SignAssembly, value);
         }
 
-        public string AssemblyOriginatorKeyFile
+        public string? AssemblyOriginatorKeyFile
         {
             get => GetStringProperty(Property.AssemblyOriginatorKeyFile);
             set => SetStringProperty(Property.AssemblyOriginatorKeyFile, PropertyManager.MakeRelativePath(value));

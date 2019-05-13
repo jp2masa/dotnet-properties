@@ -51,7 +51,7 @@ namespace DotNet.Properties.Services
             _project.ReevaluateIfNecessary();
         }
 
-        public string GetProperty(
+        public string? GetProperty(
             string propertyName,
             bool evaluatedValue = true)
         {
@@ -108,8 +108,15 @@ namespace DotNet.Properties.Services
             OnIsDirtyChanged();
         }
 
-        public string MakeRelativePath(string path) =>
-            Path.GetRelativePath(_project.DirectoryPath, path);
+        public string MakeRelativePath(string? path)
+        {
+            if (String.IsNullOrEmpty(path))
+            {
+                return _project.DirectoryPath;
+            }
+
+            return Path.GetRelativePath(_project.DirectoryPath, path);
+        }
 
         private void SetConfiguration(string? configuration, bool reevaluateIfNecessary = true)
         {

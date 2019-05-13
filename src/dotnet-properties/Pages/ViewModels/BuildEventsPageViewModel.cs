@@ -27,13 +27,13 @@ namespace DotNet.Properties.Pages.ViewModels
         {
         }
 
-        public string PreBuildEvent
+        public string? PreBuildEvent
         {
             get => GetStringProperty(Property.PreBuildEvent);
             set => SetStringProperty(Property.PreBuildEvent, value);
         }
 
-        public string PostBuildEvent
+        public string? PostBuildEvent
         {
             get => GetStringProperty(Property.PostBuildEvent);
             set => SetStringProperty(Property.PostBuildEvent, value);
