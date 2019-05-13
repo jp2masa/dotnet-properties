@@ -69,64 +69,60 @@
                 <TextBox Text="{Binding Copyright}" />
             </StackPanel>
 
-            <DockPanel>
+            <StackPanel Spacing="8">
 
-                <StackPanel Spacing="8">
+                <TextBlock Text="License:" />
 
-                    <TextBlock Text="License:" />
+                <DockPanel>
 
-                    <DockPanel>
+                    <StackPanel DockPanel.Dock="Left"
+                                Orientation="Horizontal"
+                                Spacing="8">
 
-                        <StackPanel DockPanel.Dock="Left"
-                                    Orientation="Horizontal"
-                                    Spacing="8">
+                        <RadioButton Content="URL"
+                                     IsChecked="{Binding IsLicenseURL}" />
 
-                            <RadioButton Content="URL"
-                                         IsChecked="{Binding IsLicenseURL}" />
+                        <RadioButton Content="File"
+                                     IsChecked="{Binding IsLicenseFile}" />
 
-                            <RadioButton Content="File"
-                                         IsChecked="{Binding IsLicenseFile}" />
-
-                            <RadioButton Content="Expression"
-                                         IsChecked="{Binding IsLicenseExpression}" />
-
-                        </StackPanel>
-
-                        <CheckBox DockPanel.Dock="Right"
-                                  Margin="16,0,0,0"
-                                  HorizontalAlignment="Right"
-                                  IsChecked="{Binding RequireLicenseAcceptance}"
-                                  Content="Require license acceptance" />
-
-                    </DockPanel>
-
-                    <StackPanel Spacing="4"
-                                IsVisible="{Binding IsLicenseURL}">
-
-                        <TextBlock Text="License URL:" />
-                        <TextBox Text="{Binding LicenseURL}" />
+                        <RadioButton Content="Expression"
+                                     IsChecked="{Binding IsLicenseExpression}" />
 
                     </StackPanel>
 
-                    <StackPanel Spacing="4"
-                                IsVisible="{Binding IsLicenseFile}">
+                    <CheckBox DockPanel.Dock="Right"
+                                Margin="16,0,0,0"
+                                HorizontalAlignment="Right"
+                                IsChecked="{Binding RequireLicenseAcceptance}"
+                                Content="Require license acceptance" />
 
-                        <TextBlock Text="License file:" />
-                        <TextBox Text="{Binding LicenseFile}" />
+                </DockPanel>
 
-                    </StackPanel>
+                <StackPanel Spacing="4"
+                            IsVisible="{Binding IsLicenseURL}">
 
-                    <StackPanel Spacing="4"
-                                IsVisible="{Binding IsLicenseExpression}">
-
-                        <TextBlock Text="License expression:" />
-                        <TextBox Text="{Binding LicenseExpression}" />
-
-                    </StackPanel>
+                    <TextBlock Text="License URL:" />
+                    <TextBox Text="{Binding LicenseURL}" />
 
                 </StackPanel>
-                
-            </DockPanel>
+
+                <StackPanel Spacing="4"
+                            IsVisible="{Binding IsLicenseFile}">
+
+                    <TextBlock Text="License file:" />
+                    <TextBox Text="{Binding LicenseFile}" />
+
+                </StackPanel>
+
+                <StackPanel Spacing="4"
+                            IsVisible="{Binding IsLicenseExpression}">
+
+                    <TextBlock Text="License expression:" />
+                    <TextBox Text="{Binding LicenseExpression}" />
+
+                </StackPanel>
+
+            </StackPanel>
 
             <StackPanel Spacing="4">
                 <TextBlock Text="Project URL:" />
