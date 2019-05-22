@@ -1,13 +1,12 @@
-﻿<views:MainWindow xmlns="https://github.com/avaloniaui"
-                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                  xmlns:pages="clr-namespace:DotNet.Properties.Pages.Views;assembly=dotnet-properties"
-                  xmlns:views="clr-namespace:DotNet.Properties.Views"
-                  x:Class="DotNet.Properties.Views.MainWindow"
-                  ClosingCommand="{Binding ClosingCommand}"
-                  MinWidth="800"
-                  MinHeight="480"
-                  Title="dotnet-properties"
-                  WindowStartupLocation="CenterScreen">
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:pages="clr-namespace:DotNet.Properties.Pages.Views;assembly=dotnet-properties"
+        x:Class="DotNet.Properties.Views.MainWindow"
+        ClosingCommand="{Binding ClosingCommand}"
+        MinWidth="800"
+        MinHeight="480"
+        Title="dotnet-properties"
+        WindowStartupLocation="CenterScreen">
 
     <Grid Margin="0,8,0,0"
           RowDefinitions="Auto,12,Auto,12,*,12,Auto">
@@ -100,4 +99,4 @@
 
     </Grid>
 
-</views:MainWindow>
+</Window>
