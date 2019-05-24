@@ -6,6 +6,7 @@
 
     <PropertyGroup>
         <LangVersion>8.0</LangVersion>
+        <Nullable>Enable</Nullable>
         <NullableContextOptions>Enable</NullableContextOptions>
         <NoWarn>CA1812;CA1822;$(NoWarn)</NoWarn>
     </PropertyGroup>
