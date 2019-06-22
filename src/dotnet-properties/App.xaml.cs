@@ -1,18 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Runtime.Loader;
 using System.Threading.Tasks;
 
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Logging.Serilog;
 using Avalonia.Markup.Xaml;
 using Avalonia.ReactiveUI;
 using Avalonia.Styling;
-
-using Serilog;
 
 using DotNet.Properties.Dialogs.Views;
 using DotNet.Properties.Dialogs.ViewModels;
@@ -29,36 +27,38 @@ namespace DotNet.Properties
             AvaloniaXamlLoader.Load(this);
         }
 
-        private static void Main()
+        public override void OnFrameworkInitializationCompleted()
         {
-            InitializeLogging();
-
-            var appBuilder = BuildAvaloniaApp();
-            var app = (App)appBuilder.Instance;
+            base.OnFrameworkInitializationCompleted();
 
             // workaround (TopLevel should apply styles when global styles change)
-            app.Styles.CollectionChanged +=
-                (sender, e) =>
-                {
-                    var dummyStyle = new Style();
+            Styles.CollectionChanged +=
+                 (sender, e) =>
+                 {
+                     var dummyStyle = new Style();
 
-                    foreach (var window in app.Windows)
-                    {
-                        window.Styles.Add(dummyStyle);
-                        window.Styles.Remove(dummyStyle);
-                    }
-                };
+                     foreach (var window in ((IClassicDesktopStyleApplicationLifetime)ApplicationLifetime).Windows)
+                     {
+                         window.Styles.Add(dummyStyle);
+                         window.Styles.Remove(dummyStyle);
+                     }
+                 };
 
-            appBuilder.SetupWithoutStarting();
-
-            var mainWindow = new MainWindow();
-
-            if (app.TryBuildMainWindowDataContext(mainWindow, out var mainWindowDataContext))
+            if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
             {
-                mainWindow.DataContext = mainWindowDataContext;
-                app.Run(mainWindow);
+                var mainWindow = new MainWindow();
+
+                if (TryBuildMainWindowDataContext(mainWindow, out var mainWindowDataContext))
+                {
+                    mainWindow.DataContext = mainWindowDataContext;
+                    desktop.MainWindow = mainWindow;
+                }
             }
         }
+
+        private static int Main(string[] args) =>
+            BuildAvaloniaApp().StartWithClassicDesktopLifetime(args, ShutdownMode.OnMainWindowClose);
+
 
         private bool TryBuildMainWindowDataContext(
             MainWindow mainWindow,
@@ -133,13 +133,9 @@ namespace DotNet.Properties
         private static AppBuilder BuildAvaloniaApp() =>
             AppBuilder.Configure<App>()
                 .UsePlatformDetect()
+#if DEBUG
+                .LogToDebug()
+#endif
                 .UseReactiveUI();
-
-        [Conditional("DEBUG")]
-        private static void InitializeLogging() =>
-            SerilogLogger.Initialize(new LoggerConfiguration()
-                .MinimumLevel.Warning()
-                .WriteTo.Trace(outputTemplate: "{Area}: {Message}")
-                .CreateLogger());
     }
 }
