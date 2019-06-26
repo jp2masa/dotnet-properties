@@ -1,7 +1,7 @@
 <Project>
 
     <PropertyGroup>
-        <AvaloniaVersion>0.8.1-cibuild0003053-beta</AvaloniaVersion>
+        <AvaloniaVersion>0.8.1-cibuild0003068-beta</AvaloniaVersion>
         <AvaloniaSkiaLinuxNativesVersion>1.68.0.2</AvaloniaSkiaLinuxNativesVersion>
         <MicrosoftBuildVersion>16.0.461</MicrosoftBuildVersion>
         <NuGetVersion>5.1.0</NuGetVersion>
