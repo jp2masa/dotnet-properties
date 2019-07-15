@@ -1,12 +1,12 @@
 <Project>
 
     <PropertyGroup>
-        <AvaloniaVersion>0.8.999-cibuild0003188-beta</AvaloniaVersion>
+        <AvaloniaVersion>0.8.999-cibuild0003193-beta</AvaloniaVersion>
         <AvaloniaSkiaLinuxNativesVersion>1.68.0.2</AvaloniaSkiaLinuxNativesVersion>
         <MicrosoftBuildVersion>16.0.461</MicrosoftBuildVersion>
+        <MicrosoftCodeAnalysisFxCopAnalyzersVersion>2.9.3</MicrosoftCodeAnalysisFxCopAnalyzersVersion>
         <NuGetVersion>5.1.0</NuGetVersion>
         <ReactiveUIVersion>9.19.5</ReactiveUIVersion>
-        <RoslynAnalyzersVersion>2.9.4-beta1.final</RoslynAnalyzersVersion>
     </PropertyGroup>
 
     <ItemGroup>
@@ -16,13 +16,10 @@
         <PackageReference Update="Avalonia.Skia.Linux.Natives" Version="$(AvaloniaSkiaLinuxNativesVersion)" />
         <PackageReference Update="Microsoft.Build" Version="$(MicrosoftBuildVersion)" />
         <PackageReference Update="Microsoft.Build.Utilities.Core" Version="$(MicrosoftBuildVersion)" />
+        <PackageReference Update="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="$(MicrosoftCodeAnalysisFxCopAnalyzersVersion)" />
         <PackageReference Update="NuGet.Frameworks" Version="$(NuGetVersion)" />
         <PackageReference Update="NuGet.Versioning" Version="$(NuGetVersion)" />
         <PackageReference Update="ReactiveUI" Version="$(ReactiveUIVersion)" />
-    </ItemGroup>
-
-    <ItemGroup>
-        <PackageReference Update="@(RoslynAnalyzer)" Version="$(RoslynAnalyzersVersion)" />
     </ItemGroup>
 
 </Project>
