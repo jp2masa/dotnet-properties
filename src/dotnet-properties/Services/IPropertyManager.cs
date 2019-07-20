@@ -17,7 +17,7 @@ namespace DotNet.Properties.Services
         string? Platform { get; set; }
 
         string? GetProperty(string propertyName, bool evaluatedValue = true);
-        IEnumerable<ProjectItem> GetItems(string itemType);
+        IReadOnlyCollection<ProjectItem> GetItems(string itemType);
 
         void SetProperty(string propertyName, string value);
 

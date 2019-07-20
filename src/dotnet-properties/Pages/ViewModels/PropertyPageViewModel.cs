@@ -27,7 +27,7 @@ namespace DotNet.Properties.Pages.ViewModels
 
         protected string? GetStringProperty(string propertyName) => PropertyManager.GetProperty(propertyName);
 
-        protected IEnumerable<ProjectItem> GetItems(string itemType) =>
+        protected IReadOnlyCollection<ProjectItem> GetItems(string itemType) =>
             PropertyManager.GetItems(itemType);
 
         protected void SetBooleanProperty(string propertyName, bool value, [CallerMemberName] string? changedProperty = null)

@@ -59,7 +59,6 @@ namespace DotNet.Properties
         private static int Main(string[] args) =>
             BuildAvaloniaApp().StartWithClassicDesktopLifetime(args, ShutdownMode.OnMainWindowClose);
 
-
         private bool TryBuildMainWindowDataContext(
             MainWindow mainWindow,
             out MainWindowViewModel? viewModel)

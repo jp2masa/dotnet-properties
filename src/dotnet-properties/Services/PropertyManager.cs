@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
+using System.Collections.ObjectModel;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -59,7 +61,8 @@ namespace DotNet.Properties.Services
             return evaluatedValue ? property?.EvaluatedValue : property?.UnevaluatedValue;
         }
 
-        public IEnumerable<ProjectItem> GetItems(string itemType) => _project.GetItems(itemType);
+        public IReadOnlyCollection<ProjectItem> GetItems(string itemType) =>
+            ImmutableArray.CreateRange(_project.GetItems(itemType));
 
         public void SetProperty(string propertyName, string value)
         {
