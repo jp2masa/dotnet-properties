@@ -1,9 +1,17 @@
 <Styles xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <Border Padding="20">
+            <TabControl Classes="sidebar">
+                <TabItem Header="Item1" />
+                <TabItem Header="Item2" />
+            </TabControl>
+        </Border>
+    </Design.PreviewWith>
 
     <Style Selector="TabControl.sidebar">
         <Setter Property="TabStripPlacement" Value="Left" />
-        <Setter Property="Padding" Value="8" />
+        <Setter Property="Padding" Value="16 0" />
         <Setter Property="Background" Value="{DynamicResource ThemeAccentBrush}" />
         <Setter Property="ItemsPanel">
             <ItemsPanelTemplate>
@@ -24,8 +32,7 @@
                             <ItemsPresenter Name="PART_ItemsPresenter"
                                             Items="{TemplateBinding Items}"
                                             ItemsPanel="{TemplateBinding ItemsPanel}"
-                                            ItemTemplate="{TemplateBinding ItemTemplate}"
-                                            MemberSelector="{TemplateBinding MemberSelector}" />
+                                            ItemTemplate="{TemplateBinding ItemTemplate}" />
                         </ScrollViewer>
                         <ScrollViewer>
                             <ContentPresenter Name="PART_SelectedContentHost"
@@ -50,7 +57,7 @@
         <Setter Property="Opacity" Value="0.5" />
         <Setter Property="Transitions">
             <Transitions>
-                <DoubleTransition Property="Opacity" Duration="0:0:0.5" />
+                <DoubleTransition Property="Opacity" Duration="0:0:0.150" />
             </Transitions>
         </Setter>
     </Style>
@@ -59,7 +66,7 @@
         <Setter Property="Opacity" Value="1"/>
     </Style>
 
-    <Style Selector="TabControl.sidebar > TabItem:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+    <Style Selector="TabControl.sidebar > TabItem:pointerover">
         <Setter Property="Background" Value="Transparent" />
     </Style>
 
@@ -67,7 +74,7 @@
         <Setter Property="Opacity" Value="1" />
     </Style>
 
-    <Style Selector="TabControl.sidebar > TabItem:selected /template/ ContentPresenter#PART_ContentPresenter">
+    <Style Selector="TabControl.sidebar > TabItem:selected">
         <Setter Property="Background" Value="{DynamicResource ThemeAccentBrush2}" />
     </Style>
 
