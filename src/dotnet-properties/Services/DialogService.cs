@@ -32,10 +32,11 @@ namespace DotNet.Properties.Services
                 _owner.IsEnabled = false;
             }
 
-            var source = new CancellationTokenSource();
-            view.ShowDialog(_owner).ContinueWith(t => source.Cancel(), TaskScheduler.FromCurrentSynchronizationContext());
-
-            Dispatcher.UIThread.MainLoop(source.Token);
+            using (var source = new CancellationTokenSource())
+            {
+                view.ShowDialog(_owner).ContinueWith(t => source.Cancel(), TaskScheduler.FromCurrentSynchronizationContext());
+                Dispatcher.UIThread.MainLoop(source.Token);
+            }
 
             if (_owner != null)
             {
