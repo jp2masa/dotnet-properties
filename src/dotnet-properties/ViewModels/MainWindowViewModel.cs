@@ -29,28 +29,15 @@ namespace DotNet.Properties.ViewModels
         private readonly IThemeService _themeService;
 
         public MainWindowViewModel(
-            string? projectPath,
-            IDotNetSdkResolver dotnetSdkResolver,
+            MSBuildProject project,
             IDialogService<UnsavedChangesDialogViewModel> unsavedChangesDialogService,
             IOpenFileDialogService openFileDialogService,
             IThemeService themeService)
         {
-            if (!File.Exists(projectPath))
-            {
-                throw new FileNotFoundException("Project file not found!", projectPath);
-            }
+            _project = project.Project;
+            _propertyManager = new PropertyManager(_project);
 
             _unsavedChangesDialogService = unsavedChangesDialogService;
-
-            dotnetSdkResolver.TryResolveSdkPath(Path.GetDirectoryName(projectPath), out var dotnetSdkPath);
-
-            // File.Exists checks for null, so projectPath can't be null
-#nullable disable
-            var msBuildProject = new MSBuildProject(new DotNetSdkPaths(dotnetSdkPath), projectPath);
-#nullable enable
-
-            _project = msBuildProject.Project;
-            _propertyManager = new PropertyManager(_project);
 
             ClosingCommand = ReactiveCommand.Create<CancelEventArgs>(OnClosing);
 

@@ -16,18 +16,18 @@ namespace DotNet.Properties.Services
                 "Microsoft.Build.Tasks.Core",
                 "Microsoft.Build.Utilities.Core");
 
-        private readonly string _dotnetSdkPath;
+        private readonly DotNetSdkPaths _dotnetSdkPaths;
 
-        public MSBuildLoader(string dotnetSdkPath)
+        public MSBuildLoader(DotNetSdkPaths dotnetSdkPaths)
         {
-            _dotnetSdkPath = dotnetSdkPath;
+            _dotnetSdkPaths = dotnetSdkPaths;
         }
 
         public bool TryResolveMSBuildAssembly(AssemblyLoadContext context, string assemblyName, out Assembly? assembly)
         {
             if (MSBuildAssemblies.Contains(assemblyName))
             {
-                var assemblyPath = Path.Combine(_dotnetSdkPath, $"{assemblyName}.dll");
+                var assemblyPath = Path.Combine(_dotnetSdkPaths.ToolsPath, $"{assemblyName}.dll");
 
                 if (File.Exists(assemblyPath))
                 {

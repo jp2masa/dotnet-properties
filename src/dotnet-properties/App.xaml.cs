@@ -73,15 +73,18 @@ namespace DotNet.Properties
             }
 
             IDotNetSdkResolver dotnetSdkResolver = new DotNetSdkResolver();
-            dotnetSdkResolver.TryResolveSdkPath(Path.GetDirectoryName(projectPath), out var path);
 
-            if (path == null)
+            if (!dotnetSdkResolver.TryResolveSdkPath(Path.GetDirectoryName(projectPath), out var dotnetSdkPath))
             {
                 viewModel = null;
                 return false;
             }
 
-            IMSBuildLoader msBuildLoader = new MSBuildLoader(path);
+#pragma warning disable CS8604 // Possible null reference argument.
+            var dotnetSdkPaths = new DotNetSdkPaths(dotnetSdkPath);
+#pragma warning restore CS8604 // Possible null reference argument.
+
+            IMSBuildLoader msBuildLoader = new MSBuildLoader(dotnetSdkPaths);
 
             AssemblyLoadContext.Default.Resolving += (context, name) =>
             {
@@ -93,9 +96,18 @@ namespace DotNet.Properties
                 return null;
             };
 
+            if (!File.Exists(projectPath))
+            {
+                throw new FileNotFoundException("Project file not found!", projectPath);
+            }
+
+            // File.Exists checks for null, so projectPath can't be null
+#pragma warning disable CS8604 // Possible null reference argument.
+            var msBuildProject = new MSBuildProject(dotnetSdkPaths, projectPath);
+#pragma warning restore CS8604 // Possible null reference argument.
+
             viewModel = new MainWindowViewModel(
-                projectPath,
-                dotnetSdkResolver,
+                msBuildProject,
                 new DialogService<UnsavedChangesDialog, UnsavedChangesDialogViewModel>(
                     () => new UnsavedChangesDialog(), mainWindow),
                 new OpenFileDialogService(mainWindow),
