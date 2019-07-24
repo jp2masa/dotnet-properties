@@ -5,7 +5,7 @@
         <AvaloniaSkiaLinuxNativesVersion>1.68.0.2</AvaloniaSkiaLinuxNativesVersion>
         <MicrosoftBuildVersion>16.0.461</MicrosoftBuildVersion>
         <MicrosoftCodeAnalysisFxCopAnalyzersVersion>2.9.3</MicrosoftCodeAnalysisFxCopAnalyzersVersion>
-        <NuGetVersion>5.1.0</NuGetVersion>
+        <NuGetVersion>5.2.0</NuGetVersion>
         <ReactiveUIVersion>9.19.5</ReactiveUIVersion>
     </PropertyGroup>
 
