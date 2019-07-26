@@ -44,7 +44,7 @@ namespace DotNet.Properties
                 { MSBuildProperties.MSBuildExtensionsPath, _dotnetSdkPaths.ExtensionsPath },
                 { MSBuildProperties.MSBuildSDKsPath, _dotnetSdkPaths.SdksPath },
                 { MSBuildProperties.RoslynTargetsPath, _dotnetSdkPaths.RoslynTargetsPath },
-                //{ MsBuildProperties.DesignTimeBuild, "true" },
+                //{ MSBuildProperties.DesignTimeBuild, "true" },
                 { MSBuildProperties.BuildProjectReferences, "false" },
                 { MSBuildProperties.SkipCompilerExecution, "true" },
                 { MSBuildProperties.ProvideCommandLineArgs, "true" },

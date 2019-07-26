@@ -91,7 +91,7 @@ namespace DotNet.Properties.Pages.ViewModels
 
         public string? WarningLevel
         {
-            get => GetStringProperty(Property.WarningLevel);
+            get => AvailableWarningLevels.SingleOrDefault(x => x == GetStringProperty(Property.WarningLevel));
             set => SetStringProperty(Property.WarningLevel, value);
         }
 
