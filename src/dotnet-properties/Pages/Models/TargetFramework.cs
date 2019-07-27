@@ -6,10 +6,6 @@ namespace DotNet.Properties.Pages.Models
 {
     internal class TargetFramework : IEquatable<TargetFramework>
     {
-        public NuGetFramework NuGetFramework { get; }
-        public string DisplayName { get; }
-        public string ShortName { get; }
-
         public TargetFramework(NuGetFramework framework, string displayName)
         {
             NuGetFramework = framework;
@@ -21,6 +17,12 @@ namespace DotNet.Properties.Pages.Models
             : this(NuGetFramework.Parse(framework), displayName)
         {
         }
+
+        public NuGetFramework NuGetFramework { get; }
+
+        public string DisplayName { get; }
+
+        public string ShortName { get; }
 
         public override string ToString() => DisplayName;
 

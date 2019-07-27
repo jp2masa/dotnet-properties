@@ -4,14 +4,15 @@ namespace DotNet.Properties.Pages.Models
 {
     internal class PlatformTarget : IEquatable<PlatformTarget>
     {
-        public string Value { get; }
-        public string DisplayName { get; }
-
         public PlatformTarget(string value, string displayName)
         {
             Value = value;
             DisplayName = displayName;
         }
+
+        public string Value { get; }
+
+        public string DisplayName { get; }
 
         public bool Equals(PlatformTarget other) => DisplayName.Equals(other.DisplayName, StringComparison.Ordinal);
 

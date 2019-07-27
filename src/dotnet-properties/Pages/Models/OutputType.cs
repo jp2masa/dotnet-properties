@@ -4,14 +4,15 @@ namespace DotNet.Properties.Pages.Models
 {
     internal class OutputType : IEquatable<OutputType>
     {
-        public string Value { get; }
-        public string DisplayName { get; }
-
         public OutputType(string value, string displayName)
         {
             Value = value;
             DisplayName = displayName;
         }
+
+        public string Value { get; }
+
+        public string DisplayName { get; }
 
         public bool Equals(OutputType other) => DisplayName.Equals(other.DisplayName, StringComparison.Ordinal);
 

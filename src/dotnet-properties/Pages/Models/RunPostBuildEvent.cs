@@ -4,14 +4,15 @@ namespace DotNet.Properties.Pages.Models
 {
     internal class RunPostBuildEvent : IEquatable<RunPostBuildEvent>
     {
-        public string Value { get; }
-        public string DisplayName { get; }
-
         public RunPostBuildEvent(string value, string displayName)
         {
             Value = value;
             DisplayName = displayName;
         }
+
+        public string Value { get; }
+
+        public string DisplayName { get; }
 
         public bool Equals(RunPostBuildEvent other) => DisplayName.Equals(other.DisplayName, StringComparison.Ordinal);
 
