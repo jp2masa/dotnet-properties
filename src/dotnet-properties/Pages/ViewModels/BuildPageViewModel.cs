@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Linq;
 
 using ReactiveUI;
@@ -31,22 +32,15 @@ namespace DotNet.Properties.Pages.ViewModels
             public const string DocumentationFile = nameof(DocumentationFile);
         }
 
-        private static readonly IEnumerable<PlatformTarget> _platformTargets = new List<PlatformTarget>()
-        {
-            new PlatformTarget("AnyCPU", "Any CPU"),
-            new PlatformTarget("x64", "x64"),
-            new PlatformTarget("x86", "x86"),
-            new PlatformTarget("ARM", "ARM")
-        };
+        private static readonly IEnumerable<PlatformTarget> _platformTargets =
+            ImmutableArray.Create(
+                new PlatformTarget("AnyCPU", "Any CPU"),
+                new PlatformTarget("x64", "x64"),
+                new PlatformTarget("x86", "x86"),
+                new PlatformTarget("ARM", "ARM"));
 
-        private static readonly IEnumerable<string> _warningLevels = new List<string>()
-        {
-            "0",
-            "1",
-            "2",
-            "3",
-            "4"
-        };
+        private static readonly IEnumerable<string> _warningLevels =
+            ImmutableArray.Create<string>("0", "1", "2", "3", "4");
 
         public BuildPageViewModel(IPropertyManager propertyManager)
             : base(propertyManager)
