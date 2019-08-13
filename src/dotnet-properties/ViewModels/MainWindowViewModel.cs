@@ -107,10 +107,14 @@ namespace DotNet.Properties.ViewModels
         }
 
         private string GetConfigurationDisplayName(string? configuration) =>
+#pragma warning disable CS8603 // Possible null reference return.
             String.IsNullOrEmpty(configuration) ? AnyConfiguration : configuration;
+#pragma warning restore CS8603 // Possible null reference return.
 
         private string GetPlatformDisplayName(string? platform) =>
+#pragma warning disable CS8603 // Possible null reference return.
             String.IsNullOrEmpty(platform) ? AnyPlatform : platform;
+#pragma warning restore CS8603 // Possible null reference return.
 
         private void OnClosing(CancelEventArgs e)
         {

@@ -16,7 +16,7 @@ namespace DotNet.Properties.Services
         private const string PlatformCondition = "'$(Platform)' == '{0}'";
         private const string ConfigurationAndPlatformCondition = "'$(Configuration)|$(Platform)' == '{0}|{1}'";
 
-        public event EventHandler IsDirtyChanged;
+        public event EventHandler? IsDirtyChanged;
 
         public bool IsDirty => _project.Xml.HasUnsavedChanges;
 
