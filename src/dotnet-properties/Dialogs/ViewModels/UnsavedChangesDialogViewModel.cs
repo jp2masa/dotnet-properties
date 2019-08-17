@@ -20,7 +20,9 @@ namespace DotNet.Properties.Dialogs.ViewModels
         }
 
         public ICommand YesCommand { get; }
+
         public ICommand NoCommand { get; }
+
         public ICommand CancelCommand { get; }
 
         public UnsavedChangesDialogResult DialogResult
