@@ -7,15 +7,15 @@ namespace DotNet.Properties.Services
 {
     internal sealed class Theme : ITheme, IEquatable<Theme>
     {
-        public string Name { get; }
-
-        public IStyle Style { get; }
-
         public Theme(string name, IStyle style)
         {
             Name = name;
             Style = style;
         }
+
+        public string Name { get; }
+
+        public IStyle Style { get; }
 
         public bool Equals(Theme other) =>
             !(other is null) && Name == other.Name;

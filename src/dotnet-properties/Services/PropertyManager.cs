@@ -16,6 +16,21 @@ namespace DotNet.Properties.Services
         private const string PlatformCondition = "'$(Platform)' == '{0}'";
         private const string ConfigurationAndPlatformCondition = "'$(Configuration)|$(Platform)' == '{0}|{1}'";
 
+        private Project _project;
+
+        private string? _configuration;
+        private string? _platform;
+
+        public PropertyManager(Project project)
+        {
+            _project = project ?? throw new ArgumentNullException(nameof(project));
+
+            SetConfiguration(String.Empty, false);
+            SetPlatform(String.Empty, false);
+
+            _project.ReevaluateIfNecessary();
+        }
+
         public event EventHandler? IsDirtyChanged;
 
         public bool IsDirty => _project.Xml.HasUnsavedChanges;
@@ -36,21 +51,6 @@ namespace DotNet.Properties.Services
         {
             get => _platform;
             set => SetPlatform(value);
-        }
-
-        private Project _project;
-
-        private string? _configuration;
-        private string? _platform;
-
-        public PropertyManager(Project project)
-        {
-            _project = project ?? throw new ArgumentNullException(nameof(project));
-
-            SetConfiguration(String.Empty, false);
-            SetPlatform(String.Empty, false);
-
-            _project.ReevaluateIfNecessary();
         }
 
         public string? GetProperty(
