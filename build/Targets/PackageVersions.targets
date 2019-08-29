@@ -1,12 +1,12 @@
 <Project>
 
     <PropertyGroup>
-        <AvaloniaVersion>0.8.999-cibuild0003548-beta</AvaloniaVersion>
+        <AvaloniaVersion>0.8.999-cibuild0003699-beta</AvaloniaVersion>
         <AvaloniaSkiaLinuxNativesVersion>1.68.0.2</AvaloniaSkiaLinuxNativesVersion>
         <MicrosoftBuildVersion>16.0.461</MicrosoftBuildVersion>
         <MicrosoftCodeAnalysisFxCopAnalyzersVersion>2.9.4</MicrosoftCodeAnalysisFxCopAnalyzersVersion>
         <NuGetVersion>5.2.0</NuGetVersion>
-        <ReactiveUIVersion>9.20.1</ReactiveUIVersion>
+        <ReactiveUIVersion>9.22.1</ReactiveUIVersion>
     </PropertyGroup>
 
     <ItemGroup>
