@@ -1,11 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>netcoreapp2.1</TargetFramework>
+        <TargetFramework>netcoreapp3.0</TargetFramework>
         <OutputType>WinExe</OutputType>
         <ApplicationIcon>Resources\Icon.ico</ApplicationIcon>
         <RootNamespace>DotNet.Properties</RootNamespace>
-        <TieredCompilation>True</TieredCompilation>
         <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     </PropertyGroup>
 
