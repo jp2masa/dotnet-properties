@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Runtime.Loader;
 using System.Threading.Tasks;
@@ -64,9 +65,12 @@ namespace DotNet.Properties
             out MainWindowViewModel? viewModel)
         {
             var projFiles = Directory.GetFiles(Environment.CurrentDirectory, "*.*proj");
-            var projectPath = projFiles.Length == 1 ? projFiles[0] : OpenProjectFile();
 
-            if (!File.Exists(projectPath))
+            var projectPath = projFiles.Length == 1 ? projFiles[0] : OpenProjectFile();
+            var projectDirectory = Path.GetDirectoryName(projectPath);
+
+            // TODO: replace with File.Exists and Directory.Exists when nullable annotations are correct
+            if (!FileExists(projectPath) || !DirectoryExists(projectDirectory))
             {
                 viewModel = null;
                 return false;
@@ -74,21 +78,19 @@ namespace DotNet.Properties
 
             IDotNetSdkResolver dotnetSdkResolver = new DotNetSdkResolver();
 
-            if (!dotnetSdkResolver.TryResolveSdkPath(Path.GetDirectoryName(projectPath), out var dotnetSdkPath))
+            if (!dotnetSdkResolver.TryResolveSdkPath(projectDirectory, out var dotnetSdkPath))
             {
                 viewModel = null;
                 return false;
             }
 
-#pragma warning disable CS8604 // Possible null reference argument.
             var dotnetSdkPaths = new DotNetSdkPaths(dotnetSdkPath);
-#pragma warning restore CS8604 // Possible null reference argument.
 
             IMSBuildLoader msBuildLoader = new MSBuildLoader(dotnetSdkPaths);
 
             AssemblyLoadContext.Default.Resolving += (context, name) =>
             {
-                if (msBuildLoader.TryResolveMSBuildAssembly(context, name.Name, out var assembly))
+                if (name.Name != null && msBuildLoader.TryResolveMSBuildAssembly(context, name.Name, out var assembly))
                 {
                     return assembly;
                 }
@@ -96,20 +98,11 @@ namespace DotNet.Properties
                 return null;
             };
 
-            if (!File.Exists(projectPath))
-            {
-                throw new FileNotFoundException("Project file not found!", projectPath);
-            }
-
-            // File.Exists checks for null, so projectPath can't be null
-#pragma warning disable CS8604 // Possible null reference argument.
             var msBuildProject = new MSBuildProject(dotnetSdkPaths, projectPath);
-#pragma warning restore CS8604 // Possible null reference argument.
 
             viewModel = new MainWindowViewModel(
                 msBuildProject,
-                new DialogService<UnsavedChangesDialog, UnsavedChangesDialogViewModel>(
-                    () => new UnsavedChangesDialog(), mainWindow),
+                new DialogService<UnsavedChangesDialog, UnsavedChangesDialogViewModel>(NewUnsavedChangesDialog, mainWindow),
                 new OpenFileDialogService(mainWindow),
                 new ThemeService(this));
 
@@ -148,5 +141,11 @@ namespace DotNet.Properties
                 .LogToDebug()
 #endif
                 .UseReactiveUI();
+
+        private static UnsavedChangesDialog NewUnsavedChangesDialog() => new UnsavedChangesDialog();
+
+        private static bool DirectoryExists([NotNullWhen(true)]string? path) => Directory.Exists(path);
+
+        private static bool FileExists([NotNullWhen(true)]string? path) => File.Exists(path);
     }
 }

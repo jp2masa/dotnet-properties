@@ -1,7 +1,9 @@
-﻿namespace DotNet.Properties.Services
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace DotNet.Properties.Services
 {
     internal interface IDotNetSdkResolver
     {
-        bool TryResolveSdkPath(string workingDirectory, out string? path);
+        bool TryResolveSdkPath(string workingDirectory, [NotNullWhen(true)]out string? path);
     }
 }

@@ -4,7 +4,7 @@ using NuGet.Frameworks;
 
 namespace DotNet.Properties.Pages.Models
 {
-    internal class TargetFramework : IEquatable<TargetFramework>
+    internal sealed class TargetFramework : IEquatable<TargetFramework>
     {
         public TargetFramework(NuGetFramework framework, string displayName)
         {
@@ -28,7 +28,7 @@ namespace DotNet.Properties.Pages.Models
 
         public bool Equals(TargetFramework other) => NuGetFramework.Equals(other.NuGetFramework);
 
-        public override bool Equals(object obj) => obj is TargetFramework && Equals((TargetFramework)obj);
+        public override bool Equals(object? obj) => obj is TargetFramework && Equals((TargetFramework)obj);
 
         public override int GetHashCode() => NuGetFramework.GetHashCode();
     }

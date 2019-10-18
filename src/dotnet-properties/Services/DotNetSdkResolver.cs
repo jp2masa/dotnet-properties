@@ -3,6 +3,7 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 
 namespace DotNet.Properties.Services
@@ -13,7 +14,7 @@ namespace DotNet.Properties.Services
     {
         private readonly ConcurrentDictionary<string, DotNetInfo> _dotnetInfos = new ConcurrentDictionary<string, DotNetInfo>();
 
-        public bool TryResolveSdkPath(string workingDirectory, out string? path)
+        public bool TryResolveSdkPath(string workingDirectory, [NotNullWhen(true)]out string? path)
         {
             if (_dotnetInfos.TryGetValue(workingDirectory, out var info))
             {

@@ -44,7 +44,7 @@ namespace DotNet.Properties.Views
 
         private void InitializeComponent() => AvaloniaXamlLoader.Load(this);
 
-        private void HandleClosingCommand(object sender, CancelEventArgs e)
+        private void HandleClosingCommand(object? sender, CancelEventArgs e)
         {
             if (ClosingCommand != null)
             {

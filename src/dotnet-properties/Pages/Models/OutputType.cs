@@ -2,7 +2,7 @@
 
 namespace DotNet.Properties.Pages.Models
 {
-    internal class OutputType : IEquatable<OutputType>
+    internal sealed class OutputType : IEquatable<OutputType>
     {
         public OutputType(string value, string displayName)
         {
@@ -16,7 +16,7 @@ namespace DotNet.Properties.Pages.Models
 
         public bool Equals(OutputType other) => DisplayName.Equals(other.DisplayName, StringComparison.Ordinal);
 
-        public override bool Equals(object obj) => obj is OutputType && Equals((OutputType)obj);
+        public override bool Equals(object? obj) => obj is OutputType && Equals((OutputType)obj);
 
         public override int GetHashCode() => DisplayName.GetHashCode(StringComparison.Ordinal);
 

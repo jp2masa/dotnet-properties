@@ -2,7 +2,7 @@
 
 namespace DotNet.Properties.Pages.Models
 {
-    internal class RunPostBuildEvent : IEquatable<RunPostBuildEvent>
+    internal sealed class RunPostBuildEvent : IEquatable<RunPostBuildEvent>
     {
         public RunPostBuildEvent(string value, string displayName)
         {
@@ -16,7 +16,7 @@ namespace DotNet.Properties.Pages.Models
 
         public bool Equals(RunPostBuildEvent other) => DisplayName.Equals(other.DisplayName, StringComparison.Ordinal);
 
-        public override bool Equals(object obj) => obj is RunPostBuildEvent && Equals((RunPostBuildEvent)obj);
+        public override bool Equals(object? obj) => obj is RunPostBuildEvent && Equals((RunPostBuildEvent)obj);
 
         public override int GetHashCode() => DisplayName.GetHashCode(StringComparison.Ordinal);
 

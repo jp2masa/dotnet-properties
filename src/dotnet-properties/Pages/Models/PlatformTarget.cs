@@ -2,7 +2,7 @@
 
 namespace DotNet.Properties.Pages.Models
 {
-    internal class PlatformTarget : IEquatable<PlatformTarget>
+    internal sealed class PlatformTarget : IEquatable<PlatformTarget>
     {
         public PlatformTarget(string value, string displayName)
         {
@@ -16,7 +16,7 @@ namespace DotNet.Properties.Pages.Models
 
         public bool Equals(PlatformTarget other) => DisplayName.Equals(other.DisplayName, StringComparison.Ordinal);
 
-        public override bool Equals(object obj) => obj is PlatformTarget && Equals((PlatformTarget)obj);
+        public override bool Equals(object? obj) => obj is PlatformTarget && Equals((PlatformTarget)obj);
 
         public override int GetHashCode() => DisplayName.GetHashCode(StringComparison.Ordinal);
 
