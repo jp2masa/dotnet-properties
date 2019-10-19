@@ -1,5 +1,4 @@
-﻿using Avalonia.Styling;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace DotNet.Properties.Services
 {
