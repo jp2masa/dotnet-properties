@@ -23,6 +23,14 @@ namespace DotNet.Properties
 {
     internal class App : Application
     {
+        private static readonly List<FileDialogFilter> OpenProjectFileDialogFilters = new List<FileDialogFilter>()
+        {
+            new FileDialogFilter() { Name = "All Project Files", Extensions = new List<string>() { "*proj" } },
+            new FileDialogFilter() { Name = "C# Project Files", Extensions = new List<string>() { "csproj" } },
+            new FileDialogFilter() { Name = "Visual Basic Project Files", Extensions = new List<string>() { "vbproj" } },
+            new FileDialogFilter() { Name = "F# Project Files", Extensions = new List<string>() { "fsproj" } },
+        };
+
         public override void Initialize()
         {
             AvaloniaXamlLoader.Load(this);
@@ -115,13 +123,7 @@ namespace DotNet.Properties
                 var openFileDialog = new OpenFileDialog
                 {
                     AllowMultiple = false,
-                    Filters = new List<FileDialogFilter>()
-                    {
-                        new FileDialogFilter() { Name = "All Project Files", Extensions = new List<string>() { "*proj" } },
-                        new FileDialogFilter() { Name = "C# Project Files", Extensions = new List<string>() { "csproj" } },
-                        new FileDialogFilter() { Name = "Visual Basic Project Files", Extensions = new List<string>() { "vbproj" } },
-                        new FileDialogFilter() { Name = "F# Project Files", Extensions = new List<string>() { "fsproj" } },
-                    }
+                    Filters = OpenProjectFileDialogFilters
                 };
 
                 var result = await openFileDialog.ShowAsync(null).ConfigureAwait(false);
