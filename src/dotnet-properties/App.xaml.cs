@@ -3,15 +3,18 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Runtime.Loader;
+using System.Threading;
 using System.Threading.Tasks;
 
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
+using Avalonia.Controls.Platform;
 using Avalonia.Logging.Serilog;
 using Avalonia.Markup.Xaml;
 using Avalonia.ReactiveUI;
 using Avalonia.Styling;
+using Avalonia.Threading;
 
 using DotNet.Properties.Dialogs.Views;
 using DotNet.Properties.Dialogs.ViewModels;
@@ -56,10 +59,11 @@ namespace DotNet.Properties
             if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
             {
                 var mainWindow = new MainWindow();
+                var mainWindowViewModel = BuildMainWindowDataContext(mainWindow);
 
-                if (TryBuildMainWindowDataContext(mainWindow, out var mainWindowDataContext))
+                if (mainWindowViewModel != null)
                 {
-                    mainWindow.DataContext = mainWindowDataContext;
+                    mainWindow.DataContext = mainWindowViewModel;
                     desktop.MainWindow = mainWindow;
                 }
             }
@@ -68,9 +72,7 @@ namespace DotNet.Properties
         private static int Main(string[] args) =>
             BuildAvaloniaApp().StartWithClassicDesktopLifetime(args, ShutdownMode.OnMainWindowClose);
 
-        private bool TryBuildMainWindowDataContext(
-            MainWindow mainWindow,
-            out MainWindowViewModel? viewModel)
+        private MainWindowViewModel? BuildMainWindowDataContext(MainWindow mainWindow)
         {
             var projFiles = Directory.GetFiles(Environment.CurrentDirectory, "*.*proj");
 
@@ -80,16 +82,14 @@ namespace DotNet.Properties
             // TODO: replace with File.Exists and Directory.Exists when nullable annotations are correct
             if (!FileExists(projectPath) || !DirectoryExists(projectDirectory))
             {
-                viewModel = null;
-                return false;
+                return null;
             }
 
             IDotNetSdkResolver dotnetSdkResolver = new DotNetSdkResolver();
 
             if (!dotnetSdkResolver.TryResolveSdkPath(projectDirectory, out var dotnetSdkPath))
             {
-                viewModel = null;
-                return false;
+                return null;
             }
 
             var dotnetSdkPaths = new DotNetSdkPaths(dotnetSdkPath);
@@ -108,33 +108,45 @@ namespace DotNet.Properties
 
             var msBuildProject = new MSBuildProject(dotnetSdkPaths, projectPath);
 
-            viewModel = new MainWindowViewModel(
+            return new MainWindowViewModel(
                 msBuildProject,
                 new DialogService<UnsavedChangesDialog, UnsavedChangesDialogViewModel>(NewUnsavedChangesDialog, mainWindow),
                 new OpenFileDialogService(mainWindow),
                 new ThemeService(this));
-
-            return true;
         }
 
-        private static string? OpenProjectFile() =>
-            Task.Run(async () =>
+        private static string? OpenProjectFile()
+        {
+            Task<string?> task;
+
+            using (var source = new CancellationTokenSource())
             {
-                var openFileDialog = new OpenFileDialog
-                {
-                    AllowMultiple = false,
-                    Filters = OpenProjectFileDialogFilters
-                };
+                task = OpenProjectFileAsync();
+                task.ContinueWith(t => source.Cancel(), TaskScheduler.FromCurrentSynchronizationContext());
 
-                var result = await openFileDialog.ShowAsync(null).ConfigureAwait(false);
+                Dispatcher.UIThread.MainLoop(source.Token);
+            }
 
-                if (result != null && result.Length > 0)
-                {
-                    return result[0];
-                }
+            return task.Result;
+        }
 
-                return null;
-            }).Result;
+        private static async Task<string?> OpenProjectFileAsync()
+        {
+            var openFileDialog = new OpenFileDialog
+            {
+                AllowMultiple = false,
+                Filters = OpenProjectFileDialogFilters
+            };
+
+            var result = await ShowOpenFileDialogAsync(openFileDialog).ConfigureAwait(false);
+
+            if (result != null && result.Length > 0)
+            {
+                return result[0];
+            }
+
+            return null;
+        }
 
         private static AppBuilder BuildAvaloniaApp() =>
             AppBuilder.Configure<App>()
@@ -149,5 +161,11 @@ namespace DotNet.Properties
         private static bool DirectoryExists([NotNullWhen(true)]string? path) => Directory.Exists(path);
 
         private static bool FileExists([NotNullWhen(true)]string? path) => File.Exists(path);
+
+        private static Task<string[]> ShowOpenFileDialogAsync(FileDialog dialog, Window? parent = null)
+        {
+            var systemDialogImpl = AvaloniaLocator.Current.GetService<ISystemDialogImpl>();
+            return systemDialogImpl.ShowFileDialogAsync(dialog, parent?.PlatformImpl);
+        }
     }
 }
