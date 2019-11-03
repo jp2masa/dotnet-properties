@@ -79,7 +79,7 @@
                                 Orientation="Horizontal"
                                 Spacing="8">
 
-                        <RadioButton Content="URL"
+                        <RadioButton Content="URL (deprecated)"
                                      IsChecked="{Binding IsLicenseURL}" />
 
                         <RadioButton Content="File"
