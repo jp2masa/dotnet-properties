@@ -15,7 +15,7 @@ namespace DotNet.Properties.Services
         private const string PlatformCondition = "'$(Platform)' == '{0}'";
         private const string ConfigurationAndPlatformCondition = "'$(Configuration)|$(Platform)' == '{0}|{1}'";
 
-        private Project _project;
+        private readonly Project _project;
 
         private string? _configuration;
         private string? _platform;

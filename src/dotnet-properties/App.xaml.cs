@@ -34,10 +34,7 @@ namespace DotNet.Properties
             new FileDialogFilter() { Name = "F# Project Files", Extensions = new List<string>() { "fsproj" } },
         };
 
-        public override void Initialize()
-        {
-            AvaloniaXamlLoader.Load(this);
-        }
+        public override void Initialize() => AvaloniaXamlLoader.Load(this);
 
         public override void OnFrameworkInitializationCompleted()
         {
