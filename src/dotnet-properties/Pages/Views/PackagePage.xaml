@@ -130,8 +130,41 @@
             </StackPanel>
 
             <StackPanel Spacing="4">
-                <TextBlock Text="Icon URL:" />
-                <TextBox Text="{Binding IconURL}" />
+
+                <TextBlock Text="Icon:" />
+
+                <DockPanel>
+
+                    <StackPanel DockPanel.Dock="Left"
+                                Orientation="Horizontal"
+                                Spacing="8">
+
+                        <RadioButton Content="URL (deprecated)"
+                                     IsChecked="{Binding IsIconUrl}" />
+
+                        <RadioButton Content="File"
+                                     IsChecked="{Binding IsIconFile}" />
+
+                    </StackPanel>
+
+                </DockPanel>
+
+                <StackPanel Spacing="4"
+                            IsVisible="{Binding IsIconUrl}">
+
+                    <TextBlock Text="Icon URL:" />
+                    <TextBox Text="{Binding IconUrl}" />
+
+                </StackPanel>
+
+                <StackPanel Spacing="4"
+                            IsVisible="{Binding IsIconFile}">
+
+                    <TextBlock Text="Icon file:" />
+                    <TextBox Text="{Binding IconFile}" />
+
+                </StackPanel>
+
             </StackPanel>
 
             <Grid Grid.Column="0"

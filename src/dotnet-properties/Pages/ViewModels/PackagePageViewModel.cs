@@ -25,6 +25,7 @@ namespace DotNet.Properties.Pages.ViewModels
             public const string PackageRequireLicenseAcceptance = nameof(PackageRequireLicenseAcceptance);
             public const string PackageProjectUrl = nameof(PackageProjectUrl);
             public const string PackageIconUrl = nameof(PackageIconUrl);
+            public const string PackageIcon = nameof(PackageIcon);
             public const string RepositoryUrl = nameof(RepositoryUrl);
             public const string RepositoryType = nameof(RepositoryType);
             public const string PackageTags = nameof(PackageTags);
@@ -38,6 +39,12 @@ namespace DotNet.Properties.Pages.ViewModels
         private string? _licenseURL;
         private string? _licenseFile;
         private string? _licenseExpression;
+
+        private bool? _isIconUrl;
+        private bool? _isIconFile;
+
+        private string? _iconUrl;
+        private string? _iconFile;
 
         public PackagePageViewModel(IPropertyManager propertyManager)
             : base(propertyManager)
@@ -140,10 +147,28 @@ namespace DotNet.Properties.Pages.ViewModels
             set => SetStringProperty(Property.PackageProjectUrl, value);
         }
 
-        public string? IconURL
+        public string? IconUrl
         {
             get => GetStringProperty(Property.PackageIconUrl);
             set => SetStringProperty(Property.PackageIconUrl, value);
+        }
+
+        public string? IconFile
+        {
+            get => GetStringProperty(Property.PackageIcon);
+            set => UpdateLicense(ref _iconFile, value, Property.PackageIcon);
+        }
+
+        public bool IsIconUrl
+        {
+            get => _isIconUrl ?? (_isIconUrl = !String.IsNullOrEmpty(IconUrl)).Value;
+            set => ChangeLicenseKind(_iconUrl, null, null, ref _isIconUrl, value);
+        }
+
+        public bool IsIconFile
+        {
+            get => _isIconFile ?? (_isIconFile = !String.IsNullOrEmpty(IconFile)).Value;
+            set => ChangeLicenseKind(null, _licenseFile, null, ref _isIconFile, value);
         }
 
         public string? RepositoryURL
@@ -200,6 +225,36 @@ namespace DotNet.Properties.Pages.ViewModels
             }
 
             SetStringProperty(licensePropertyName, license, propertyName);
+        }
+
+        private void ChangeIconKind(
+            string? iconUrl,
+            string? icon,
+            ref bool? isIconField,
+            bool isIcon,
+            [CallerMemberName] string? propertyName = null)
+        {
+            if (isIcon)
+            {
+                IconUrl = iconUrl;
+                IconFile = icon;
+            }
+
+            this.RaiseAndSetIfChanged(ref isIconField, isIcon, propertyName);
+        }
+
+        private void UpdateIcon(
+            ref string? iconField,
+            string? icon,
+            string iconPropertyName,
+            [CallerMemberName] string? propertyName = null)
+        {
+            if (icon != null)
+            {
+                iconField = icon;
+            }
+
+            SetStringProperty(iconPropertyName, icon, propertyName);
         }
     }
 }
