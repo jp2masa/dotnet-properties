@@ -6,7 +6,7 @@ using DotNet.Properties.Services;
 
 namespace DotNet.Properties.Pages.ViewModels
 {
-    internal class BuildEventsPageViewModel : PropertyPageViewModel
+    internal sealed class BuildEventsPageViewModel : PropertyPageViewModel
     {
         private static class Property
         {

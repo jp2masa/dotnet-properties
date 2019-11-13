@@ -9,7 +9,7 @@ using DotNet.Properties.Services;
 
 namespace DotNet.Properties.Pages.ViewModels
 {
-    internal class BuildPageViewModel : PropertyPageViewModel
+    internal sealed class BuildPageViewModel : PropertyPageViewModel
     {
         private static class Property
         {

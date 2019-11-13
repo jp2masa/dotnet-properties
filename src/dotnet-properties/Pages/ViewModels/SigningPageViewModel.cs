@@ -11,7 +11,7 @@ using DotNet.Properties.Services;
 
 namespace DotNet.Properties.Pages.ViewModels
 {
-    internal class SigningPageViewModel : PropertyPageViewModel
+    internal sealed class SigningPageViewModel : PropertyPageViewModel
     {
         private static class Property
         {
