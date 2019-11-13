@@ -17,8 +17,7 @@
         <PackageReference Update="Microsoft.Build" Version="$(MicrosoftBuildVersion)" />
         <PackageReference Update="Microsoft.Build.Utilities.Core" Version="$(MicrosoftBuildVersion)" />
         <PackageReference Update="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="$(MicrosoftCodeAnalysisFxCopAnalyzersVersion)" />
-        <PackageReference Update="NuGet.Frameworks" Version="$(NuGetVersion)" />
-        <PackageReference Update="NuGet.Versioning" Version="$(NuGetVersion)" />
+        <PackageReference Update="NuGet.Packaging" Version="$(NuGetVersion)" />
         <PackageReference Update="ReactiveUI" Version="$(ReactiveUIVersion)" />
     </ItemGroup>
 

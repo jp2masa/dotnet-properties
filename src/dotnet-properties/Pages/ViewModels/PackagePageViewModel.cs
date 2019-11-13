@@ -3,6 +3,7 @@ using System.Runtime.CompilerServices;
 
 using ReactiveUI;
 
+using DotNet.Properties.DataAnnotations;
 using DotNet.Properties.Services;
 
 namespace DotNet.Properties.Pages.ViewModels
@@ -111,6 +112,7 @@ namespace DotNet.Properties.Pages.ViewModels
             set => UpdateProperty(ref _licenseFile, value, Property.PackageLicenseFile);
         }
 
+        [NuGetPackageLicenseExpression]
         public string? LicenseExpression
         {
             get => _licenseExpression ?? (_licenseExpression = GetStringProperty(Property.PackageLicenseExpression));
