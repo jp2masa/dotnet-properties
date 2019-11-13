@@ -129,7 +129,7 @@
                 <TextBox Text="{Binding ProjectURL}" />
             </StackPanel>
 
-            <StackPanel Spacing="4">
+            <StackPanel Spacing="8">
 
                 <TextBlock Text="Icon:" />
 
