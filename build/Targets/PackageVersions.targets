@@ -1,12 +1,13 @@
 <Project>
 
     <PropertyGroup>
-        <AvaloniaVersion>0.9.0-preview7</AvaloniaVersion>
+        <AvaloniaVersion>0.8.999-cibuild0005042-beta</AvaloniaVersion>
         <AvaloniaSkiaLinuxNativesVersion>1.68.0.2</AvaloniaSkiaLinuxNativesVersion>
         <MicrosoftBuildVersion>16.3.0</MicrosoftBuildVersion>
         <MicrosoftCodeAnalysisFxCopAnalyzersVersion>2.9.7</MicrosoftCodeAnalysisFxCopAnalyzersVersion>
         <NuGetVersion>5.3.1</NuGetVersion>
         <ReactiveUIVersion>10.5.7</ReactiveUIVersion>
+        <SkiaSharpVersion>1.68.1-rc.440</SkiaSharpVersion>
     </PropertyGroup>
 
     <ItemGroup>
@@ -19,6 +20,7 @@
         <PackageReference Update="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="$(MicrosoftCodeAnalysisFxCopAnalyzersVersion)" />
         <PackageReference Update="NuGet.Packaging" Version="$(NuGetVersion)" />
         <PackageReference Update="ReactiveUI" Version="$(ReactiveUIVersion)" />
+        <PackageReference Update="SkiaSharp" Version="$(SkiaSharpVersion)" />
     </ItemGroup>
 
 </Project>

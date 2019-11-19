@@ -28,6 +28,7 @@
         <PackageReference Include="Microsoft.Build.Utilities.Core" ExcludeAssets="Runtime" />
         <PackageReference Include="NuGet.Packaging" />
         <PackageReference Include="ReactiveUI" />
+        <PackageReference Include="SkiaSharp" />
     </ItemGroup>
 
 </Project>
