@@ -7,7 +7,7 @@
         <MicrosoftCodeAnalysisFxCopAnalyzersVersion>2.9.7</MicrosoftCodeAnalysisFxCopAnalyzersVersion>
         <NuGetVersion>5.3.1</NuGetVersion>
         <ReactiveUIVersion>10.5.31</ReactiveUIVersion>
-        <SkiaSharpVersion>1.68.1-rc.440</SkiaSharpVersion>
+        <SkiaSharpVersion>1.68.1</SkiaSharpVersion>
     </PropertyGroup>
 
     <ItemGroup>
