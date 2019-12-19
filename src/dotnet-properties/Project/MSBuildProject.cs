@@ -37,10 +37,12 @@ namespace DotNet.Properties
 
             _projectPath = projectPath;
 
+            var solutionDir = Path.GetDirectoryName(projectPath) ?? throw new InvalidOperationException();
+
             // Set global properties
             _globalProperties = new Dictionary<string, string>
             {
-                { MSBuildProperties.SolutionDir, Path.GetDirectoryName(projectPath) },
+                { MSBuildProperties.SolutionDir, solutionDir },
                 { MSBuildProperties.MSBuildExtensionsPath, _dotnetSdkPaths.ExtensionsPath },
                 { MSBuildProperties.MSBuildSDKsPath, _dotnetSdkPaths.SdksPath },
                 { MSBuildProperties.RoslynTargetsPath, _dotnetSdkPaths.RoslynTargetsPath },
