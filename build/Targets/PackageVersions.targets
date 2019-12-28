@@ -6,7 +6,7 @@
         <MicrosoftBuildVersion>16.4.0</MicrosoftBuildVersion>
         <MicrosoftCodeAnalysisFxCopAnalyzersVersion>2.9.8</MicrosoftCodeAnalysisFxCopAnalyzersVersion>
         <NuGetVersion>5.4.0</NuGetVersion>
-        <ReactiveUIVersion>11.0.1</ReactiveUIVersion>
+        <ReactiveUIVersion>11.0.6</ReactiveUIVersion>
         <SkiaSharpVersion>1.68.1.1</SkiaSharpVersion>
     </PropertyGroup>
 
