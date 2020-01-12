@@ -34,6 +34,8 @@ namespace DotNet.Properties
             new FileDialogFilter() { Name = "F# Project Files", Extensions = new List<string>() { "fsproj" } },
         };
 
+        private static readonly Style DummyStyle = new Style();
+
         public override void Initialize() => AvaloniaXamlLoader.Load(this);
 
         public override void OnFrameworkInitializationCompleted()
@@ -44,12 +46,10 @@ namespace DotNet.Properties
             Styles.CollectionChanged +=
                  (sender, e) =>
                  {
-                     var dummyStyle = new Style();
-
                      foreach (var window in ((IClassicDesktopStyleApplicationLifetime)ApplicationLifetime).Windows)
                      {
-                         window.Styles.Add(dummyStyle);
-                         window.Styles.Remove(dummyStyle);
+                         window.Styles.Add(DummyStyle);
+                         window.Styles.Remove(DummyStyle);
                      }
                  };
 

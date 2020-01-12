@@ -37,6 +37,7 @@ namespace DotNet.Properties.ViewModels
             _propertyManager = new PropertyManager(_project);
 
             _unsavedChangesDialogService = unsavedChangesDialogService;
+            _themeService = themeService;
 
             ClosingCommand = ReactiveCommand.Create<CancelEventArgs>(OnClosing);
 
@@ -52,8 +53,6 @@ namespace DotNet.Properties.ViewModels
             BuildEventsPageViewModel = new BuildEventsPageViewModel(_propertyManager);
             PackagePageViewModel = new PackagePageViewModel(_propertyManager);
             SigningPageViewModel = new SigningPageViewModel(_propertyManager, openFileDialogService);
-
-            _themeService = themeService;
         }
 
         public ICommand ClosingCommand { get; }
