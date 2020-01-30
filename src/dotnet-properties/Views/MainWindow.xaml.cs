@@ -15,7 +15,7 @@ namespace DotNet.Properties.Views
     {
         private static readonly Style DummyStyle = new Style();
 
-        public static readonly AvaloniaProperty<ICommand> ClosingCommandProperty =
+        public static readonly StyledProperty<ICommand> ClosingCommandProperty =
             AvaloniaProperty.Register<Window, ICommand>(nameof(ClosingCommand));
 
         public ICommand ClosingCommand
