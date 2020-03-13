@@ -24,12 +24,11 @@
         <PackageReference Include="Avalonia.Desktop" />
         <PackageReference Include="Avalonia.Diagnostics" />
         <PackageReference Include="Avalonia.ReactiveUI" />
-        <PackageReference Include="Avalonia.Skia.Linux.Natives" />
+        <!--<PackageReference Include="Avalonia.Skia.Linux.Natives" />-->
         <PackageReference Include="Microsoft.Build" ExcludeAssets="Runtime" />
         <PackageReference Include="Microsoft.Build.Utilities.Core" ExcludeAssets="Runtime" />
         <PackageReference Include="NuGet.Packaging" />
         <PackageReference Include="ReactiveUI" />
-        <PackageReference Include="SkiaSharp" />
     </ItemGroup>
 
 </Project>

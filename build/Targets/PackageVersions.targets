@@ -7,7 +7,6 @@
         <MicrosoftCodeAnalysisFxCopAnalyzersVersion>2.9.8</MicrosoftCodeAnalysisFxCopAnalyzersVersion>
         <NuGetVersion>5.4.0</NuGetVersion>
         <ReactiveUIVersion>11.2.3</ReactiveUIVersion>
-        <SkiaSharpVersion>1.68.1.1</SkiaSharpVersion>
     </PropertyGroup>
 
     <ItemGroup>
@@ -21,7 +20,6 @@
         <PackageReference Update="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="$(MicrosoftCodeAnalysisFxCopAnalyzersVersion)" />
         <PackageReference Update="NuGet.Packaging" Version="$(NuGetVersion)" />
         <PackageReference Update="ReactiveUI" Version="$(ReactiveUIVersion)" />
-        <PackageReference Update="SkiaSharp" Version="$(SkiaSharpVersion)" />
     </ItemGroup>
 
 </Project>
