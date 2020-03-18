@@ -13,7 +13,6 @@ using Avalonia.Controls.Platform;
 using Avalonia.Logging.Serilog;
 using Avalonia.Markup.Xaml;
 using Avalonia.ReactiveUI;
-using Avalonia.Styling;
 using Avalonia.Threading;
 
 using DotNet.Properties.Dialogs.Views;
@@ -34,25 +33,10 @@ namespace DotNet.Properties
             new FileDialogFilter() { Name = "F# Project Files", Extensions = new List<string>() { "fsproj" } },
         };
 
-        private static readonly Style DummyStyle = new Style();
-
         public override void Initialize() => AvaloniaXamlLoader.Load(this);
 
         public override void OnFrameworkInitializationCompleted()
         {
-            base.OnFrameworkInitializationCompleted();
-
-            // workaround (TopLevel should apply styles when global styles change)
-            Styles.CollectionChanged +=
-                 (sender, e) =>
-                 {
-                     foreach (var window in ((IClassicDesktopStyleApplicationLifetime)ApplicationLifetime).Windows)
-                     {
-                         window.Styles.Add(DummyStyle);
-                         window.Styles.Remove(DummyStyle);
-                     }
-                 };
-
             if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
             {
                 var mainWindow = new MainWindow();
@@ -64,6 +48,8 @@ namespace DotNet.Properties
                     desktop.MainWindow = mainWindow;
                 }
             }
+
+            base.OnFrameworkInitializationCompleted();
         }
 
         private static int Main(string[] args) =>
