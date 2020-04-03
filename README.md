@@ -22,6 +22,10 @@ A big part of the project loading code comes from Buildalyzer.
 
 [<img src="https://github.com/daveaglick/Buildalyzer/raw/master/docs/input/assets/img/buildalyzer.png" height="128px">](https://github.com/daveaglick/Buildalyzer)
 
+### Citrus.Avalonia
+
+Avalonia themes.
+
 ### linea
 
 The project logo is from [linea.io](http://linea.io).

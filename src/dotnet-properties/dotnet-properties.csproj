@@ -25,6 +25,7 @@
         <PackageReference Include="Avalonia.Diagnostics" />
         <PackageReference Include="Avalonia.ReactiveUI" />
         <!--<PackageReference Include="Avalonia.Skia.Linux.Natives" />-->
+        <PackageReference Include="Citrus.Avalonia" />
         <PackageReference Include="Microsoft.Build" ExcludeAssets="Runtime" />
         <PackageReference Include="Microsoft.Build.Utilities.Core" ExcludeAssets="Runtime" />
         <PackageReference Include="NuGet.Packaging" />

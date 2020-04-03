@@ -3,11 +3,7 @@
              x:Class="DotNet.Properties.App">
 
     <Application.Styles>
-
-        <StyleInclude Source="avares://Avalonia.Themes.Default/DefaultTheme.xaml"/>
-
         <StyleInclude Source="/Styles/Styles.xaml" />
-
     </Application.Styles>
 
 </Application>
