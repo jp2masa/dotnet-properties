@@ -26,21 +26,6 @@ namespace DotNet.Properties.Pages.ViewModels
                 new OutputType("WinExe", "Windows Application"),
                 new OutputType("Library", "Class Library"));
 
-        private static readonly ImmutableArray<DotNetFrameworkTfm> _dotNetFrameworkTfms =
-            ImmutableArray.Create(
-                new DotNetFrameworkTfm("net20", new Version(2, 0)),
-                new DotNetFrameworkTfm("net40", new Version(4, 0)),
-                new DotNetFrameworkTfm("net45", new Version(4, 5)),
-                new DotNetFrameworkTfm("net451", new Version(4, 5, 1)),
-                new DotNetFrameworkTfm("net452", new Version(4, 5, 2)),
-                new DotNetFrameworkTfm("net46", new Version(4, 6)),
-                new DotNetFrameworkTfm("net461", new Version(4, 6, 1)),
-                new DotNetFrameworkTfm("net462", new Version(4, 6, 2)),
-                new DotNetFrameworkTfm("net47", new Version(4, 7)),
-                new DotNetFrameworkTfm("net471", new Version(4, 7, 1)),
-                new DotNetFrameworkTfm("net472", new Version(4, 7, 2)),
-                new DotNetFrameworkTfm("net48", new Version(4, 8)));
-
         public ApplicationPageViewModel(IPropertyManager propertyManager)
             : base(propertyManager)
         {
@@ -79,16 +64,11 @@ namespace DotNet.Properties.Pages.ViewModels
         {
             var supportedTargetFrameworkItems = GetItems("SupportedTargetFramework");
 
-            var builder = ImmutableArray.CreateBuilder<TargetFramework>(
-                supportedTargetFrameworkItems.Count + _dotNetFrameworkTfms.Length);
+            var builder = ImmutableArray.CreateBuilder<TargetFramework>(supportedTargetFrameworkItems.Count);
 
             builder.AddRange(
                 from item in supportedTargetFrameworkItems
                 select new TargetFramework(item.EvaluatedInclude, item.GetMetadata("DisplayName").EvaluatedValue));
-
-            builder.AddRange(
-                from tfm in _dotNetFrameworkTfms
-                select new TargetFramework(tfm.ShortName, $".NET Framework {tfm.Version}"));
 
             return builder.ToImmutable();
         }
