@@ -148,7 +148,7 @@ namespace DotNet.Properties
         private static Task<string[]> ShowOpenFileDialogAsync(FileDialog dialog, Window? parent = null)
         {
             var systemDialogImpl = AvaloniaLocator.Current.GetService<ISystemDialogImpl>();
-            return systemDialogImpl.ShowFileDialogAsync(dialog, parent?.PlatformImpl);
+            return systemDialogImpl.ShowFileDialogAsync(dialog, parent);
         }
     }
 }
