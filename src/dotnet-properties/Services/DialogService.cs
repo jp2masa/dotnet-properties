@@ -10,11 +10,11 @@ namespace DotNet.Properties.Services
     internal class DialogService<TView, TViewModel> : IDialogService<TViewModel> where TView : Window
     {
         private readonly Func<TView> _viewFactory;
-        private readonly Window? _owner;
+        private readonly Window _owner;
 
         public DialogService(
             Func<TView> viewFactory,
-            Window? owner = null)
+            Window owner)
         {
             _viewFactory = viewFactory;
             _owner = owner;
@@ -23,24 +23,12 @@ namespace DotNet.Properties.Services
         public void Show(TViewModel viewModel)
         {
             var view = _viewFactory();
-
             view.DataContext = viewModel;
-            view.Owner = _owner;
-
-            if (_owner != null)
-            {
-                _owner.IsEnabled = false;
-            }
 
             using (var source = new CancellationTokenSource())
             {
                 view.ShowDialog(_owner).ContinueWith(t => source.Cancel(), TaskScheduler.FromCurrentSynchronizationContext());
                 Dispatcher.UIThread.MainLoop(source.Token);
-            }
-
-            if (_owner != null)
-            {
-                _owner.IsEnabled = true;
             }
         }
     }
