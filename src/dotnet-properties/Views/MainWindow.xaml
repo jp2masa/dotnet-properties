@@ -23,7 +23,9 @@
 
             <Button Grid.Column="4"
                     Padding="8, 4"
-                    Command="{Binding SaveCommand}">Save</Button>
+                    Command="{Binding SaveCommand}"
+                    Content="Save" />
+
         </Grid>
 
         <StackPanel Grid.Row="2"
