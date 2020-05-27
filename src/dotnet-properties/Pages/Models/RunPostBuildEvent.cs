@@ -14,9 +14,9 @@ namespace DotNet.Properties.Pages.Models
 
         public string DisplayName { get; }
 
-        public bool Equals(RunPostBuildEvent other) => DisplayName.Equals(other.DisplayName, StringComparison.Ordinal);
+        public bool Equals(RunPostBuildEvent? other) => !(other is null) && DisplayName.Equals(other.DisplayName, StringComparison.Ordinal);
 
-        public override bool Equals(object? obj) => obj is RunPostBuildEvent && Equals((RunPostBuildEvent)obj);
+        public override bool Equals(object? obj) => obj is RunPostBuildEvent other && Equals(other);
 
         public override int GetHashCode() => DisplayName.GetHashCode(StringComparison.Ordinal);
 

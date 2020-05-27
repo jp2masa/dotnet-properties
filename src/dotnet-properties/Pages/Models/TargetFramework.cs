@@ -26,9 +26,9 @@ namespace DotNet.Properties.Pages.Models
 
         public override string ToString() => DisplayName;
 
-        public bool Equals(TargetFramework other) => NuGetFramework.Equals(other.NuGetFramework);
+        public bool Equals(TargetFramework? other) => !(other is null) && NuGetFramework.Equals(other.NuGetFramework);
 
-        public override bool Equals(object? obj) => obj is TargetFramework && Equals((TargetFramework)obj);
+        public override bool Equals(object? obj) => obj is TargetFramework other && Equals(other);
 
         public override int GetHashCode() => NuGetFramework.GetHashCode();
     }

@@ -14,9 +14,9 @@ namespace DotNet.Properties.Pages.Models
 
         public string DisplayName { get; }
 
-        public bool Equals(OutputType other) => DisplayName.Equals(other.DisplayName, StringComparison.Ordinal);
+        public bool Equals(OutputType? other) => !(other is null) && DisplayName.Equals(other.DisplayName, StringComparison.Ordinal);
 
-        public override bool Equals(object? obj) => obj is OutputType && Equals((OutputType)obj);
+        public override bool Equals(object? obj) => obj is OutputType other && Equals(other);
 
         public override int GetHashCode() => DisplayName.GetHashCode(StringComparison.Ordinal);
 

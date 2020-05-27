@@ -14,9 +14,9 @@ namespace DotNet.Properties.Pages.Models
 
         public string DisplayName { get; }
 
-        public bool Equals(PlatformTarget other) => DisplayName.Equals(other.DisplayName, StringComparison.Ordinal);
+        public bool Equals(PlatformTarget? other) => !(other is null) && DisplayName.Equals(other.DisplayName, StringComparison.Ordinal);
 
-        public override bool Equals(object? obj) => obj is PlatformTarget && Equals((PlatformTarget)obj);
+        public override bool Equals(object? obj) => obj is PlatformTarget other && Equals(other);
 
         public override int GetHashCode() => DisplayName.GetHashCode(StringComparison.Ordinal);
 
