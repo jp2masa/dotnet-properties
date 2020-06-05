@@ -1,9 +1,3 @@
 ﻿<Application xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             x:Class="DotNet.Properties.App">
-
-    <Application.Styles>
-        <StyleInclude Source="/Styles/Styles.xaml" />
-    </Application.Styles>
-
-</Application>
+             x:Class="DotNet.Properties.App" />

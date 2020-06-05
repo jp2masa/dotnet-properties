@@ -24,7 +24,7 @@ A big part of the project loading code comes from Buildalyzer.
 
 ### Citrus.Avalonia
 
-Avalonia themes.
+[Avalonia themes.](https://github.com/worldbeater/Citrus.Avalonia)
 
 ### linea
 
