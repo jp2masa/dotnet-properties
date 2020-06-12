@@ -3,12 +3,11 @@
         xmlns:vm="clr-namespace:DotNet.Properties.Dialogs.ViewModels;assembly=dotnet-properties"
         x:Class="DotNet.Properties.Dialogs.Views.UnsavedChangesDialog"
         Name="Dialog"
+        CanResize="False"
+        ShowInTaskbar="False"
         SizeToContent="WidthAndHeight"
         Title="dotnet-properties"
         WindowStartupLocation="CenterOwner">
-    <!--
-        ShowInTaskbar="False"
-    -->
 
     <StackPanel Spacing="16"
                 Margin="16">
@@ -18,11 +17,6 @@
         <StackPanel HorizontalAlignment="Right"
                     Orientation="Horizontal"
                     Spacing="8">
-            <StackPanel.Styles>
-                <Style Selector="Button">
-                    <Setter Property="Button.MinWidth" Value="48" />
-                </Style>
-            </StackPanel.Styles>
 
             <Button Command="{Binding YesCommand}"
                     CommandParameter="{Binding #Dialog}"
