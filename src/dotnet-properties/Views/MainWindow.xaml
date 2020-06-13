@@ -1,5 +1,6 @@
 ﻿<Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:root="clr-namespace:DotNet.Properties;assembly=dotnet-properties"
         xmlns:pages="clr-namespace:DotNet.Properties.Pages.Views;assembly=dotnet-properties"
         x:Class="DotNet.Properties.Views.MainWindow"
         ClosingCommand="{Binding ClosingCommand}"
@@ -49,6 +50,11 @@
 
         <TabControl Grid.Row="4"
                     Classes="sidebar">
+
+            <TabControl.DataTemplates>
+                <root:PagesViewLocator />
+            </TabControl.DataTemplates>
+
             <TabControl.Tag>
 
                 <StackPanel HorizontalAlignment="Right"
@@ -71,25 +77,11 @@
 
             </TabControl.Tag>
 
-            <TabItem Header="Application">
-                <pages:ApplicationPage DataContext="{Binding ApplicationPageViewModel}" />
-            </TabItem>
-
-            <TabItem Header="Build">
-                <pages:BuildPage DataContext="{Binding BuildPageViewModel}" />
-            </TabItem>
-
-            <TabItem Header="Build Events">
-                <pages:BuildEventsPage DataContext="{Binding BuildEventsPageViewModel}" />
-            </TabItem>
-
-            <TabItem Header="Package">
-                <pages:PackagePage DataContext="{Binding PackagePageViewModel}" />
-            </TabItem>
-
-            <TabItem Header="Signing">
-                <pages:SigningPage DataContext="{Binding SigningPageViewModel}" />
-            </TabItem>
+            <TabItem Header="Application" Content="{Binding ApplicationPage}" />
+            <TabItem Header="Build" Content="{Binding BuildPage}" />
+            <TabItem Header="Build Events" Content="{Binding BuildEventsPage}" />
+            <TabItem Header="Package" Content="{Binding PackagePage}" />
+            <TabItem Header="Signing" Content="{Binding SigningPage}" />
 
         </TabControl>
 

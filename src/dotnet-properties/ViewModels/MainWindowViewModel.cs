@@ -48,16 +48,17 @@ namespace DotNet.Properties.ViewModels
                     handler => _propertyManager.IsDirtyChanged -= handler)
                     .Select(_ => _propertyManager.IsDirty));
 
-            ApplicationPageViewModel = new ApplicationPageViewModel(_propertyManager);
-            BuildPageViewModel = new BuildPageViewModel(_propertyManager);
-            BuildEventsPageViewModel = new BuildEventsPageViewModel(_propertyManager);
-            PackagePageViewModel = new PackagePageViewModel(_propertyManager);
-            SigningPageViewModel = new SigningPageViewModel(_propertyManager, openFileDialogService);
+            ApplicationPage = new ApplicationPageViewModel(_propertyManager);
+            BuildPage = new BuildPageViewModel(_propertyManager);
+            BuildEventsPage = new BuildEventsPageViewModel(_propertyManager);
+            PackagePage = new PackagePageViewModel(_propertyManager);
+            SigningPage = new SigningPageViewModel(_propertyManager, openFileDialogService);
         }
 
         public ICommand ClosingCommand { get; }
 
         public string? ProjectPath => _project?.FullPath;
+
         public ICommand SaveCommand { get; }
 
         public IEnumerable<string> AvailableConfigurations =>
@@ -86,11 +87,11 @@ namespace DotNet.Properties.ViewModels
             }
         }
 
-        public ApplicationPageViewModel ApplicationPageViewModel { get; }
-        public BuildPageViewModel BuildPageViewModel { get; }
-        public BuildEventsPageViewModel BuildEventsPageViewModel { get; }
-        public PackagePageViewModel PackagePageViewModel { get; }
-        public SigningPageViewModel SigningPageViewModel { get; }
+        public ApplicationPageViewModel ApplicationPage { get; }
+        public BuildPageViewModel BuildPage { get; }
+        public BuildEventsPageViewModel BuildEventsPage { get; }
+        public PackagePageViewModel PackagePage { get; }
+        public SigningPageViewModel SigningPage { get; }
 
         public IEnumerable<ITheme> AvailableThemes => _themeService.AvailableThemes;
 
