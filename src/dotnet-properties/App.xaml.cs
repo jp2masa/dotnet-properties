@@ -15,8 +15,8 @@ using Avalonia.Markup.Xaml;
 using Avalonia.ReactiveUI;
 using Avalonia.Threading;
 
-using DotNet.Properties.Dialogs.Views;
 using DotNet.Properties.Dialogs.ViewModels;
+using DotNet.Properties.Dialogs.Views;
 using DotNet.Properties.Services;
 using DotNet.Properties.ViewModels;
 using DotNet.Properties.Views;
@@ -141,9 +141,9 @@ namespace DotNet.Properties
 
         private static UnsavedChangesDialog NewUnsavedChangesDialog() => new UnsavedChangesDialog();
 
-        private static bool DirectoryExists([NotNullWhen(true)]string? path) => Directory.Exists(path);
+        private static bool DirectoryExists([NotNullWhen(true)] string? path) => Directory.Exists(path);
 
-        private static bool FileExists([NotNullWhen(true)]string? path) => File.Exists(path);
+        private static bool FileExists([NotNullWhen(true)] string? path) => File.Exists(path);
 
         private static Task<string[]> ShowOpenFileDialogAsync(FileDialog dialog, Window? parent = null)
         {
