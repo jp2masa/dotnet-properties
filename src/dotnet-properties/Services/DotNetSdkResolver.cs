@@ -16,23 +16,14 @@ namespace DotNet.Properties.Services
 
         public bool TryResolveSdkPath(string workingDirectory, [NotNullWhen(true)] out string? path)
         {
-            if (_dotnetInfos.TryGetValue(workingDirectory, out var info))
+            if (!_dotnetInfos.TryGetValue(workingDirectory, out var info))
             {
-                path = info.BasePath;
-                return true;
-            }
-
-            info = GetInfo(workingDirectory);
-
-            if (info == null
-                || !_dotnetInfos.TryAdd(workingDirectory, info))
-            {
-                path = null;
-                return false;
+                info = GetInfo(workingDirectory);
+                _dotnetInfos.TryAdd(workingDirectory, info);
             }
 
             path = info.BasePath;
-            return true;
+            return path != null;
         }
 
         private static DotNetInfo GetInfo(string workingDirectory)
