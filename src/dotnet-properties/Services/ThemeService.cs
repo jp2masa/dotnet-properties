@@ -16,8 +16,6 @@ namespace DotNet.Properties.Services
         private static readonly StyleInclude AvaloniaDefaultBaseLight = AvaloniaDefaultAccent("BaseLight");
         private static readonly StyleInclude AvaloniaDefaultBaseDark = AvaloniaDefaultAccent("BaseDark");
 
-        private static readonly StyleInclude AvaloniaFluent = Style("avares://Avalonia.Themes.Fluent/FluentTheme.xaml");
-
         private static readonly StyleInclude AvaloniaFluentLight = AvaloniaFluentAccent("FluentLight");
         private static readonly StyleInclude AvaloniaFluentDark = AvaloniaFluentAccent("FluentDark");
 
@@ -34,8 +32,8 @@ namespace DotNet.Properties.Services
             new Theme("Light", new Styles() { AvaloniaDefault, AvaloniaDefaultBaseLight, Styles }),
             new Theme("Light Blue", new Styles() { AvaloniaDefault, BaseLightBlue, Styles }),
             new Theme("Dark", new Styles() { AvaloniaDefault, AvaloniaDefaultBaseDark, Styles }),
-            new Theme("Fluent Light", new Styles() {AvaloniaFluent, AvaloniaDefaultBaseLight, AvaloniaFluentLight, Styles }),
-            new Theme("Fluent Dark", new Styles() {AvaloniaFluent, AvaloniaDefaultBaseDark, AvaloniaFluentDark, Styles }),
+            new Theme("Fluent Light", new Styles() { AvaloniaFluentLight, Styles }),
+            new Theme("Fluent Dark", new Styles() { AvaloniaFluentDark, Styles }),
             new Theme("Citrus", new Styles() { Citrus, Styles }),
             new Theme("Sea (Citrus)", new Styles() { CitrusSea, Styles }),
             new Theme("Rust (Citrus)", new Styles() { CitrusRust, Styles }),
