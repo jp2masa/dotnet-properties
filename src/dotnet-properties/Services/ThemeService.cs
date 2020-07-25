@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 using Avalonia;
-using Avalonia.Markup.Xaml;
 using Avalonia.Markup.Xaml.Styling;
 using Avalonia.Styling;
 
@@ -74,7 +74,7 @@ namespace DotNet.Properties.Services
 
         private static StyleInclude CitrusTheme(string name) => Style($"avares://Citrus.Avalonia/{name}.xaml");
 
-        private static StyleInclude Style(string source) => AvaloniaXamlLoader.Parse<StyleInclude>(
-            $@"<StyleInclude xmlns=""https://github.com/avaloniaui"" Source=""{source}"" />");
+        private static StyleInclude Style(string source) =>
+            new StyleInclude(new Uri(source)) { Source = new Uri(source) };
     }
 }
