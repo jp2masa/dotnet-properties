@@ -16,6 +16,10 @@ namespace DotNet.Properties.Services
         private static readonly StyleInclude AvaloniaDefaultBaseLight = AvaloniaDefaultAccent("BaseLight");
         private static readonly StyleInclude AvaloniaDefaultBaseDark = AvaloniaDefaultAccent("BaseDark");
 
+        private static readonly StyleInclude AvaloniaFluentBase = AvaloniaFluentAccent("Base");
+        private static readonly StyleInclude AvaloniaFluentBaseLight = AvaloniaFluentAccent("BaseLight");
+        private static readonly StyleInclude AvaloniaFluentBaseDark = AvaloniaFluentAccent("BaseDark");
+
         private static readonly StyleInclude AvaloniaFluentLight = AvaloniaFluentAccent("FluentLight");
         private static readonly StyleInclude AvaloniaFluentDark = AvaloniaFluentAccent("FluentDark");
 
@@ -29,9 +33,9 @@ namespace DotNet.Properties.Services
 
         private static readonly Theme[] Themes = new Theme[]
         {
-            new Theme("Light", new Styles() { AvaloniaDefault, AvaloniaDefaultBaseLight, Styles }),
-            new Theme("Light Blue", new Styles() { AvaloniaDefault, BaseLightBlue, Styles }),
-            new Theme("Dark", new Styles() { AvaloniaDefault, AvaloniaDefaultBaseDark, Styles }),
+            new Theme("Light", new Styles() { AvaloniaFluentBase, AvaloniaFluentBaseLight, AvaloniaDefault, AvaloniaDefaultBaseLight, Styles }),
+            new Theme("Light Blue", new Styles() { AvaloniaFluentBase, AvaloniaFluentBaseLight, AvaloniaDefault, BaseLightBlue, Styles }),
+            new Theme("Dark", new Styles() { AvaloniaFluentBase, AvaloniaFluentBaseDark, AvaloniaDefault, AvaloniaDefaultBaseDark, Styles }),
             new Theme("Fluent Light", new Styles() { AvaloniaFluentLight, Styles }),
             new Theme("Fluent Dark", new Styles() { AvaloniaFluentDark, Styles }),
             new Theme("Citrus", new Styles() { Citrus, Styles }),
@@ -74,7 +78,8 @@ namespace DotNet.Properties.Services
 
         private static StyleInclude CitrusTheme(string name) => Style($"avares://Citrus.Avalonia/{name}.xaml");
 
-        private static StyleInclude Style(string source) =>
-            new StyleInclude(new Uri(source)) { Source = new Uri(source) };
+        private static StyleInclude Style(string source) => Style(new Uri(source));
+
+        private static StyleInclude Style(Uri source) => new StyleInclude(source) { Source = source };
     }
 }
