@@ -24,7 +24,7 @@ namespace DotNet.Properties.Views
         public MainWindow()
         {
             InitializeComponent();
-#if DEBUG
+#if AVALONIA_DIAGNOSTICS
             this.AttachDevTools();
 #endif
 

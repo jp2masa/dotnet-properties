@@ -11,7 +11,7 @@ namespace DotNet.Properties.Dialogs.Views
         public UnsavedChangesDialog()
         {
             InitializeComponent();
-#if DEBUG
+#if AVALONIA_DIAGNOSTICS
             this.AttachDevTools();
 #endif
         }
