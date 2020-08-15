@@ -1,0 +1,11 @@
+﻿<Style xmlns="https://github.com/avaloniaui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Style.Resources>
+
+        <SolidColorBrush x:Key="SideBarItemBackground" Color="{DynamicResource ThemeAccentColor}" />
+        <SolidColorBrush x:Key="SideBarItemBackgroundSelected" Color="{DynamicResource ThemeAccentColor2}" />
+
+    </Style.Resources>
+
+</Style>

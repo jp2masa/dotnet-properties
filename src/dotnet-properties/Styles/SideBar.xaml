@@ -11,13 +11,8 @@
 
     <Style Selector="TabControl.sidebar">
         <Setter Property="TabStripPlacement" Value="Left" />
-        <Setter Property="Padding" Value="16 0" />
-        <Setter Property="Background" Value="{DynamicResource ThemeAccentBrush}" />
-        <Setter Property="ItemsPanel">
-            <ItemsPanelTemplate>
-                <StackPanel />
-            </ItemsPanelTemplate>
-        </Setter>
+        <Setter Property="Padding" Value="16,0" />
+        <Setter Property="Background" Value="{DynamicResource SideBarItemBackground}" />
         <Setter Property="Template">
             <ControlTemplate>
                 <Border Margin="{TemplateBinding Margin}"
@@ -26,7 +21,6 @@
                     <DockPanel>
                         <ScrollViewer Name="PART_ScrollViewer"
                                       DockPanel.Dock="Left"
-                                      MinWidth="180"
                                       HorizontalScrollBarVisibility="{TemplateBinding (ScrollViewer.HorizontalScrollBarVisibility)}"
                                       VerticalScrollBarVisibility="{TemplateBinding (ScrollViewer.VerticalScrollBarVisibility)}"
                                       Background="{TemplateBinding Background}">
@@ -57,7 +51,7 @@
         <Setter Property="Foreground" Value="White" />
         <Setter Property="FontSize" Value="14" />
         <Setter Property="Margin" Value="0" />
-        <Setter Property="Padding" Value="16" />
+        <Setter Property="Padding" Value="20,12,32,12" />
         <Setter Property="Opacity" Value="0.5" />
         <Setter Property="Transitions">
             <Transitions>
@@ -67,19 +61,18 @@
     </Style>
 
     <Style Selector="TabControl.sidebar > TabItem:pointerover">
-        <Setter Property="Opacity" Value="1"/>
-    </Style>
-
-    <Style Selector="TabControl.sidebar > TabItem:pointerover">
         <Setter Property="Background" Value="Transparent" />
-    </Style>
-
-    <Style Selector="TabControl.sidebar > TabItem:selected">
         <Setter Property="Opacity" Value="1" />
     </Style>
 
+    <Style Selector="TabControl.sidebar > TabItem:pointerover /template/ Border#PART_LayoutRoot">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="TextBlock.Foreground" Value="White" />
+    </Style>
+
     <Style Selector="TabControl.sidebar > TabItem:selected">
-        <Setter Property="Background" Value="{DynamicResource ThemeAccentBrush2}" />
+        <Setter Property="Background" Value="{DynamicResource SideBarItemBackgroundSelected}" />
+        <Setter Property="Opacity" Value="1" />
     </Style>
 
 </Styles>
