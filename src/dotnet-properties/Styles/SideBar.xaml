@@ -10,21 +10,21 @@
     </Design.PreviewWith>
 
     <Style Selector="TabControl.sidebar">
-        <Setter Property="TabStripPlacement" Value="Left" />
-        <Setter Property="Padding" Value="16,0" />
         <Setter Property="Background" Value="{DynamicResource SideBarItemBackground}" />
+        <Setter Property="Padding" Value="16,0" />
+        <Setter Property="TabStripPlacement" Value="Left" />
         <Setter Property="Template">
             <ControlTemplate>
-                <Border Margin="{TemplateBinding Margin}"
-                        BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{TemplateBinding BorderThickness}">
+                <Border BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        Margin="{TemplateBinding Margin}">
                     <DockPanel>
-                        <ScrollViewer Name="PART_ScrollViewer"
+                        <ScrollViewer x:Name="PART_ScrollViewer"
                                       DockPanel.Dock="Left"
                                       HorizontalScrollBarVisibility="{TemplateBinding (ScrollViewer.HorizontalScrollBarVisibility)}"
                                       VerticalScrollBarVisibility="{TemplateBinding (ScrollViewer.VerticalScrollBarVisibility)}"
                                       Background="{TemplateBinding Background}">
-                            <ItemsPresenter Name="PART_ItemsPresenter"
+                            <ItemsPresenter x:Name="PART_ItemsPresenter"
                                             Items="{TemplateBinding Items}"
                                             ItemsPanel="{TemplateBinding ItemsPanel}"
                                             ItemTemplate="{TemplateBinding ItemTemplate}" />
@@ -32,8 +32,8 @@
                         <ContentControl DockPanel.Dock="Bottom"
                                         HorizontalContentAlignment="Right"
                                         Content="{TemplateBinding Tag}" />
-                        <ScrollViewer>
-                            <ContentPresenter Name="PART_SelectedContentHost"
+                        <ScrollViewer ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                            <ContentPresenter x:Name="PART_SelectedContentHost"
                                               Margin="{TemplateBinding Padding}"
                                               HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
                                               VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"

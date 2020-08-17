@@ -19,18 +19,17 @@
             <StackPanel IsEnabled="{Binding SignAssembly}"
                         Spacing="12">
 
-                <DockPanel>
-                    
-                    <Button DockPanel.Dock="Right"
-                            Margin="12,0,0,0"
-                            Padding="4,0"
-                            Command="{Binding OpenKeyFileCommand}"
-                            Content="..." />
-                    
-                    <TextBox HorizontalAlignment="Stretch"
-                             Text="{Binding AssemblyOriginatorKeyFile}" />
-                    
-                </DockPanel>
+                <TextBox HorizontalAlignment="Stretch"
+                            Margin="0"
+                            Text="{Binding AssemblyOriginatorKeyFile}">
+                    <TextBox.InnerRightContent>
+                        <Button Padding="4,0"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Stretch"
+                                Command="{Binding OpenKeyFileCommand}"
+                                Content="..." />
+                    </TextBox.InnerRightContent>
+                </TextBox>
 
                 <CheckBox IsChecked="{Binding DelaySign}"
                           Content="Delay sign" />
