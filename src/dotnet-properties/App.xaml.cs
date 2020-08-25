@@ -22,7 +22,7 @@ using DotNet.Properties.Views;
 
 namespace DotNet.Properties
 {
-    internal class App : Application
+    internal sealed class App : Application
     {
         private static readonly List<FileDialogFilter> OpenProjectFileDialogFilters = new List<FileDialogFilter>()
         {

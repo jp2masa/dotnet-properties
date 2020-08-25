@@ -9,7 +9,7 @@ using Microsoft.Build.Evaluation;
 
 namespace DotNet.Properties.Services
 {
-    internal class PropertyManager : IPropertyManager
+    internal sealed class PropertyManager : IPropertyManager
     {
         private const string ConfigurationCondition = "'$(Configuration)' == '{0}'";
         private const string PlatformCondition = "'$(Platform)' == '{0}'";

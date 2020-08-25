@@ -15,7 +15,7 @@ using DotNet.Properties.Services;
 
 namespace DotNet.Properties.ViewModels
 {
-    internal class MainWindowViewModel : ReactiveObject
+    internal sealed class MainWindowViewModel : ReactiveObject
     {
         private const string AnyConfiguration = "Any Configuration";
         private const string AnyPlatform = "Any Platform";

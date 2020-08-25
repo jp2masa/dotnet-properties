@@ -8,7 +8,7 @@ using DotNet.Properties.Dialogs.Models;
 
 namespace DotNet.Properties.Dialogs.ViewModels
 {
-    internal class UnsavedChangesDialogViewModel : ReactiveObject
+    internal sealed class UnsavedChangesDialogViewModel : ReactiveObject
     {
         private UnsavedChangesDialogResult _dialogResult = UnsavedChangesDialogResult.Cancel;
 

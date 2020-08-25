@@ -9,7 +9,7 @@ using Microsoft.Build.Utilities;
 
 namespace DotNet.Properties
 {
-    internal class MSBuildProject
+    internal sealed class MSBuildProject
     {
         private readonly DotNetSdkPaths _dotnetSdkPaths;
 

@@ -5,7 +5,7 @@ using DotNet.Properties.Pages.ViewModels;
 
 namespace DotNet.Properties.Pages.Views
 {
-    internal class ApplicationPage : ReactiveUserControl<ApplicationPageViewModel>
+    internal sealed class ApplicationPage : ReactiveUserControl<ApplicationPageViewModel>
     {
         public ApplicationPage()
         {

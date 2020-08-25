@@ -5,7 +5,7 @@ using Avalonia.Controls;
 
 namespace DotNet.Properties.Services
 {
-    internal class OpenFileDialogService : IOpenFileDialogService
+    internal sealed class OpenFileDialogService : IOpenFileDialogService
     {
         private readonly Window _window;
 

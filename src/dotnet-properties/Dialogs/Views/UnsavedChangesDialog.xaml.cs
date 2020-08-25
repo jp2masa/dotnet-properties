@@ -6,7 +6,7 @@ using DotNet.Properties.Dialogs.ViewModels;
 
 namespace DotNet.Properties.Dialogs.Views
 {
-    internal class UnsavedChangesDialog : ReactiveWindow<UnsavedChangesDialogViewModel>
+    internal sealed class UnsavedChangesDialog : ReactiveWindow<UnsavedChangesDialogViewModel>
     {
         public UnsavedChangesDialog()
         {

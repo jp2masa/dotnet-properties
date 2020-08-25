@@ -10,7 +10,7 @@ using DotNet.Properties.ViewModels;
 
 namespace DotNet.Properties.Views
 {
-    internal class MainWindow : ReactiveWindow<MainWindowViewModel>
+    internal sealed class MainWindow : ReactiveWindow<MainWindowViewModel>
     {
         public static readonly StyledProperty<ICommand> ClosingCommandProperty =
             AvaloniaProperty.Register<Window, ICommand>(nameof(ClosingCommand));

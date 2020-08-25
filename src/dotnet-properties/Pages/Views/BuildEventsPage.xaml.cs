@@ -5,7 +5,7 @@ using DotNet.Properties.Pages.ViewModels;
 
 namespace DotNet.Properties.Pages.Views
 {
-    internal class BuildEventsPage : ReactiveUserControl<BuildEventsPageViewModel>
+    internal sealed class BuildEventsPage : ReactiveUserControl<BuildEventsPageViewModel>
     {
         public BuildEventsPage()
         {
