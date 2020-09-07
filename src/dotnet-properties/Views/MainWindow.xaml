@@ -31,20 +31,28 @@
 
         <StackPanel Grid.Row="2"
                     Orientation="Horizontal"
-                    Spacing="8"
+                    Spacing="16"
                     HorizontalAlignment="Center">
 
-            <TextBlock Text="Configuration:" />
-            
-            <ComboBox Grid.Column="0"
-                      Items="{Binding AvailableConfigurations}"
-                      SelectedItem="{Binding Configuration}" />
+            <StackPanel Orientation="Horizontal"
+                        Spacing="8">
 
-            <TextBlock Text="Platform:" />
+                <TextBlock Text="Configuration:" />
 
-            <ComboBox Grid.Column="2"
-                      Items="{Binding AvailablePlatforms}"
-                      SelectedItem="{Binding Platform}" />
+                <ComboBox Items="{Binding AvailableConfigurations}"
+                          SelectedItem="{Binding Configuration}" />
+
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal"
+                        Spacing="8">
+
+                <TextBlock Text="Platform:" />
+
+                <ComboBox Items="{Binding AvailablePlatforms}"
+                          SelectedItem="{Binding Platform}" />
+
+            </StackPanel>
 
         </StackPanel>
 
