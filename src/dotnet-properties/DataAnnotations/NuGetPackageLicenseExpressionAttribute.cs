@@ -7,7 +7,7 @@ namespace DotNet.Properties.DataAnnotations
 {
     internal sealed class NuGetPackageLicenseExpressionAttribute : ValidationAttribute
     {
-        protected override ValidationResult IsValid(object value, ValidationContext validationContext)
+        protected override ValidationResult? IsValid(object? value, ValidationContext validationContext)
         {
             if (!(value is string str))
             {

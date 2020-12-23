@@ -1,13 +1,13 @@
 <Project>
 
     <PropertyGroup>
-        <AvaloniaVersion>0.10.0-preview5</AvaloniaVersion>
+        <AvaloniaVersion>0.10.0-rc1</AvaloniaVersion>
         <AvaloniaSkiaLinuxNativesVersion>1.68.0.2</AvaloniaSkiaLinuxNativesVersion>
         <CitrusAvaloniaVersion>1.3.0-preview</CitrusAvaloniaVersion>
-        <MicrosoftBuildVersion>16.6.0</MicrosoftBuildVersion>
-        <MicrosoftCodeAnalysisFxCopAnalyzersVersion>3.3.0</MicrosoftCodeAnalysisFxCopAnalyzersVersion>
-        <NuGetVersion>5.7.0</NuGetVersion>
-        <ReactiveUIVersion>11.5.35</ReactiveUIVersion>
+        <MicrosoftBuildVersion>16.8.0</MicrosoftBuildVersion>
+        <MicrosoftCodeAnalysisNetAnalyzersVersion>5.0.1</MicrosoftCodeAnalysisNetAnalyzersVersion>
+        <NuGetVersion>5.8.0</NuGetVersion>
+        <ReactiveUIVersion>13.0.27</ReactiveUIVersion>
     </PropertyGroup>
 
     <ItemGroup>
@@ -19,7 +19,7 @@
         <PackageReference Update="Citrus.Avalonia" Version="$(CitrusAvaloniaVersion)" />
         <PackageReference Update="Microsoft.Build" Version="$(MicrosoftBuildVersion)" />
         <PackageReference Update="Microsoft.Build.Utilities.Core" Version="$(MicrosoftBuildVersion)" />
-        <PackageReference Update="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="$(MicrosoftCodeAnalysisFxCopAnalyzersVersion)" />
+        <PackageReference Update="Microsoft.CodeAnalysis.NetAnalyzers" Version="$(MicrosoftCodeAnalysisNetAnalyzersVersion)" />
         <PackageReference Update="NuGet.Packaging" Version="$(NuGetVersion)" />
         <PackageReference Update="ReactiveUI" Version="$(ReactiveUIVersion)" />
     </ItemGroup>

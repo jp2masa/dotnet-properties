@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Avalonia;
 using Avalonia.Markup.Xaml.Styling;
 using Avalonia.Styling;
+using Avalonia.Themes.Fluent;
 
 namespace DotNet.Properties.Services
 {
@@ -28,8 +29,8 @@ namespace DotNet.Properties.Services
         private static readonly StyleInclude AvaloniaFluentBaseLight = Style(AvaloniaFluentAccents, "BaseLight.xaml");
         private static readonly StyleInclude AvaloniaFluentBaseDark = Style(AvaloniaFluentAccents, "BaseDark.xaml");
 
-        private static readonly StyleInclude AvaloniaFluentLight = Style(AvaloniaFluentAccents, "FluentLight.xaml");
-        private static readonly StyleInclude AvaloniaFluentDark = Style(AvaloniaFluentAccents, "FluentDark.xaml");
+        private static readonly IStyle AvaloniaFluentLight = new FluentTheme(default(Uri)!) { Mode = FluentThemeMode.Light };
+        private static readonly IStyle AvaloniaFluentDark = new FluentTheme(default(Uri)!) { Mode = FluentThemeMode.Dark };
 
         private static readonly StyleInclude BaseLightBlue = Style(Accents, "BaseLightBlue.xaml");
 

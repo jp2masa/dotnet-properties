@@ -50,7 +50,7 @@ namespace DotNet.Properties.Services
                         RedirectStandardError = true
                     };
 
-                    process = Process.Start(startInfo);
+                    process = Process.Start(startInfo) ?? throw new FileNotFoundException();
                 }
                 catch (FileNotFoundException)
                 {

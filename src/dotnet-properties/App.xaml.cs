@@ -134,7 +134,7 @@ namespace DotNet.Properties
             AppBuilder.Configure<App>()
                 .UsePlatformDetect()
 #if DEBUG
-                .LogToDebug()
+                .LogToTrace()
 #endif
                 .UseReactiveUI();
 
